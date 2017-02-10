@@ -13,6 +13,9 @@
 <script src="../generators/javascript/colour.js"></script>
 <script src="../generators/javascript/variables.js"></script>
 <script src="../generators/javascript/procedures.js"></script>
+<script src="../generators/kiwifroot/string_length.js"></script>
+<script src="../generators/kiwifroot/animation.js"></script>
+<script src="../generators/kiwifroot/events.js"></script>
 <script src="../generators/python.js"></script>
 <script src="../generators/python/logic.js"></script>
 <script src="../generators/python/loops.js"></script>
@@ -58,6 +61,9 @@
 <script src="../blocks/colour.js"></script>
 <script src="../blocks/variables.js"></script>
 <script src="../blocks/procedures.js"></script>
+<script src="../blocks/kiwifroot/string_length.js"></script>
+<script src="../blocks/kiwifroot/animation.js"></script>
+<script src="../blocks/kiwifroot/events.js"></script>
 <script>
 'use strict';
 var workspace = null;
@@ -695,6 +701,30 @@ h1 {
           </shadow>
         </value>
       </block>
+    </category>
+    <category name="Test">
+      <block type="string_length"></block>
+    </category>
+    <category name="Animation" colour="#df358e">
+      <block type="kiwi_event_animation">
+        <value name="ANIM">
+          <block type="text">
+            <field name="TEXT">name</field>
+          </block>
+        </value>
+      </block>
+      <block type="kiwi_animation_play">
+        <value name="TEXT">
+          <block type="text">
+            <field name="TEXT">name</field>
+          </block>
+        </value>
+      </block>
+      <block type="kiwi_animation_frame"></block>
+      <block type="kiwi_animation_state"></block>
+      <block type="kiwi_animation_current"></block>
+      <block type="kiwi_animation_numbers"></block>
+      <block type="kiwi_animation_booleans"></block>
     </category>
     <sep></sep>
     <category name="Variables" colour="330" custom="VARIABLE"></category>
