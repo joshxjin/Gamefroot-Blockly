@@ -32,6 +32,8 @@ goog.require('Blockly.Blocks');
 /**
  * Common HSV hue for all blocks in this category.
  */
+Blockly.Blocks.colour.HUE = 20;
+
 Blockly.Blocks['colour_picker'] = {
   /**
    * Block for colour picker.
@@ -48,9 +50,16 @@ Blockly.Blocks['colour_picker'] = {
         }
       ],
       "output": "Colour",
-      "colour": Blockly.Variables.COLOUR.OPERATORS,
-      "tooltip": Blockly.Msg.COLOUR_PICKER_TOOLTIP,
+      "colour": Blockly.Blocks.colour.HUE,
       "helpUrl": Blockly.Msg.COLOUR_PICKER_HELPURL
+    });
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    // Colour block is trivial.  Use tooltip of parent block if it exists.
+    this.setTooltip(function() {
+      var parent = thisBlock.getParent();
+      return (parent && parent.getInputsInline() && parent.tooltip) ||
+          Blockly.Msg.COLOUR_PICKER_TOOLTIP;
     });
   }
 };
@@ -64,7 +73,7 @@ Blockly.Blocks['colour_random'] = {
     this.jsonInit({
       "message0": Blockly.Msg.COLOUR_RANDOM_TITLE,
       "output": "Colour",
-      "colour": Blockly.Variables.COLOUR.OPERATORS,
+      "colour": Blockly.Blocks.colour.HUE,
       "tooltip": Blockly.Msg.COLOUR_RANDOM_TOOLTIP,
       "helpUrl": Blockly.Msg.COLOUR_RANDOM_HELPURL
     });
@@ -78,7 +87,7 @@ Blockly.Blocks['colour_rgb'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.COLOUR_RGB_HELPURL);
-    this.setColour(Blockly.Variables.COLOUR.OPERATORS);
+    this.setColour(Blockly.Blocks.colour.HUE);
     this.appendValueInput('RED')
         .setCheck('Number')
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -104,7 +113,7 @@ Blockly.Blocks['colour_blend'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.COLOUR_BLEND_HELPURL);
-    this.setColour(Blockly.Variables.COLOUR.OPERATORS);
+    this.setColour(Blockly.Blocks.colour.HUE);
     this.appendValueInput('COLOUR1')
         .setCheck('Colour')
         .setAlign(Blockly.ALIGN_RIGHT)

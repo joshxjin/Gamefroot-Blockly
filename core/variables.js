@@ -26,310 +26,158 @@
 
 goog.provide('Blockly.Variables');
 
-// TODO(scr): Fix circular dependencies
-// goog.require('Blockly.Block');
+goog.require('Blockly.Blocks');
 goog.require('Blockly.Workspace');
 goog.require('goog.string');
 
-/**
- * The definition name of the any type
- * @const
- */
-Blockly.Variables.TYPE_ANY = '';
-/**
- * The definition name of the boolean type
- * @const
- */
-Blockly.Variables.TYPE_BOOLEAN = 'Boolean';
-/**
- * The definition name of the number type
- * @const
- */
-Blockly.Variables.TYPE_NUMBER = 'Number';
-/**
- * The definition name of the string type
- * @const
- */
-Blockly.Variables.TYPE_STRING = 'String';
-/**
- * The definition name of the colour type
- * @const
- */
-Blockly.Variables.TYPE_COLOUR = 'Colour';
-/**
- * The definition name of the array type
- * @const
- */
-Blockly.Variables.TYPE_ARRAY = 'Array';
-/**
- * The definition name of the array type
- * @const
- */
-Blockly.Variables.TYPE_INSTANCE = 'Instance';
-/**
- * The definition name of the class type
- * @const
- */
-Blockly.Variables.TYPE_CLASS = 'Class';
-/**
- * The definition name of the sound type
- * @const
- */
-Blockly.Variables.TYPE_SOUND = 'Sound';
-/**
- * The definition name of the finger type
- * @const
- */
-Blockly.Variables.TYPE_POINTER = 'Pointer';
-/**
-* The definition name of the location type
-* @const
-*/ 
-Blockly.Variables.TYPE_COORDINATE = 'Coordinate';
-
-/**
- * The colour that should be applied to a block that outputs type 'any'
- * @const
- */
-Blockly.Variables.COLOUR_ANY = '#71cd04';
-/**
- * The colour that should be applied to a block that outputs type 'boolean'
- * @const
- */
-Blockly.Variables.COLOUR_BOOLEAN = '#2db1f9';
-/**
- * The colour that should be applied to a block that outputs type 'number'
- * @const
- */
-Blockly.Variables.COLOUR_NUMBER = '#1b6fe9';
-/**
- * The colour that should be applied to a block that outputs type 'string'
- * @const
- */
-Blockly.Variables.COLOUR_STRING = '#40ce9e';
-/**
- * The colour that should be applied to a block that outputs type 'colour'
- * @const
- */
-Blockly.Variables.COLOUR_COLOUR = '#b24ac5';
-/**
- * The colour that should be applied to a block that outputs type 'array'
- * @const
- */
-Blockly.Variables.COLOUR_ARRAY = '#8230e7';
-/**
- * The colour that should be applied to a block that outputs type 'instance'
- * @const
- */
-Blockly.Variables.COLOUR_INSTANCE = '#e74e48';
-/**
- * The colour that should be applied to a block that outputs type 'class'
- * @const
- */
-Blockly.Variables.COLOUR_CLASS = '#fc8607';
-/**
- * The colour that should be applied to a block that outputs type 'sound'
- * @const
- */
-Blockly.Variables.COLOUR_SOUND = '#d147ea';
-/**
- * The colour that should be applied to a block that outputs type 'finger'
- * @const
- */
-Blockly.Variables.COLOUR_POINTER = '#ea8847';
-/**
-* The colour that should be applied to a block that outs type 'location'
-* @const
-*/
-Blockly.Variables.COLOUR_COORDINATE = '#388e3c';
-
-/*
- * New Colour Blocks....
- * Based on the category a block is in now.
- */
-Blockly.Variables.COLOUR = {
-  'EVENT': "#edae00",
-  'CONTROL': "#ff8601",
-  'MOTION': "#e54e43",
-  'ANIMATION': "#df358e",
-  'LOOKS': "#b443c9",
-  'SENSING': "#8121e7",
-  'SOUND': "#0f6bf0",
-  'OPERATORS': "#21aefe",
-  'PHYSICS': "#e66b2f",
-  'DRAW': "#38ce9e",
-  'VARIABLES': "#348f32",
-  'FUNCTIONS': "#6bd101",
-  'LOCAL_VARIABLES': "#56ae02",
-  'GLOBAL_VARIABLES': "#006d00"
-};
 
 /**
  * Category to separate variable names from procedures and generated functions.
  */
 Blockly.Variables.NAME_TYPE = 'VARIABLE';
 
-
-
 /**
- * The hue that corresponds to each variable type
+ * Find all user-created variables that are in use in the workspace.
+ * For use by generators.
+ * @param {!Blockly.Block|!Blockly.Workspace} root Root block or workspace.
+ * @return {!Array.<string>} Array of variable names.
  */
-Blockly.Variables.COLOUR_FOR_TYPE = {};
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_BOOLEAN] = Blockly.Variables.COLOUR_BOOLEAN;
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_NUMBER] = Blockly.Variables.COLOUR_NUMBER;
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_STRING] = Blockly.Variables.COLOUR_STRING;
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_COLOUR] = Blockly.Variables.COLOUR_COLOUR;
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_ARRAY] = Blockly.Variables.COLOUR_ARRAY;
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_INSTANCE] = Blockly.Variables.COLOUR_INSTANCE;
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_CLASS] = Blockly.Variables.COLOUR_CLASS;
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_SOUND] = Blockly.Variables.COLOUR_SOUND;
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_POINTER] = Blockly.Variables.COLOUR_POINTER;
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_COORDINATE] = Blockly.Variables.COLOUR_COORDINATE;
-
-/**
- * A Complete list of all variables types available.
- * Contains a tuple of both the variables display name and
- * it's definition name.
- * @return {Array}
- */
-Blockly.Variables.allTypes = function(){
-  return [
-    /* We don't allow the any type here!
-    [Blockly.Msg.VARIABLES_TYPE_ANY,
-      Blockly.Variables.TYPE_ANY],*/
-    [Blockly.Msg.VARIABLES_TYPE_BOOLEAN || "",
-      Blockly.Variables.TYPE_BOOLEAN],
-    [Blockly.Msg.VARIABLES_TYPE_NUMBER || "",
-      Blockly.Variables.TYPE_NUMBER],
-    [Blockly.Msg.VARIABLES_TYPE_STRING || "",
-      Blockly.Variables.TYPE_STRING],
-    [Blockly.Msg.VARIABLES_TYPE_COLOUR || "",
-      Blockly.Variables.TYPE_COLOUR],
-    [Blockly.Msg.VARIABLES_TYPE_ARRAY || "",
-      Blockly.Variables.TYPE_ARRAY],
-    [Blockly.Msg.VARIABLES_TYPE_INSTANCE || "",
-      Blockly.Variables.TYPE_INSTANCE],
-    [Blockly.Msg.VARIABLES_TYPE_CLASS || "",
-      Blockly.Variables.TYPE_CLASS],
-    [Blockly.Msg.VARIABLES_TYPE_SOUND || "",
-      Blockly.Variables.TYPE_SOUND],
-    [Blockly.Msg.VARIABLES_TYPE_POINTER || "",
-      Blockly.Variables.TYPE_POINTER],
-    [Blockly.Msg.VARIABLES_TYPE_COORDINATE || "",
-      Blockly.Variables.TYPE_COORDINATE]
-  ];
+Blockly.Variables.allUsedVariables = function(root) {
+  var blocks;
+  if (root instanceof Blockly.Block) {
+    // Root is Block.
+    blocks = root.getDescendants();
+  } else if (root.getAllBlocks) {
+    // Root is Workspace.
+    blocks = root.getAllBlocks();
+  } else {
+    throw 'Not Block or Workspace: ' + root;
+  }
+  var variableHash = Object.create(null);
+  // Iterate through every block and add each variable to the hash.
+  for (var x = 0; x < blocks.length; x++) {
+    var blockVariables = blocks[x].getVars();
+    if (blockVariables) {
+      for (var y = 0; y < blockVariables.length; y++) {
+        var varName = blockVariables[y];
+        // Variable name may be null if the block is only half-built.
+        if (varName) {
+          variableHash[varName.toLowerCase()] = varName;
+        }
+      }
+    }
+  }
+  // Flatten the hash into a list.
+  var variableList = [];
+  for (var name in variableHash) {
+    variableList.push(variableHash[name]);
+  }
+  return variableList;
 };
 
+/**
+ * Find all variables that the user has created through the workspace or
+ * toolbox.  For use by generators.
+ * @param {!Blockly.Workspace} root The workspace to inspect.
+ * @return {!Array.<string>} Array of variable names.
+ */
+Blockly.Variables.allVariables = function(root) {
+  if (root instanceof Blockly.Block) {
+    // Root is Block.
+    console.warn('Deprecated call to Blockly.Variables.allVariables ' +
+                 'with a block instead of a workspace.  You may want ' +
+                 'Blockly.Variables.allUsedVariables');
+  }
+  return root.variableList;
+};
 
 /**
  * Construct the blocks required by the flyout for the variable category.
- * @param {!Array.<!Blockly.Block>} blocks List of blocks to show.
- * @param {!Array.<number>} gaps List of widths between blocks.
- * @param {number} margin Standard margin width for calculating gaps.
- * @param {!Blockly.Workspace} workspace The flyout's workspace.
+ * @param {!Blockly.Workspace} workspace The workspace contianing variables.
+ * @return {!Array.<!Element>} Array of XML block elements.
  */
-Blockly.Variables.flyoutCategory = function(blocks, gaps, margin, workspace) {
+Blockly.Variables.flyoutCategory = function(workspace) {
+  var variableList = workspace.variableList;
+  variableList.sort(goog.string.caseInsensitiveCompare);
 
-  function generateBlocks( variableList, getBlockName, setBlockName, getVarsMethodName ) {
+  var xmlList = [];
+  var button = goog.dom.createDom('button');
+  button.setAttribute('text', Blockly.Msg.NEW_VARIABLE);
+  button.setAttribute('callbackKey', 'CREATE_VARIABLE');
 
-    if(!variableList) {
-      return;
+  workspace.registerButtonCallback('CREATE_VARIABLE', function(button) {
+    Blockly.Variables.createVariable(button.getTargetWorkspace());
+  });
+
+  xmlList.push(button);
+
+  if (variableList.length > 0) {
+    if (Blockly.Blocks['variables_set']) {
+      // <block type="variables_set" gap="20">
+      //   <field name="VAR">item</field>
+      // </block>
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'variables_set');
+      if (Blockly.Blocks['math_change']) {
+        block.setAttribute('gap', 8);
+      } else {
+        block.setAttribute('gap', 24);
+      }
+      var field = goog.dom.createDom('field', null, variableList[0]);
+      field.setAttribute('name', 'VAR');
+      block.appendChild(field);
+      xmlList.push(block);
     }
+    if (Blockly.Blocks['math_change']) {
+      // <block type="math_change">
+      //   <value name="DELTA">
+      //     <shadow type="math_number">
+      //       <field name="NUM">1</field>
+      //     </shadow>
+      //   </value>
+      // </block>
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'math_change');
+      if (Blockly.Blocks['variables_get']) {
+        block.setAttribute('gap', 20);
+      }
+      var value = goog.dom.createDom('value');
+      value.setAttribute('name', 'DELTA');
+      block.appendChild(value);
 
-    variableList.sort(goog.string.caseInsensitiveCompare);
+      var field = goog.dom.createDom('field', null, variableList[0]);
+      field.setAttribute('name', 'VAR');
+      block.appendChild(field);
 
-    // In addition to the user's variables, we also want to display the default
-    // variable name at the top.  We also don't want this duplicated if the
-    // user has created a variable of the same name.
-    variableList.unshift(null);
-    
-    var defaultVariable = undefined;
+      var shadowBlock = goog.dom.createDom('shadow');
+      shadowBlock.setAttribute('type', 'math_number');
+      value.appendChild(shadowBlock);
+
+      var numberField = goog.dom.createDom('field', null, '1');
+      numberField.setAttribute('name', 'NUM');
+      shadowBlock.appendChild(numberField);
+
+      xmlList.push(block);
+    }
 
     for (var i = 0; i < variableList.length; i++) {
-      if (variableList[i] === defaultVariable) {
-        continue;
+      if (Blockly.Blocks['variables_get']) {
+        // <block type="variables_get" gap="8">
+        //   <field name="VAR">item</field>
+        // </block>
+        var block = goog.dom.createDom('block');
+        block.setAttribute('type', 'variables_get');
+        if (Blockly.Blocks['variables_set']) {
+          block.setAttribute('gap', 8);
+        }
+        var field = goog.dom.createDom('field', null, variableList[i]);
+        field.setAttribute('name', 'VAR');
+        block.appendChild(field);
+        xmlList.push(block);
       }
-      var getBlock = Blockly.Blocks[ getBlockName ] ?
-          Blockly.Block.obtain(workspace, getBlockName ) : null;
-      var setBlock = Blockly.Blocks[ setBlockName ] ?
-          Blockly.Block.obtain(workspace, setBlockName) : null;
-
-      if (variableList[i] === null) {
-        defaultVariable = (getBlock || setBlock)[ getVarsMethodName ]()[0];
-      }
-      else {
-        getBlock && getBlock.setFieldValue(variableList[i], 'VAR');
-        setBlock && setBlock.setFieldValue(variableList[i], 'VAR');
-      }    
-
-      setBlock && blocks.push(setBlock);
-      getBlock && blocks.push(getBlock);
-
-      if (getBlock && setBlock) {
-        gaps.push(margin, margin * 3);
-      } else {
-        gaps.push(margin * 2);
-      }
-
-      getBlock && typeof getBlock.postInit === 'function' 
-        && getBlock.postInit.call(getBlock);
-      setBlock && typeof setBlock.postInit === 'function' 
-        && setBlock.postInit.call(setBlock);
-
-      getBlock && getBlock.initSvg();
-      setBlock && setBlock.initSvg();
     }
-
   }
-
-  function generateCategory( title ) { 
-
-    if( !Blockly.Blocks["kiwi_block_category"] ) {
-      return;
-    }
-
-    var catBlock = document.createElement('block');
-    catBlock.setAttribute('message', title);
-    catBlock.setAttribute('type', 'kiwi_block_category');
-    catBlock = Blockly.Block.obtain( workspace, "kiwi_block_category", catBlock );
-
-    if( catBlock ) {
-      gaps.push( margin * 2 );
-      blocks.push( catBlock );
-      catBlock.initSvg();
-    }
-
-  }
-
-  generateCategory( 'Global' );
-  //Global Scope
-  generateBlocks( 
-    Blockly.Variables.Global.allVariables(workspace.targetWorkspace),
-    'variables_global_get',
-    'variables_global_set',
-    'globalGetVars'
-     );
-
-  generateCategory( 'Properties' );
-
-  //Generate Regular Variables
-  generateBlocks( 
-    Blockly.Variables.allVariables(workspace.targetWorkspace),
-    'variables_get',
-    'variables_set',
-    'getVars'
-     );
-
-  generateCategory( 'Local' );
-
-  //Generate Local Variables 
-  generateBlocks( 
-    Blockly.Variables.Local.allVariables(workspace.targetWorkspace),
-    'variables_local_get',
-    'variables_local_set',
-    'localGetVars'
-     );
-
+  return xmlList;
 };
 
 /**
@@ -340,11 +188,8 @@ Blockly.Variables.flyoutCategory = function(blocks, gaps, margin, workspace) {
  * @param {!Blockly.Workspace} workspace The workspace to be unique in.
 * @return {string} New variable name.
 */
-Blockly.Variables.generateUniqueName = function(workspace, getAllVariableFunc) {
-  
-  if( !getAllVariableFunc ) getAllVariableFunc = Blockly.Variables.allVariables;
-
-  var variableList = getAllVariableFunc( workspace );
+Blockly.Variables.generateUniqueName = function(workspace) {
+  var variableList = workspace.variableList;
   var newName = '';
   if (variableList.length) {
     var nameSuffix = 1;
@@ -384,548 +229,61 @@ Blockly.Variables.generateUniqueName = function(workspace, getAllVariableFunc) {
   return newName;
 };
 
-
-//PROPERTY SCOPE
-
 /**
- * Find all user-created variables.
- * @param {!Blockly.Block|!Blockly.Workspace} root Root block or workspace.
- * @return {!Array.<string>} Array of variable names.
+ * Create a new variable on the given workspace.
+ * @param {!Blockly.Workspace} workspace The workspace on which to create the
+ *     variable.
+ * @param {function(?string=)=} opt_callback A callback. It will
+ *     be passed an acceptable new variable name, or null if change is to be
+ *     aborted (cancel button), or undefined if an existing variable was chosen.
  */
-Blockly.Variables.allVariables = function(root) {
-  var blocks;
-  if (root.getDescendants) {
-    // Root is Block.
-    blocks = root.getDescendants();
-  } else if (root.getAllBlocks) {
-    // Root is Workspace.
-    blocks = root.getAllBlocks();
-  } else {
-    throw 'Not Block or Workspace: ' + root;
-  }
-  var variableHash = Object.create(null);
-  // Iterate through every block and add each variable to the hash.
-  for (var x = 0; x < blocks.length; x++) {
-    if (blocks[x].getVars) {
-      var blockVariables = blocks[x].getVars();
-      for (var y = 0; y < blockVariables.length; y++) {
-        var varName = blockVariables[y];
-        // Variable name may be null if the block is only half-built.
-        if (varName) {
-          variableHash[varName.toLowerCase()] = varName;
+Blockly.Variables.createVariable = function(workspace, opt_callback) {
+  var promptAndCheckWithAlert = function(defaultName) {
+    Blockly.Variables.promptName(Blockly.Msg.NEW_VARIABLE_TITLE, defaultName,
+      function(text) {
+        if (text) {
+          if (workspace.variableIndexOf(text) != -1) {
+            Blockly.alert(Blockly.Msg.VARIABLE_ALREADY_EXISTS.replace('%1',
+                text.toLowerCase()),
+                function() {
+                  promptAndCheckWithAlert(text);  // Recurse
+                });
+          } else {
+            workspace.createVariable(text);
+            if (opt_callback) {
+              opt_callback(text);
+            }
+          }
+        } else {
+          // User canceled prompt without a value.
+          if (opt_callback) {
+            opt_callback(null);
+          }
         }
+      });
+  };
+  promptAndCheckWithAlert('');
+};
+
+/**
+ * Prompt the user for a new variable name.
+ * @param {string} promptText The string of the prompt.
+ * @param {string} defaultText The default value to show in the prompt's field.
+ * @param {function(?string)} callback A callback. It will return the new
+ *     variable name, or null if the user picked something illegal.
+ */
+Blockly.Variables.promptName = function(promptText, defaultText, callback) {
+  Blockly.prompt(promptText, defaultText, function(newVar) {
+    // Merge runs of whitespace.  Strip leading and trailing whitespace.
+    // Beyond this, all names are legal.
+    if (newVar) {
+      newVar = newVar.replace(/[\s\xa0]+/g, ' ').replace(/^ | $/g, '');
+      if (newVar == Blockly.Msg.RENAME_VARIABLE ||
+          newVar == Blockly.Msg.NEW_VARIABLE) {
+        // Ok, not ALL names are legal...
+        newVar = null;
       }
     }
-  }
-  // Flatten the hash into a list.
-  var variableList = [];
-  for (var name in variableHash) {
-    variableList.push(variableHash[name]);
-  }
-  return variableList;
-};
-
-/**
- * Finds all user-created variables and their types. 
- * @param {!Blockly.Block|!Blockly.Workspace} root Root block or workspace.
- * @return {!Array<!Array<string>>}
- */
-Blockly.Variables.allVariablesAndTypes = function(root){
-  var blocks, workspace;
-  if (root.getDescendants) {
-    // Root is Block.
-    blocks = root.getDescendants();
-    workspace = root.workspace;
-  } else if (root.getAllBlocks) {
-    // Root is Workspace.
-    blocks = root.getAllBlocks();
-    workspace = root;
-  } else {
-    throw 'Not Block or Workspace: ' + root;
-  }
-  var variableHash = Object.create(null);
-  // Iterate through every block and add each variable to the hash.
-  for (var x = 0; x < blocks.length; x++) {
-    var func = blocks[x].getVars;
-    if (func) {
-      var blockVariables = func.call(blocks[x]);
-      for (var y = 0; y < blockVariables.length; y++) {
-        var varName = blockVariables[y];
-        // Variable name may be null if the block is only half-built.
-        if (varName) {
-          variableHash[varName.toLowerCase()] = varName;
-        }
-      }
-    }
-  }
-  // Flatten the hash into a list.
-  var variableList = [];
-  for (var name in variableHash) {
-    var type = Blockly.Variables.typeOf(name,workspace)
-      || Blockly.Variables.TYPE_ANY;
-    variableList.push([variableHash[name], type]);
-  }
-  return variableList;
-};
-
-/**
- * Sets the type of a variable with the given name
- * @param {string} name The variable name
- * @param {string} type The type to change to
- * @param {!Blockly.Workspace} workspace Workspace edit variables in.
- */
-Blockly.Variables.changeType = function(name, type, workspace){
-  var blocks = workspace.getAllBlocks();
-  // Iterate through every block.
-  for (var x = 0; x < blocks.length; x++) {
-    var func = blocks[x].changeType;
-    if (func) {
-      func.call(blocks[x], name, type);
-    }
-  }
-};
-
-/**
- * Gets the type of a variable with the given name
- * @param {string} name The name of the variable to test
- * @param {!Blockly.Workspace} workspace Workspace query variables in.
- */
-Blockly.Variables.typeOf = function(name, workspace){
-  var blocks = workspace.getAllBlocks();
-  // Iterate through every block.
-  for (var x = 0; x < blocks.length; x++) {
-    var func = blocks[x].typeOf;
-    if (func) {
-      var type =  func.call(blocks[x], name);
-      if (type) return type;
-    }
-  }
-};
-
-/**
- * Find all instances of the specified variable and rename them.
- * @param {string} oldName Variable to rename.
- * @param {string} newName New variable name.
- * @param {!Blockly.Workspace} workspace Workspace rename variables in.
- */
-Blockly.Variables.renameVariable = function(oldName, newName, workspace) {
-  var blocks = workspace.getAllBlocks();
-  // Iterate through every block.
-  for (var i = 0; i < blocks.length; i++) {
-    if (blocks[i].renameVar) {
-      blocks[i].renameVar(oldName, newName);
-    }
-  }
-};
-
-
-//LOCAL
-
-Blockly.Variables.Local = {};
-
-/**
- * Find all user-created variables.
- * @param {!Blockly.Block|!Blockly.Workspace} root Root block or workspace.
- * @return {!Array.<string>} Array of variable names.
- */
-Blockly.Variables.Local.allVariables = function(root) {
-  var blocks;
-  if (root.getDescendants) {
-    // Root is Block.
-    blocks = root.getDescendants();
-  } else if (root.getAllBlocks) {
-    // Root is Workspace.
-    blocks = root.getAllBlocks();
-  } else {
-    throw 'Not Block or Workspace: ' + root;
-  }
-  var variableHash = Object.create(null);
-  // Iterate through every block and add each variable to the hash.
-  for (var x = 0; x < blocks.length; x++) {
-    if (blocks[x].localGetVars) {
-      var blockVariables = blocks[x].localGetVars();
-      for (var y = 0; y < blockVariables.length; y++) {
-        var varName = blockVariables[y];
-        // Variable name may be null if the block is only half-built.
-        if (varName) {
-          variableHash[varName.toLowerCase()] = varName;
-        }
-      }
-    }
-  }
-  // Flatten the hash into a list.
-  var variableList = [];
-  for (var name in variableHash) {
-    variableList.push(variableHash[name]);
-  }
-  return variableList;
-};
-
-/**
- * Finds all user-created variables and their types. 
- * @param {!Blockly.Block|!Blockly.Workspace} root Root block or workspace.
- * @return {!Array<!Array<string>>}
- */
-Blockly.Variables.Local.allVariablesAndTypes = function(root){
-  var blocks, workspace;
-  if (root.getDescendants) {
-    // Root is Block.
-    blocks = root.getDescendants();
-    workspace = root.workspace;
-  } else if (root.getAllBlocks) {
-    // Root is Workspace.
-    blocks = root.getAllBlocks();
-    workspace = root;
-  } else {
-    throw 'Not Block or Workspace: ' + root;
-  }
-  var variableHash = Object.create(null);
-  // Iterate through every block and add each variable to the hash.
-  for (var x = 0; x < blocks.length; x++) {
-    var func = blocks[x].localGetVars;
-    if (func) {
-      var blockVariables = func.call(blocks[x]);
-      for (var y = 0; y < blockVariables.length; y++) {
-        var varName = blockVariables[y];
-        // Variable name may be null if the block is only half-built.
-        if (varName) {
-          variableHash[varName.toLowerCase()] = varName;
-        }
-      }
-    }
-  }
-  // Flatten the hash into a list.
-  var variableList = [];
-  for (var name in variableHash) {
-    var type = Blockly.Variables.Local.typeOf(name,workspace)
-      || Blockly.Variables.TYPE_ANY;
-    variableList.push([variableHash[name], type]);
-  }
-  return variableList;
-};
-
-/**
- * Sets the type of a variable with the given name
- * @param {string} name The variable name
- * @param {string} type The type to change to
- * @param {!Blockly.Workspace} workspace Workspace edit variables in.
- */
-Blockly.Variables.Local.changeType = function(name, type, workspace){
-  var blocks = workspace.getAllBlocks();
-  // Iterate through every block.
-  for (var x = 0; x < blocks.length; x++) {
-    var func = blocks[x].localChangeType;
-    if (func) {
-      func.call(blocks[x], name, type);
-    }
-  }
-};
-
-/**
- * Gets the type of a variable with the given name
- * @param {string} name The name of the variable to test
- * @param {!Blockly.Workspace} workspace Workspace query variables in.
- */
-Blockly.Variables.Local.typeOf = function(name, workspace){
-  var blocks = workspace.getAllBlocks();
-  // Iterate through every block.
-  for (var x = 0; x < blocks.length; x++) {
-    var func = blocks[x].localTypeOf;
-    if (func) {
-      var type =  func.call(blocks[x], name);
-      if (type) return type;
-    }
-  }
-};
-
-/**
- * Returns a boolean indicating if the current block is immutable or not to prevent type clashes
- * @param name {string}
- * @param {!Blockly.Workspace}
- */
-Blockly.Variables.Local.isImmutable = function(name, workspace){
-  var blocks = workspace.getAllBlocks(),
-    block;
-
-  // Iterate through every block.
-  for (var x = 0; x < blocks.length; x++) {
-    var block = blocks[x],
-      func = block.localIsImmutable;
-
-    if( !func ) continue;
-
-    if( Blockly.Names.equals(name, block.getFieldValue('VAR') ) ) {
-      var immutable = func.call(block);
-      if (immutable) return immutable;
-    }
-
-  }
-  return false;
-};
-
-/**
- * Find all instances of the specified variable and rename them.
- * @param {string} oldName Variable to rename.
- * @param {string} newName New variable name.
- * @param {!Blockly.Workspace} workspace Workspace rename variables in.
- */
-Blockly.Variables.Local.renameVariable = function(oldName, newName, workspace) {
-  var blocks = workspace.getAllBlocks();
-  // Iterate through every block.
-  for (var i = 0; i < blocks.length; i++) {
-    if (blocks[i].localRenameVar) {
-      blocks[i].localRenameVar(oldName, newName);
-    }
-  }
-};
-
-
-// GLOBAL - GAME
-
-Blockly.Variables.Global = {
-  variables_: []
-};
-
-/**
- * Adds a new global variable to workspace. 
- * The type will not be able to be changed in the workspace by the user. 
- * @param {string} name
- * @param {string} type
- */
-Blockly.Variables.Global.add = function(name, type) {
-
-  type = type || Blockly.Variables.TYPE_BOOLEAN;
-
-  for( var i = 0; i < Blockly.Variables.Global.variables_.length; i++ ) {
-    var vari = Blockly.Variables.Global.variables_[i];
-    if( vari[0].toLowerCase() === name.toLowerCase() ) {
-       return;
-    }
-  }
-
-  Blockly.Variables.Global.variables_.push( [ name, type ] );
-  
-};
-
-/**
- * Clears all external global variables from the list. 
- * Doesn't dispose of any of the variables if they were used in the workspace.
- * @param {string} name
- * @param {string} type
- */
-Blockly.Variables.Global.clear = function(workspace) {
-  Blockly.Variables.Global.variables_ = [];
-};
-
-/**
- * Adds a new global variable to workspace. 
- * The type will not be able to be changed in the workspace by the user. 
- * @param {string} name
- * @param {string} type
- */
-Blockly.Variables.Global.remove = function(name) {
-
-  //Remove from the variable list
-  for( var i = 0; i < Blockly.Variables.Global.variables_.length; i++) {
-    var vari = Blockly.Variables.Global.variables_[i];
-    if( vari[0].toLowerCase() === name.toLowerCase() ) {
-      Blockly.Variables.Global.variables_.splice(i, 1);
-    }
-  }
-
-};
-
-/**
- * Find all user-created variables.
- * @param {!Blockly.Block|!Blockly.Workspace} root Root block or workspace.
- * @return {!Array.<string>} Array of variable names.
- */
-Blockly.Variables.Global.allVariables = function(root, workspaceOnly) {
-  //Get the global variables from the current script
-  var blocks;
-  if (root.getDescendants) {
-    // Root is Block.
-    blocks = root.getDescendants();
-  } else if (root.getAllBlocks) {
-    // Root is Workspace.
-    blocks = root.getAllBlocks();
-  } else {
-    throw 'Not Block or Workspace: ' + root;
-  }
-  var variableHash = Object.create(null);
-  // Iterate through every block and add each variable to the hash.
-  for (var x = 0; x < blocks.length; x++) {
-    if (blocks[x].globalGetVars) {
-      var blockVariables = blocks[x].globalGetVars();
-      for (var y = 0; y < blockVariables.length; y++) {
-        var varName = blockVariables[y];
-        // Variable name may be null if the block is only half-built.
-        if (varName) {
-          variableHash[varName.toLowerCase()] = varName;
-        }
-      }
-    }
-  }
-
-  //Add the global variables from external scripts. Override inner blocks
-  if( !workspaceOnly ) {
-    for( var x = 0; x < Blockly.Variables.Global.variables_.length; x++ ) {
-      variableHash[ Blockly.Variables.Global.variables_[x][0].toLowerCase() ] = Blockly.Variables.Global.variables_[x][0];
-    }
-  }
-
-  // Flatten the hash into a list.
-  var variableList = [];
-  for (var name in variableHash) {
-    variableList.push(variableHash[name]);
-  }
-  
-  return variableList;
-};
-
-/**
- * Finds all user-created variables and their types. 
- * @param {!Blockly.Block|!Blockly.Workspace} root Root block or workspace.
- * @return {!Array<!Array<string>>}
- */
-Blockly.Variables.Global.allVariablesAndTypes = function(root, workspaceOnly) {
-  //Get the global variables from the current script
-  var blocks, workspace;
-  if (root.getDescendants) {
-    // Root is Block.
-    blocks = root.getDescendants();
-    workspace = root.workspace;
-  } else if (root.getAllBlocks) {
-    // Root is Workspace.
-    blocks = root.getAllBlocks();
-    workspace = root;
-  } else {
-    throw 'Not Block or Workspace: ' + root;
-  }
-  var variableHash = Object.create(null);
-  // Iterate through every block and add each variable to the hash.
-  for (var x = 0; x < blocks.length; x++) {
-    if (blocks[x].globalGetVars) {
-      var blockVariables = blocks[x].globalGetVars();
-      for (var y = 0; y < blockVariables.length; y++) {
-        var varName = blockVariables[y];
-        // Variable name may be null if the block is only half-built.
-        if (varName) {
-          variableHash[varName.toLowerCase()] = varName;
-        }
-      }
-    }
-  }
-
-  //Add the global variables from external scripts. Override inner blocks
-  if( !workspaceOnly ) {
-    for( var x = 0; x < Blockly.Variables.Global.variables_.length; x++ ) {
-      variableHash[ Blockly.Variables.Global.variables_[x][0].toLowerCase() ] = Blockly.Variables.Global.variables_[x][0];
-    }
-  }
-
-  // Flatten the hash into a list.
-  var variableList = [];
-  for (var name in variableHash) {
-    var type = Blockly.Variables.Global.typeOf(name,workspace)
-      || Blockly.Variables.TYPE_ANY;
-    variableList.push([variableHash[name], type]);
-  }
-
-  return variableList;
-};
-
-/**
- * Sets the type of a variable with the given name
- * @param {string} name The variable name
- * @param {string} type The type to change to
- * @param {!Blockly.Workspace} workspace Workspace edit variables in.
- */
-Blockly.Variables.Global.changeType = function(name, type, workspace) {
-
-  function changeBlockTypes(name, type) {
-    var blocks = workspace.getAllBlocks();
-    // Iterate through every block.
-    for (var x = 0; x < blocks.length; x++) {
-      var func = blocks[x].globalChangeType;
-      if (func) {
-        func.call(blocks[x], name, type);
-      }
-    }
-  }
-
-  // Loop through the global variables from external scripts
-  // If one is found, then that type is used.
-  for( var i = 0; i < Blockly.Variables.Global.variables_.length; i++) {
-    var vari = Blockly.Variables.Global.variables_[i];
-    if( vari[0].toLowerCase() === name.toLowerCase() ) {
-      type = vari[1];
-
-      setTimeout(function(){
-        // This type is immutable, change it back!
-        changeBlockTypes(name, type);
-      },1);
-
-      continue;
-    }
-  }
-
-  changeBlockTypes(name, type);
-
-};
-
-/**
- * Gets the type of a variable with the given name
- * @param {string} name The name of the variable to test
- * @param {!Blockly.Workspace} workspace Workspace query variables in.
- */
-Blockly.Variables.Global.typeOf = function(name, workspace){
-
-  for( var i = 0; i < Blockly.Variables.Global.variables_.length; i++) {
-    var vari = Blockly.Variables.Global.variables_[i];
-    if( vari[0].toLowerCase() === name.toLowerCase() && vari[1] ) {
-      return vari[1];
-    }
-  }
-
-  var blocks = workspace.getAllBlocks();
-  // Iterate through every block.
-  for (var x = 0; x < blocks.length; x++) {
-    var func = blocks[x].globalTypeOf;
-    if (func) {
-      var type =  func.call(blocks[x], name);
-      if (type) return type;
-    }
-  }
-};
-
-/**
- * Find all instances of the specified variable and rename them.
- * @param {string} oldName Variable to rename.
- * @param {string} newName New variable name.
- * @param {!Blockly.Workspace} workspace Workspace rename variables in.
- */
-Blockly.Variables.Global.renameVariable = function(oldName, newName, workspace) {
-
-  var blocks = workspace.getAllBlocks();
-  // Iterate through every block.
-  for (var i = 0; i < blocks.length; i++) {
-    if (blocks[i].globalRenameVar) {
-      blocks[i].globalRenameVar(oldName, newName);
-    }
-  }
-};
-
-Blockly.Variables.Global.allTypes = function(){
-  return [
-    /* We don't allow the any type here!
-    [Blockly.Msg.VARIABLES_TYPE_ANY,
-      Blockly.Variables.TYPE_ANY],*/
-    [Blockly.Msg.VARIABLES_TYPE_BOOLEAN || "",
-      Blockly.Variables.TYPE_BOOLEAN],
-    [Blockly.Msg.VARIABLES_TYPE_NUMBER || "",
-      Blockly.Variables.TYPE_NUMBER],
-    [Blockly.Msg.VARIABLES_TYPE_STRING || "",
-      Blockly.Variables.TYPE_STRING]
-  ];
+    callback(newVar);
+  });
 };

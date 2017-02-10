@@ -5,4 +5,4 @@ npm-debug.log
 .project
 *.pyc
 *.komodoproject
-.idea
+/nbproject/private/

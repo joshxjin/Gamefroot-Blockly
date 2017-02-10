@@ -43,21 +43,17 @@ goog.require('Blockly.Msg');
  */
 
 /**
- * Tip: Generate URLs for read-only blocks by creating the blocks in the Code app,
- * then evaluating this in the console:
- * 'http://blockly-demo.appspot.com/static/apps/code/readonly.html?lang=en&xml=' + encodeURIComponent(Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(Blockly.mainWorkspace)).slice(5, -6))
+ * Each message is preceded with a tripple-slash comment that becomes the
+ * message descriptor.  The build process extracts these descriptors, adds
+ * them to msg/json/qqq.json, and they show up in the translation console.
  */
 
 /// default name - A simple, general default name for a variable, preferably short.
 /// For more context, see
 /// [[Translating:Blockly#infrequent_message_types]].\n{{Identical|Item}}
 Blockly.Msg.VARIABLES_DEFAULT_NAME = 'item';
-/// button text - Botton that sets a calendar to today's date.\n{{Identical|Today}}
+/// button text - Button that sets a calendar to today's date.\n{{Identical|Today}}
 Blockly.Msg.TODAY = 'Today';
-/// message -
-Blockly.Msg.VARIABLES_SET_MESSAGE_ONE = 'set';
-/// ,essage -
-Blockly.Msg.VARIABLES_SET_MESSAGE_TWO = 'to';
 
 // Context menus.
 /// context menu - Make a copy of the selected block (and any blocks it contains).\n{{Identical|Duplicate}}
@@ -74,6 +70,8 @@ Blockly.Msg.INLINE_INPUTS = 'Inline Inputs';
 Blockly.Msg.DELETE_BLOCK = 'Delete Block';
 /// context menu - Permanently delete the %1 selected blocks.\n\nParameters:\n* %1 - an integer greater than 1.
 Blockly.Msg.DELETE_X_BLOCKS = 'Delete %1 Blocks';
+/// confirmation prompt - Question the user if they really wanted to permanently delete all %1 blocks.\n\nParameters:\n* %1 - an integer greater than 1.
+Blockly.Msg.DELETE_ALL_BLOCKS = 'Delete all %1 blocks?';
 /// context menu - Reposition all the blocks so that they form a neat line.
 Blockly.Msg.CLEAN_UP = 'Clean up Blocks';
 /// context menu - Make the appearance of the selected block smaller by hiding some information about it.
@@ -90,26 +88,34 @@ Blockly.Msg.DISABLE_BLOCK = 'Disable Block';
 Blockly.Msg.ENABLE_BLOCK = 'Enable Block';
 /// context menu - Provide helpful information about the selected block.\n{{Identical|Help}}
 Blockly.Msg.HELP = 'Help';
-
-// Realtime collaboration.
-/// collaboration instruction - Tell the user that they can talk with other users.
-Blockly.Msg.CHAT = 'Chat with your collaborator by typing in this box!';
-/// authorization instruction - Ask the user to authorize this app so it can be saved and shared by them.
-Blockly.Msg.AUTH = 'Please authorize this app to enable your work to be saved and to allow it to be shared by you.';
-/// First person singular - objective case
-Blockly.Msg.ME = 'Me';
+/// context menu - Undo the previous action.\n{{Identical|Undo}}
+Blockly.Msg.UNDO = 'Undo';
+/// context menu - Undo the previous undo action.\n{{Identical|Redo}}
+Blockly.Msg.REDO = 'Redo';
 
 // Variable renaming.
 /// prompt - This message is only seen in the Opera browser.  With most browsers, users can edit numeric values in blocks by just clicking and typing.  Opera does not allows this, so we have to open a new window and prompt users with this message to chanage a value.
 Blockly.Msg.CHANGE_VALUE_TITLE = 'Change value:';
-/// dropdown choice - When the user clicks on a variable block, this is one of the dropdown menu choices.  It is used to define a new variable.  See [https://github.com/google/blockly/wiki/Variables#dropdown-menu https://github.com/google/blockly/wiki/Variables#dropdown-menu].
-Blockly.Msg.NEW_VARIABLE = 'New variable...';
-/// prompt - Prompts the user to enter the name for a new variable.  See [https://github.com/google/blockly/wiki/Variables#dropdown-menu https://github.com/google/blockly/wiki/Variables#dropdown-menu].
-Blockly.Msg.NEW_VARIABLE_TITLE = 'New variable name:';
 /// dropdown choice - When the user clicks on a variable block, this is one of the dropdown menu choices.  It is used to rename the current variable.  See [https://github.com/google/blockly/wiki/Variables#dropdown-menu https://github.com/google/blockly/wiki/Variables#dropdown-menu].
 Blockly.Msg.RENAME_VARIABLE = 'Rename variable...';
 /// prompt - Prompts the user to enter the new name for the selected variable.  See [https://github.com/google/blockly/wiki/Variables#dropdown-menu https://github.com/google/blockly/wiki/Variables#dropdown-menu].\n\nParameters:\n* %1 - the name of the variable to be renamed.
 Blockly.Msg.RENAME_VARIABLE_TITLE = 'Rename all "%1" variables to:';
+
+// Variable creation
+/// button text - Text on the button used to launch the variable creation dialogue.
+Blockly.Msg.NEW_VARIABLE = 'Create variable...';
+/// prompt - Prompts the user to enter the name for a new variable.  See [https://github.com/google/blockly/wiki/Variables#dropdown-menu https://github.com/google/blockly/wiki/Variables#dropdown-menu].
+Blockly.Msg.NEW_VARIABLE_TITLE = 'New variable name:';
+/// alert - Tells the user that the name they entered is already in use.
+Blockly.Msg.VARIABLE_ALREADY_EXISTS = 'A variable named "%1" already exists.'
+
+// Variable deletion.
+/// confirm -  Ask the user to confirm their deletion of multiple uses of a variable.
+Blockly.Msg.DELETE_VARIABLE_CONFIRMATION = 'Delete %1 uses of the "%2" variable?';
+/// alert - Tell the user that they can't delete a variable because it's part of the definition of a procedure.
+Blockly.Msg.CANNOT_DELETE_VARIABLE_PROCEDURE = 'Can\'t delete the variable "%1" because it is part of the definition of the procedure "%2"';
+/// dropdown choice - Delete the currently selected variable.
+Blockly.Msg.DELETE_VARIABLE = 'Delete the "%1" variable';
 
 // Colour Blocks.
 /// url - Information about colour.
@@ -158,7 +164,6 @@ Blockly.Msg.CONTROLS_REPEAT_INPUT_DO = 'do';
 Blockly.Msg.CONTROLS_REPEAT_TOOLTIP = 'Do some statements several times.';
 /// url - Describes 'while loops' in computer programs; consider using the translation of [https://en.wikipedia.org/wiki/While_loop https://en.wikipedia.org/wiki/While_loop], if present, or [https://en.wikipedia.org/wiki/Control_flow https://en.wikipedia.org/wiki/Control_flow].
 Blockly.Msg.CONTROLS_WHILEUNTIL_HELPURL = 'https://github.com/google/blockly/wiki/Loops#repeat';
-/// dropdown -
 Blockly.Msg.CONTROLS_WHILEUNTIL_INPUT_DO = Blockly.Msg.CONTROLS_REPEAT_INPUT_DO;
 /// dropdown - Specifies that a loop should [https://github.com/google/blockly/wiki/Loops#repeat-while repeat while] the following condition is true.
 Blockly.Msg.CONTROLS_WHILEUNTIL_OPERATOR_WHILE = 'repeat while';
@@ -181,7 +186,6 @@ Blockly.Msg.CONTROLS_FOR_TOOLTIP = 'Have the variable "%1" take on the values fr
 /// https://github.com/google/blockly/wiki/Loops#count-with].
 /// [[File:Blockly-count-with.png]]
 Blockly.Msg.CONTROLS_FOR_TITLE = 'count with %1 from %2 to %3 by %4';
-/// message -
 Blockly.Msg.CONTROLS_FOR_INPUT_DO = Blockly.Msg.CONTROLS_REPEAT_INPUT_DO;
 
 /// url - Describes 'for-each loops' in computer programs.  Consider using your language's translation of [https://en.wikipedia.org/wiki/Foreach https://en.wikipedia.org/wiki/Foreach] if present.
@@ -189,7 +193,6 @@ Blockly.Msg.CONTROLS_FOREACH_HELPURL = 'https://github.com/google/blockly/wiki/L
 /// block text - Title of [https://github.com/google/blockly/wiki/Loops#for-each for each block].
 /// Sequentially assigns every item in array %2 to the valiable %1.
 Blockly.Msg.CONTROLS_FOREACH_TITLE = 'for each item %1 in list %2';
-/// input -
 Blockly.Msg.CONTROLS_FOREACH_INPUT_DO = Blockly.Msg.CONTROLS_REPEAT_INPUT_DO;
 /// block text - Description of [https://github.com/google/blockly/wiki/Loops#for-each for each blocks].\n\nParameters:\n* %1 - the name of the loop variable.
 Blockly.Msg.CONTROLS_FOREACH_TOOLTIP = 'For each item in a list, set the variable "%1" to the item, and then do some statements.';
@@ -232,7 +235,6 @@ Blockly.Msg.CONTROLS_IF_IF_TOOLTIP = 'Add, remove, or reorder sections to reconf
 Blockly.Msg.CONTROLS_IF_ELSEIF_TITLE_ELSEIF = Blockly.Msg.CONTROLS_IF_MSG_ELSEIF;
 /// tooltip - Describes the 'else if' subblock during [https://github.com/google/blockly/wiki/IfElse#block-modification if block modification].
 Blockly.Msg.CONTROLS_IF_ELSEIF_TOOLTIP = 'Add a condition to the if block.';
-/// tooltip -
 Blockly.Msg.CONTROLS_IF_ELSE_TITLE_ELSE = Blockly.Msg.CONTROLS_IF_MSG_ELSE;
 /// tooltip - Describes the 'else' subblock during [https://github.com/google/blockly/wiki/IfElse#block-modification if block modification].
 Blockly.Msg.CONTROLS_IF_ELSE_TOOLTIP = 'Add a final, catch-all condition to the if block.';
@@ -256,11 +258,11 @@ Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GTE = 'Return true if the first input is great
 Blockly.Msg.LOGIC_OPERATION_HELPURL = 'https://github.com/google/blockly/wiki/Logic#logical-operations';
 /// tooltip - See [https://en.wikipedia.org/wiki/Logical_conjunction https://en.wikipedia.org/wiki/Logical_conjunction].
 Blockly.Msg.LOGIC_OPERATION_TOOLTIP_AND = 'Return true if both inputs are true.';
-/// block text - See [https://en.wikipedia.org/wiki/Logical_conjunction https://en.wikipedia.org/wiki/Logical_conjunction].
+/// block text - See [https://en.wikipedia.org/wiki/Logical_conjunction https://en.wikipedia.org/wiki/Logical_conjunction].\n{{Identical|And}}
 Blockly.Msg.LOGIC_OPERATION_AND = 'and';
 /// block text - See [https://en.wikipedia.org/wiki/Disjunction https://en.wikipedia.org/wiki/Disjunction].
 Blockly.Msg.LOGIC_OPERATION_TOOLTIP_OR = 'Return true if at least one of the inputs is true.';
-/// block text - See [https://en.wikipedia.org/wiki/Disjunction https://en.wikipedia.org/wiki/Disjunction].
+/// block text - See [https://en.wikipedia.org/wiki/Disjunction https://en.wikipedia.org/wiki/Disjunction].\n{{Identical|Or}}
 Blockly.Msg.LOGIC_OPERATION_OR = 'or';
 
 /// url - Information about logical negation.  The translation of [https://en.wikipedia.org/wiki/Logical_negation https://en.wikipedia.org/wiki/Logical_negation] is recommended if it exists in the target language.
@@ -273,16 +275,16 @@ Blockly.Msg.LOGIC_NEGATE_TOOLTIP = 'Returns true if the input is false. Returns 
 
 /// url - Information about the logic values ''true'' and ''false''.  Consider using the translation of [https://en.wikipedia.org/wiki/Truth_value https://en.wikipedia.org/wiki/Truth_value] if it exists in your language.
 Blockly.Msg.LOGIC_BOOLEAN_HELPURL = 'https://github.com/google/blockly/wiki/Logic#values';
-/// block text - The word for the [https://en.wikipedia.org/wiki/Truth_value logical value] ''true''.
+/// block text - The word for the [https://en.wikipedia.org/wiki/Truth_value logical value] ''true''.\n{{Identical|True}}
 Blockly.Msg.LOGIC_BOOLEAN_TRUE = 'true';
-/// block text - The word for the [https://en.wikipedia.org/wiki/Truth_value logical value] ''false''.
+/// block text - The word for the [https://en.wikipedia.org/wiki/Truth_value logical value] ''false''.\n{{Identical|False}}
 Blockly.Msg.LOGIC_BOOLEAN_FALSE = 'false';
 /// tooltip - Indicates that the block returns either of the two possible [https://en.wikipedia.org/wiki/Truth_value logical values].
 Blockly.Msg.LOGIC_BOOLEAN_TOOLTIP = 'Returns either true or false.';
 
 /// url - Provide a link to the translation of [https://en.wikipedia.org/wiki/Nullable_type https://en.wikipedia.org/wiki/Nullable_type], if it exists in your language; otherwise, do not worry about translating this advanced concept.
 Blockly.Msg.LOGIC_NULL_HELPURL = 'https://en.wikipedia.org/wiki/Nullable_type';
-/// block text - In computer languages, ''null'' is a special value that indicates that no value has been set.  You may use your language's word for "nothing" or "invalid".
+/// block text - In computer languages, ''null'' is a special value that indicates that no value has been set.  You may use your language's word for "nothing" or "invalid".\n{{Identical|Null}}
 Blockly.Msg.LOGIC_NULL = 'null';
 /// tooltip - This should use the word from the previous message.
 Blockly.Msg.LOGIC_NULL_TOOLTIP = 'Returns null.';
@@ -417,7 +419,6 @@ Blockly.Msg.MATH_CHANGE_HELPURL = 'https://en.wikipedia.org/wiki/Programming_idi
 /// %1 is a variable name.
 /// %2 is the amount of change.
 Blockly.Msg.MATH_CHANGE_TITLE = 'change %1 by %2';
-/// tooltip -
 Blockly.Msg.MATH_CHANGE_TITLE_ITEM = Blockly.Msg.VARIABLES_DEFAULT_NAME;
 /// tooltip - This updates the value of the variable by adding to it the following numeric input.\n\nParameters:\n* %1 - the name of the variable whose value should be increased.
 Blockly.Msg.MATH_CHANGE_TOOLTIP = 'Add a number to variable "%1".';
@@ -528,7 +529,6 @@ Blockly.Msg.TEXT_APPEND_TO = 'to';
 /// be appended, as shown below.
 /// [[File:blockly-append-text.png]]
 Blockly.Msg.TEXT_APPEND_APPENDTEXT = 'append text';
-/// default name -
 Blockly.Msg.TEXT_APPEND_VARIABLE = Blockly.Msg.VARIABLES_DEFAULT_NAME;
 /// tooltip - See [https://github.com/google/blockly/wiki/Text#text-modification https://github.com/google/blockly/wiki/Text#text-modification] for more information.\n\nParameters:\n* %1 - the name of the variable to which text should be appended
 Blockly.Msg.TEXT_APPEND_TOOLTIP = 'Append some text to variable "%1".';
@@ -551,8 +551,8 @@ Blockly.Msg.TEXT_ISEMPTY_TOOLTIP = 'Returns true if the provided text is empty.'
 
 /// url - Information about finding a character in a piece of text.
 Blockly.Msg.TEXT_INDEXOF_HELPURL = 'https://github.com/google/blockly/wiki/Text#finding-text';
-/// tooltip - See [https://github.com/google/blockly/wiki/Text#finding-text https://github.com/google/blockly/wiki/Text#finding-text].
-Blockly.Msg.TEXT_INDEXOF_TOOLTIP = 'Returns the index of the first/last occurrence of the first text in the second text. Returns 0 if text is not found.';
+/// tooltip - %1 will be replaced by either the number 0 or -1 depending on the indexing mode. See [https://github.com/google/blockly/wiki/Text#finding-text https://github.com/google/blockly/wiki/Text#finding-text].
+Blockly.Msg.TEXT_INDEXOF_TOOLTIP = 'Returns the index of the first/last occurrence of the first text in the second text. Returns %1 if text is not found.';
 /// block text - Title of blocks allowing users to find text.  See
 /// [https://github.com/google/blockly/wiki/Text#finding-text
 /// https://github.com/google/blockly/wiki/Text#finding-text].
@@ -757,17 +757,6 @@ Blockly.Msg.LISTS_CREATE_EMPTY_TITLE = 'create empty list';
 /// block text - See [https://github.com/google/blockly/wiki/Lists#create-empty-list https://github.com/google/blockly/wiki/Lists#create-empty-list].
 Blockly.Msg.LISTS_CREATE_EMPTY_TOOLTIP = 'Returns a list, of length 0, containing no data records';
 
-/// helpurl -
-Blockly.Msg.LISTS_ADD_HELPURL = '';
-/// message one -
-Blockly.Msg.LISTS_ADD_MESSAGE_ONE = 'in list';
-/// message two -
-Blockly.Msg.LISTS_ADD_MESSAGE_TWO = 'add';
-/// message three-
-Blockly.Msg.LISTS_ADD_MESSAGE_THREE = 'to the';
-/// tooltip -
-Blockly.Msg.LISTS_ADD_TOOLTIP = 'Adds a value to either the front or to the end of a list provided.';
-
 /// url - Information on building lists.
 Blockly.Msg.LISTS_CREATE_WITH_HELPURL = 'https://github.com/google/blockly/wiki/Lists#create-list-with';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#create-list-with https://github.com/google/blockly/wiki/Lists#create-list-with].
@@ -824,10 +813,10 @@ Blockly.Msg.LISTS_INDEX_OF_FIRST = 'find first occurrence of item';
 /// https://github.com/google/blockly/wiki/Lists#finding-items-in-a-list].
 /// [[File:Blockly-list-find.png]]
 Blockly.Msg.LISTS_INDEX_OF_LAST = 'find last occurrence of item';
-/// dropdown - See [https://github.com/google/blockly/wiki/Lists#finding-items-in-a-list
+/// tooltip - %1 will be replaced by either the number 0 or -1 depending on the indexing mode.  See [https://github.com/google/blockly/wiki/Lists#finding-items-in-a-list
 /// https://github.com/google/blockly/wiki/Lists#finding-items-in-a-list].
 /// [[File:Blockly-list-find.png]]
-Blockly.Msg.LISTS_INDEX_OF_TOOLTIP = 'Returns the index of the first/last occurrence of the item in the list. Returns 0 if item is not found.';
+Blockly.Msg.LISTS_INDEX_OF_TOOLTIP = 'Returns the index of the first/last occurrence of the item in the list. Returns %1 if item is not found.';
 
 Blockly.Msg.LISTS_GET_INDEX_HELPURL = Blockly.Msg.LISTS_INDEX_OF_HELPURL;
 /// dropdown - Indicates that the user wishes to
@@ -871,39 +860,29 @@ Blockly.Msg.LISTS_GET_INDEX_RANDOM = 'random';
 /// accessing an item from a list].  In most languages, this will be the empty string.
 /// [[File:Blockly-list-get-item.png]]
 Blockly.Msg.LISTS_GET_INDEX_TAIL = '';
-/// block text -
 Blockly.Msg.LISTS_GET_INDEX_INPUT_IN_LIST = Blockly.Msg.LISTS_INLIST;
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item
-/// https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FROM_START = 'Returns the item at the specified position in a list. #1 is the first item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item
-/// https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FROM_END = 'Returns the item at the specified position in a list. #1 is the last item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item
-/// https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
+/// tooltip - Indicates the ordinal number that the first item in a list is referenced by.  %1 will be replaced by either "#0" or "#1" depending on the indexing mode.
+Blockly.Msg.LISTS_INDEX_FROM_START_TOOLTIP = '%1 is the first item.';
+/// tooltip - Indicates the ordinal number that the last item in a list is referenced by.  %1 will be replaced by either "#0" or "#1" depending on the indexing mode.
+Blockly.Msg.LISTS_INDEX_FROM_END_TOOLTIP = '%1 is the last item.';
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FROM = 'Returns the item at the specified position in a list.';
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FIRST = 'Returns the first item in a list.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item
-/// https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_LAST = 'Returns the last item in a list.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item
-/// https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_RANDOM = 'Returns a random item in a list.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item]
-/// (for remove and return) and
-/// [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '# from start'.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FROM_START = 'Removes and returns the item at the specified position in a list. #1 is the first item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '# from end'.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FROM_END = 'Removes and returns the item at the specified position in a list. #1 is the last item.';
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '#' or '# from end'.
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FROM = 'Removes and returns the item at the specified position in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for 'first'.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FIRST = 'Removes and returns the first item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for 'last'.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_LAST = 'Removes and returns the last item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for 'random'.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_RANDOM = 'Removes and returns a random item in a list.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '# from start'.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_FROM_START = 'Removes the item at the specified position in a list. #1 is the first item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '# from end'.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_FROM_END = 'Removes the item at the specified position in a list. #1 is the last item.';
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '#' or '# from end'.
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_FROM = 'Removes the item at the specified position in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for 'first'.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_FIRST = 'Removes the first item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for 'last'.
@@ -925,9 +904,7 @@ Blockly.Msg.LISTS_SET_INDEX_INSERT = 'insert at';
 /// [[File:Blockly-in-list-set-insert.png]]
 Blockly.Msg.LISTS_SET_INDEX_INPUT_TO = 'as';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "set" block).
-Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_FROM_START = 'Sets the item at the specified position in a list. #1 is the first item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "set" block).
-Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_FROM_END = 'Sets the item at the specified position in a list. #1 is the last item.';
+Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_FROM = 'Sets the item at the specified position in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "set" block).
 Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_FIRST = 'Sets the first item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "set" block).
@@ -935,9 +912,7 @@ Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_LAST = 'Sets the last item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "set" block).
 Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_RANDOM = 'Sets a random item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "insert" block).
-Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_FROM_START = 'Inserts the item at the specified position in a list. #1 is the first item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "insert" block).
-Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_FROM_END = 'Inserts the item at the specified position in a list. #1 is the last item.';
+Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_FROM = 'Inserts the item at the specified position in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "insert" block).
 Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_FIRST = 'Inserts the item at the start of a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "insert" block).
@@ -947,7 +922,6 @@ Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_RANDOM = 'Inserts the item randomly i
 
 /// url - Information describing extracting a sublist from an existing list.
 Blockly.Msg.LISTS_GET_SUBLIST_HELPURL = 'https://github.com/google/blockly/wiki/Lists#getting-a-sublist';
-/// url -
 Blockly.Msg.LISTS_GET_SUBLIST_INPUT_IN_LIST = Blockly.Msg.LISTS_INLIST;
 /// dropdown - Indicates that an index relative to the front of the list should be used
 /// to specify the beginning of the range from which to
@@ -992,6 +966,23 @@ Blockly.Msg.LISTS_GET_SUBLIST_TAIL = '';
 /// [[File:Blockly-get-sublist.png]]
 Blockly.Msg.LISTS_GET_SUBLIST_TOOLTIP = 'Creates a copy of the specified portion of a list.';
 
+/// url - Information describing sorting a list.
+Blockly.Msg.LISTS_SORT_HELPURL = 'https://github.com/google/blockly/wiki/Lists#sorting-a-list';
+/// Sort as type %1 (numeric or alphabetic) in order %2 (ascending or descending) a list of items %3.\n{{Identical|Sort}}
+Blockly.Msg.LISTS_SORT_TITLE = 'sort %1 %2 %3';
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#sorting-a-list].
+Blockly.Msg.LISTS_SORT_TOOLTIP = 'Sort a copy of a list.';
+/// sorting order or direction from low to high value for numeric, or A-Z for alphabetic.\n{{Identical|Ascending}}
+Blockly.Msg.LISTS_SORT_ORDER_ASCENDING = 'ascending';
+/// sorting order or direction from high to low value for numeric, or Z-A for alphabetic.\n{{Identical|Descending}}
+Blockly.Msg.LISTS_SORT_ORDER_DESCENDING = 'descending';
+/// sort by treating each item as a number.
+Blockly.Msg.LISTS_SORT_TYPE_NUMERIC = 'numeric';
+/// sort by treating each item alphabetically, case-sensitive.
+Blockly.Msg.LISTS_SORT_TYPE_TEXT = 'alphabetic';
+/// sort by treating each item alphabetically, ignoring differences in case.
+Blockly.Msg.LISTS_SORT_TYPE_IGNORECASE = 'alphabetic, ignore case';
+
 /// url - Information describing splitting text into a list, or joining a list into text.
 Blockly.Msg.LISTS_SPLIT_HELPURL = 'https://github.com/google/blockly/wiki/Lists#splitting-strings-and-joining-lists';
 /// dropdown - Indicates that text will be split up into a list (e.g. "a-b-c" -> ["a", "b", "c"]).
@@ -1014,38 +1005,10 @@ Blockly.Msg.LISTS_SPLIT_TOOLTIP_JOIN = 'Join a list of texts into one text, sepa
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = '';
 
 // Variables Blocks.
-/// The display name of the any variable type
-Blockly.Msg.VARIABLES_TYPE_ANY = 'any';
-/// The display name of the true/false variable type
-Blockly.Msg.VARIABLES_TYPE_BOOLEAN = 'true/false';
-/// The display name of the number variable type
-Blockly.Msg.VARIABLES_TYPE_NUMBER = 'number';
-/// The display name of the text variable type
-Blockly.Msg.VARIABLES_TYPE_STRING = 'text';
-/// The display name of the colour variable type
-Blockly.Msg.VARIABLES_TYPE_COLOUR = 'colour';
-/// The display name of the array variable type
-Blockly.Msg.VARIABLES_TYPE_ARRAY = 'list';
-/// The display name of the instace variable type
-Blockly.Msg.VARIABLES_TYPE_INSTANCE = 'instance';
-/// The display name of the class variable type
-Blockly.Msg.VARIABLES_TYPE_CLASS = 'class';
-/// The display name of the sound variable type
-Blockly.Msg.VARIABLES_TYPE_SOUND = 'sound';
-/// The display name of the pointer variable type
-Blockly.Msg.VARIABLES_TYPE_POINTER = 'finger/pointer';
-/// The display name of the location variable type
-Blockly.Msg.VARIABLES_TYPE_COORDINATE = 'location';
-
-
 /// url - Information about ''variables'' in computer programming.  Consider using your language's translation of [https://en.wikipedia.org/wiki/Variable_(computer_science) https://en.wikipedia.org/wiki/Variable_(computer_science)], if it exists.
 Blockly.Msg.VARIABLES_GET_HELPURL = 'https://github.com/google/blockly/wiki/Variables#get';
 /// tooltip - This gets the value of the named variable without modifying it.
-Blockly.Msg.VARIABLES_GET_TOOLTIP = 'Returns the value of this property. Properties persist for the duration of a gameobjects life.';
-/// tooltip - This gets the value of the named local scope variable without modifying it.
-Blockly.Msg.VARIABLES_GET_TOOLTIP_LOCAL = 'Returns the value of this local variable. Local variables persist for the duration of a function or event.';
-/// tooltip - This gets the value of the named global scope variable without modifying it.
-Blockly.Msg.VARIABLES_GET_TOOLTIP_GLOBAL = 'Returns the value of this global variable. Global variables persist for the duration of the game.';
+Blockly.Msg.VARIABLES_GET_TOOLTIP = 'Returns the value of this variable.';
 /// context menu - Selecting this creates a block to set (change) the value of this variable.
 /// \n\nParameters:\n* %1 - the name of the variable.
 Blockly.Msg.VARIABLES_GET_CREATE_SET = 'Create "set %1"';
@@ -1055,11 +1018,7 @@ Blockly.Msg.VARIABLES_SET_HELPURL = 'https://github.com/google/blockly/wiki/Vari
 /// block text - Change the value of a mathematical variable: '''set [the value of] x to 7'''.\n\nParameters:\n* %1 - the name of the variable.\n* %2 - the value to be assigned.
 Blockly.Msg.VARIABLES_SET = 'set %1 to %2';
 /// tooltip - This initializes or changes the value of the named variable.
-Blockly.Msg.VARIABLES_SET_TOOLTIP = 'Sets this variable to be equal to the input which will persist for the duration of the gameobjects life.';
-/// tooltip - This initializes or changes the value of the named variable.
-Blockly.Msg.VARIABLES_SET_TOOLTIP_LOCAL = 'Sets this variable to be equal to the input which will persist for the duration of the function or event.';
-/// tooltip - This initializes or changes the value of the named variable.
-Blockly.Msg.VARIABLES_SET_TOOLTIP_GLOBAL = 'Sets this variable to be equal to the input which will persist for the duration of the game.';
+Blockly.Msg.VARIABLES_SET_TOOLTIP = 'Sets this variable to be equal to the input.';
 /// context menu - Selecting this creates a block to get (change) the value of
 /// this variable.\n\nParameters:\n* %1 - the name of the variable.
 Blockly.Msg.VARIABLES_SET_CREATE_GET = 'Create "get %1"';
@@ -1091,19 +1050,18 @@ Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS = 'with:';
 Blockly.Msg.PROCEDURES_DEFNORETURN_DO = '';
 /// tooltip
 Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP = 'Creates a function with no output.';
+/// Placeholder text that the user is encouraged to replace with a description of what their function does.
+Blockly.Msg.PROCEDURES_DEFNORETURN_COMMENT = 'Describe this function...';
 /// url - Information about defining [https://en.wikipedia.org/wiki/Procedure_(computer_science) functions] that have return values.
 Blockly.Msg.PROCEDURES_DEFRETURN_HELPURL = 'https://en.wikipedia.org/wiki/Procedure_%28computer_science%29';
-/// message -
 Blockly.Msg.PROCEDURES_DEFRETURN_TITLE = Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE;
-/// message -
 Blockly.Msg.PROCEDURES_DEFRETURN_PROCEDURE = Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE;
-/// message -
 Blockly.Msg.PROCEDURES_DEFRETURN_DO = Blockly.Msg.PROCEDURES_DEFNORETURN_DO;
+Blockly.Msg.PROCEDURES_DEFRETURN_COMMENT = Blockly.Msg.PROCEDURES_DEFNORETURN_COMMENT;
 /// block text - This imperative or infinite verb precedes the value that is used as the return value
 /// (output) of this function.  See
 /// [https://blockly-demo.appspot.com/static/apps/code/index.html?lang=en#6ot5y5 this sample
 /// function that returns a value].
-///
 Blockly.Msg.PROCEDURES_DEFRETURN_RETURN = 'return';
 /// tooltip
 Blockly.Msg.PROCEDURES_DEFRETURN_TOOLTIP = 'Creates a function with an output.';
@@ -1115,16 +1073,11 @@ Blockly.Msg.PROCEDURES_DEF_DUPLICATE_WARNING = 'Warning: This function has dupli
 
 /// url - Information about calling [https://en.wikipedia.org/wiki/Procedure_(computer_science) functions] that do not return values.
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = 'https://en.wikipedia.org/wiki/Procedure_%28computer_science%29';
-/// block text - In most (if not all) languages, this will be the empty string.
-/// It precedes the name of the function that should be run.  See, for example,
-/// the "draw square" block in [https://blockly-demo.appspot.com/static/apps/turtle/index.html#ztz96g].
-Blockly.Msg.PROCEDURES_CALLNORETURN_CALL = '';
 /// tooltip - This block causes the body (blocks inside) of the named function definition to be run.
 Blockly.Msg.PROCEDURES_CALLNORETURN_TOOLTIP = 'Run the user-defined function "%1".';
 
 /// url - Information about calling [https://en.wikipedia.org/wiki/Procedure_(computer_science) functions] that return values.
 Blockly.Msg.PROCEDURES_CALLRETURN_HELPURL = 'https://en.wikipedia.org/wiki/Procedure_%28computer_science%29';
-Blockly.Msg.PROCEDURES_CALLRETURN_CALL = Blockly.Msg.PROCEDURES_CALLNORETURN_CALL;
 /// tooltip - This block causes the body (blocks inside) of the named function definition to be run.\n\nParameters:\n* %1 - the name of the function.
 Blockly.Msg.PROCEDURES_CALLRETURN_TOOLTIP = 'Run the user-defined function "%1" and use its output.';
 
@@ -1154,1080 +1107,7 @@ Blockly.Msg.PROCEDURES_CREATE_DO = 'Create "%1"';
 /// tooltip - If the first value is true, this causes the second value to be returned
 /// immediately from the enclosing function.
 Blockly.Msg.PROCEDURES_IFRETURN_TOOLTIP = 'If a value is true, then return a second value.';
+/// url - Information about guard clauses.
+Blockly.Msg.PROCEDURES_IFRETURN_HELPURL = 'http://c2.com/cgi/wiki?GuardClause';
 /// warning - This appears if the user tries to use this block outside of a function definition.
 Blockly.Msg.PROCEDURES_IFRETURN_WARNING = 'Warning: This block may be used only within a function definition.';
-
-/// warning - This appears when a block is being removed from use and can be replaced with another block
-Blockly.Msg.KF_BLOCK_DEPRECATED = 'Warning: This block is being discontinued';
-
-/// The display name of the boolean type
-Blockly.Msg.KF_TYPE_BOOLEAN = 'True/False';
-/// The display name of the boolean type
-Blockly.Msg.KF_TYPE_NUMBER = 'Number';
-/// The display name of the boolean type
-Blockly.Msg.KF_TYPE_STRING = 'Text';
-/// The display name of the boolean type
-Blockly.Msg.KF_TYPE_INSTANCE = 'Instance';
-
-/// Label text for the kiwifroot create event
-Blockly.Msg.KF_EVENT_CREATE_MESSAGE = 'When created';
-/// tooltip - The event dispatched when the game object this script is attached to is created
-Blockly.Msg.KF_EVENT_CREATE_TOOLTIP = 'The event triggered when this game object is created';
-/// url - Information on the kiwifroot create event
-Blockly.Msg.KF_EVENT_CREATE_HELPURL = '';
-/// Label text for the kiwifroot constantly event
-Blockly.Msg.KF_EVENT_CONSTANTLY_MESSAGE = 'Constantly';
-/// tooltip - The event triggered every frame
-Blockly.Msg.KF_EVENT_CONSTANTLY_TOOLTIP = 'The event triggered every frame';
-/// url - Information on the kiwifroot constantly event
-Blockly.Msg.KF_EVENT_CONSTANTLY_HELPURL = '';
-/// Label text for the kiwifroot stage pressed event
-Blockly.Msg.KF_EVENT_STAGE_PRESS_MESSAGE = 'When stage is pressed';
-/// tooltip - The event dispatched when the player clicks/touches the game stage
-Blockly.Msg.KF_EVENT_STAGE_PRESS_TOOLTIP = 'The event triggered when the player presses a click/touch down anywhere in the game scene.';
-/// url - Information on the kiwifroot stage press event
-Blockly.Msg.KF_EVENT_STAGE_PRESS_HELPURL = '';
-/// Label - text for the kiwifroot stage released event
-Blockly.Msg.KF_EVENT_STAGE_RELEASE_MESSAGE = 'When stage is released';
-/// tooltip - The event dispatched when the player releases a click/touch of the game stage
-Blockly.Msg.KF_EVENT_STAGE_RELEASE_TOOLTIP = 'The event triggered when the player releases a click/touch anywhere in the game scene.';
-/// url - Information on the kiwifroot stage release event
-Blockly.Msg.KF_EVENT_STAGE_RELEASE_HELPURL = '';
-
-/// helpurl -
-Blockly.Msg.KF_EVENT_PRE_CONSTANTLY_HELPURL = '';
-/// message -
-Blockly.Msg.KF_EVENT_PRE_CONSTANTLY_MESSAGE = 'Pre Constantly';
-/// tooltip -
-Blockly.Msg.KF_EVENT_PRE_CONSTANTLY_TOOLTIP = 'Triggered every frame BEFORE the constantly event blocks.';
-
-/// helpurl -
-Blockly.Msg.KF_EVENT_POST_CONSTANTLY_HELPURL = '';
-/// message -
-Blockly.Msg.KF_EVENT_POST_CONSTANTLY_MESSAGE = 'Post Constantly';
-/// tooltip -
-Blockly.Msg.KF_EVENT_POST_CONSTANTLY_TOOLTIP = 'Triggered every frame AFTER the constantly event blocks.';
-
-
-/// url -
-Blockly.Msg.KF_EVENT_STAGE_INPUT_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_EVENT_STAGE_INPUT_MESSAGE = 'When the stage is';
-/// tooltip -
-Blockly.Msg.KF_EVENT_STAGE_INPUT_TOOLTIP = 'The event is trggered when the player either pressed or releases anywhere in the game scene.';
-
-/// Label text for the kiwifroot instance pressed event.
-Blockly.Msg.KF_EVENT_INST_PRESS_MESSAGE = 'When the player presses on ';
-/// tooltip - The event triggered when the player presses a click/touch on the given instance.
-Blockly.Msg.KF_EVENT_INST_PRESS_TOOLTIP = 'The event triggered when the player presses a click/touch on the given instance.';
-/// url - Information on the kiwifroot instance pressed event.
-Blockly.Msg.KF_EVENT_INST_PRESS_HELPURL = '';
-/// Label text for the kiwifroot instance pressed event.
-Blockly.Msg.KF_EVENT_INST_RELEASE_MESSAGE = 'When the player releases over ';
-//// tooltip - The event triggered when the player presses a click/touch on the given instance.
-Blockly.Msg.KF_EVENT_INST_RELEASE_TOOLTIP = 'The event triggered when the player releases a click/touch on the given instance.';
-/// url - Information on the kiwifroot instance pressed event.
-Blockly.Msg.KF_EVENT_INST_RELEASE_HELPURL = '';
-
-/// url -
-Blockly.Msg.KF_EVENT_INST_INPUT_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_EVENT_INST_INPUT_MESSAGE = 'When the player ';
-/// tooltip -
-Blockly.Msg.KF_EVENT_INST_INPUT_TOOLTIP = 'The event is triggered when the player releases/presses (click/touch) a given instance';
-
-/// Label - text for the kiwifroot key pressed event
-Blockly.Msg.KF_EVENT_KEY_PRESS_MESSAGE = 'When the player presses';
-/// tooltip - The event triggered when the player presses the given key on their keyboard.
-Blockly.Msg.KF_EVENT_KEY_PRESS_TOOLTIP = 'The event triggered when the player presses the given key on their keyboard.';
-/// url - Information on the kiwifroot key press event
-Blockly.Msg.KF_EVENT_KEY_PRESS_HELPURL = '';
-/// Label text for the kiwifroot key released event
-Blockly.Msg.KF_EVENT_KEY_RELEASE_MESSAGE = 'When the player releases';
-/// tooltip - The event triggered when the player releases the given key on their keyboard.
-Blockly.Msg.KF_EVENT_KEY_RELEASE_TOOLTIP = 'The event triggered when the player releases the given key on their keyboard.';
-/// url - Information on the kiwifroot key release event
-Blockly.Msg.KF_EVENT_KEY_RELEASE_HELPURL = '';
-
-/// url -
-Blockly.Msg.KF_EVENT_KEY_INPUT_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_EVENT_KEY_INPUT_MESSAGE = 'When the player';
-/// tooltip -
-Blockly.Msg.KF_EVENT_KEY_INPUT_TOOLTIP = 'The event is triggered when the player presses/releases the given key on their keyboard.';
-
-/// url -
-Blockly.Msg.KF_EVENT_TIME_HELPURL = '';
-
-/// Label -
-Blockly.Msg.KF_EVENT_TIME_MESSAGE_BEFORE = 'Every' ;
-/// Label -
-Blockly.Msg.KF_EVENT_TIME_MESSAGE_AFTER = 'milliseconds';
-/// tooltip -
-Blockly.Msg.KF_EVENT_TIME_TOOLTIP = 'Triggers the event when the number of milliseconds set has passed. The number of milliseconds passed is not dynamic, meaning that it will not update once set.';
-/// url -
-Blockly.Msg.KF_EVENT_TIME_SINGLE_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_EVENT_TIME_SINGLE_MESSAGE_BEFORE = 'After' ;
-/// Label -
-Blockly.Msg.KF_EVENT_TIME_SINGLE_MESSAGE_AFTER = 'milliseconds have passed';
-/// tooltip -
-Blockly.Msg.KF_EVENT_TIME_SINGLE_TOOLTIP = 'Triggers the inner blocks after the set period of time has occured. Warning: Does not check to see if the object was destroyed before the event fires.';
-/// url -
-Blockly.Msg.KF_EVENT_ANIMATION_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_EVENT_ANIMATION_MESSAGE_BEFORE = 'When the animation';
-/// Label -
-Blockly.Msg.KF_EVENT_ANIMATION_MESSAGE_AFTER = 'has';
-/// tooltip -
-Blockly.Msg.KF_EVENT_ANIMATION_TOOLTIP = 'Fires events when a selected event occurs on the animation passed.';
-/// url -
-Blockly.Msg.KF_EVENT_TOUCH_ON_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_EVENT_TOUCH_ON_MESSAGE = 'When I am touched by';
-/// tooltip -
-Blockly.Msg.KF_EVENT_TOUCH_ON_TOOLTIP = 'Triggers the inner blocks when this instance collides with the instance passed.';
-/// helpurl -
-Blockly.Msg.KF_EVENT_STAGE_TOUCHED_HELPURL = '';
-/// message -
-Blockly.Msg.KF_EVENT_STAGE_TOUCHED_MESSAGE = 'When the stage is';
-/// tooltip -
-Blockly.Msg.KF_EVENT_STAGE_TOUCHED_TOOLTIP = 'Executes when the stage is touched.';
-
-/// helpurl -
-Blockly.Msg.KF_EVENT_TOUCH_RETURN_HELPURL = '';
-/// message -
-Blockly.Msg.KF_EVENT_TOUCH_RETURN_MESSAGE = 'When I am touched get';
-/// tooltip -
-Blockly.Msg.KF_EVENT_TOUCH_RETURN_TOOLTIP = 'Whenever this instance is touched by another instance (using arcadephysics) it will set a variable to that instance who touched it.';
-
-/// url -
-Blockly.Msg.KF_EVENT_REMOVE_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_EVENT_REMOVE_TOOLTIP = 'The event is triggered when this gameobject is destroyed.';
-/// Label -
-Blockly.Msg.KF_EVENT_REMOVE_MESSAGE = 'When removed';
-/// url -
-Blockly.Msg.KF_EVENT_MESSAGE_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_EVENT_MESSAGE_MESSAGE_BEFORE = 'When a message of';
-/// Label -
-Blockly.Msg.KF_EVENT_MESSAGE_MESSAGE_AFTER = 'is retrieved';
-/// tooltip -
-Blockly.Msg.KF_EVENT_MESSAGE_TOOLTIP = 'Send events when the player';
-/// helpurl -
-Blockly.Msg.KF_EVENT_MESSAGE_VALUE_HELPURL = '';
-/// message one -
-Blockly.Msg.KF_EVENT_MESSAGE_VALUE_MESSAGE_ONE = 'When a message of';
-/// message two -
-Blockly.Msg.KF_EVENT_MESSAGE_VALUE_MESSAGE_TWO = 'is retrieved';
-/// tooltip -
-Blockly.Msg.KF_EVENT_MESSAGE_VALUE_TOOLTIP = 'Executed when a message is retrieved. You can use this block to get a value send from the message with value blocks.';
-
-/// helpurl -
-Blockly.Msg.KF_EVENT_LEVEL_START_HELPURL = '';
-/// message -
-Blockly.Msg.KF_EVENT_LEVEL_START_MESSAGE = 'When the level';
-/// tooltip -
-Blockly.Msg.KF_EVENT_LEVEL_START_TOOLTIP = 'Executes when the current level starts. Only executes when a level starts up.';
-
-/// url -
-Blockly.Msg.KF_EVENT_INSTANCE_PROPERTIES_SET_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_EVENT_INSTANCE_PROPERTIES_SET_TOOLTIP = '';
-/// message -
-Blockly.Msg.KF_EVENT_INSTANCE_PROPERTIES_SET_MESSAGE_ONE = 'When key';
-/// message -
-Blockly.Msg.KF_EVENT_INSTANCE_PROPERTIES_SET_MESSAGE_TWO = 'updates';
-
-
-/// tooltip - A list of special levels, they include previous/current/next and the first/last levels
-Blockly.Msg.KF_GAME_LEVEL_SPECIAL_TOOLTIP = 'A list of special levels, they include previous/current/next and the first/last levels.';
-/// url - Information on the special level block
-Blockly.Msg.KF_GAME_LEVEL_SPECIAL_HELPURL = '';
-/// Label - for the 'go to level numbered' block
-Blockly.Msg.KF_GAME_GOTO_LEVEL_NUM_MESSAGE = 'go to';
-/// tooltip - Changes the current level to the level specified
-Blockly.Msg.KF_GAME_GOTO_LEVEL_NUM_TOOLTIP = 'Changes the current level to the level specified.';
-/// url - Information on the goto level block
-Blockly.Msg.KF_GAME_GOTO_LEVEL_NUM_HELPURL = '';
-/// tooltip - Sets the size of the games viewport on the screen
-Blockly.Msg.KF_GAME_STAGE_SET_SIZE_TOOLTIP = 'Sets the size of the games viewport on the screen.';
-/// url - Information on the set position block
-Blockly.Msg.KF_GAME_STAGE_SET_SIZE_HELPURL = '';
-/// tooltip - Sets the size of the games viewport on the screen
-Blockly.Msg.KF_GAME_STAGE_GET_SIZE_TOOLTIP = 'Gets the size of the games viewport on the screen.';
-/// url - Information on the set position block
-Blockly.Msg.KF_GAME_STAGE_GET_SIZE_HELPURL = '';
-/// Label for the kiwifroot get stage colour block
-Blockly.Msg.KF_GAME_STAGE_SET_COLOUR_MESSAGE = 'set stage colour to';
-/// tooltip - Sets the size of the games viewport on the screen
-Blockly.Msg.KF_GAME_STAGE_SET_COLOUR_TOOLTIP = 'Sets the colour of the game background.';
-/// url - Information on the set stage colour block
-Blockly.Msg.KF_GAME_STAGE_SET_COLOUR_HELPURL = '';
-/// Label for the kiwifroot get stage colour block
-Blockly.Msg.KF_GAME_STAGE_GET_COLOUR_MESSAGE = 'stage colour';
-/// tooltip - Gets the colour of the game background
-Blockly.Msg.KF_GAME_STAGE_GET_COLOUR_TOOLTIP = 'Gets the colour of the game background.';
-/// url - Information on the get stage colour block
-Blockly.Msg.KF_GAME_STAGE_GET_COLOUR_HELPURL = '';
-/// url -
-Blockly.Msg.KF_GAME_GET_TIME_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_GAME_GET_TIME_MESSAGE = 'time';
-/// tooltip -
-Blockly.Msg.KF_GAME_GET_TIME_TOOLTIP = 'Returns the associate time method associated.';
-/// url -
-Blockly.Msg.KF_GAME_TIME_METHOD_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_GAME_TIME_METHOD_MESSAGE = 'time';
-/// tooltip -
-Blockly.Msg.KF_GAME_TIME_METHOD_TOOLTIP = 'Pauses or resumes the clock, thus pausing/resume gameplay.';
-
-/// Label for the kiwifroot self block
-Blockly.Msg.KF_INSTANCE_SELF_MESSAGE = 'myself';
-/// tooltip - This block returns the game object that the script is attached to
-Blockly.Msg.KF_INSTANCE_SELF_TOOLTIP = 'The game object that this script is attached to.';
-/// url - Information on the self block
-Blockly.Msg.KF_INSTANCE_SELF_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_INSTANCE_SELECT_MESSAGE = 'instance ';
-/// url -
-Blockly.Msg.KF_INSTANCE_SELECT_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_SELECT_TOOLTIP = 'Selects a game object with the corresponding id.';
-/// tooltip - Sets the selected property of a given instance to a new value
-Blockly.Msg.KF_INSTANCE_SET_TOOLTIP = 'Sets the selected property of a given instance to a new value.';
-/// url - Information on the self block
-Blockly.Msg.KF_INSTANCE_SET_HELPURL = '';
-/// tooltip - This block returns the game object that the script is attached to
-Blockly.Msg.KF_INSTANCE_GET_TOOLTIP = 'Gets the value of a selected property of the given instance.';
-/// url - Information on the self block
-Blockly.Msg.KF_INSTANCE_GET_HELPURL = '';
-/// url -
-Blockly.Msg.KF_INSTANCE_GET_DIMENSIONS_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_GET_DIMENSIONS_TOOLTIP = 'Width or height of this object. Actual height includes current scale. Raw height is simply image size.';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_GET_LOCATION_FROM_POSITION_TOOLTIP = 'Gets the location of the given instance.';
-/// url -
-Blockly.Msg.KF_INSTANCE_GET_LOCATION_FROM_POSITION_HELPURL = '';
-/// url -
-Blockly.Msg.KF_INSTANCE_GET_VISIBLE_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_INSTANCE_GET_VISIBLE_MESSAGE = 'get visibility of';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_GET_VISIBLE_TOOLTIP = 'Returns visibility state of this gameobject. An alpha of zero is does not mean that the visiblity is false.';
-/// url -
-Blockly.Msg.KF_INSTANCE_SET_POSITION_FROM_LOCATION_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_SET_POSITION_FROM_LOCATION_TOOLTIP = 'Sets the object X and Y to a given location.';
-/// url -
-Blockly.Msg.KF_INSTANCE_SET_VISIBLE_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_INSTANCE_SET_VISIBLE_MESSAGE_BEFORE = 'set visibility of';
-/// Label -
-Blockly.Msg.KF_INSTANCE_SET_VISIBLE_MESSAGE_AFTER = 'to';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_SET_VISIBLE_TOOLTIP = 'Sets whether the gameobject should be renderer or not. An alpha of zero is does not mean that the visiblity is false.';
-/// url -
-Blockly.Msg.KF_INSTANCE_DEATH_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_INSTANCE_DEATH_MESSAGE = 'destroy';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_DEATH_TOOLTIP = 'Destroys the selected instance. Destruction cannot be reverted!';
-/// Label -
-Blockly.Msg.KF_INSTANCE_ADD_TAG_MESSAGE_BEFORE = 'tag';
-/// Label -
-Blockly.Msg.KF_INSTANCE_ADD_TAG_MESSAGE_AFTER = 'on';
-/// url -
-Blockly.Msg.KF_INSTANCE_ADD_TAG_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_ADD_TAG_TOOLTIP = 'Adds a tag passed to the given gameobject.';
-/// url -
-Blockly.Msg.KF_INSTANCE_HAS_TAG_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_INSTANCE_HAS_TAG_MESSAGE = 'has tag';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_HAS_TAG_TOOLTIP = 'Returns a boolean indicating if the gameobject has the tag or not.';
-/// url -
-Blockly.Msg.KF_INSTANCE_GET_BY_TAG_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_INSTANCE_GET_BY_TAG_MESSAGE = 'instance by tag';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_GET_BY_TAG_TOOLTIP = 'Returns a single instance by the tag passed.';
-/// url -
-Blockly.Msg.KF_INSTANCE_GET_ALL_BY_TAG_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_INSTANCE_GET_ALL_BY_TAG_MESSAGE = 'get all children by tag';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_GET_ALL_BY_TAG_TOOLTIP = 'Returns a list of all the instances that have the tag passed.';
-/// message -
-Blockly.Msg.KF_INSTANCE_EXECUTE_MESSAGE = 'Execute';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_EXECUTE_TOOLTIP = 'Executes the text directly pasted as code.';
-/// helpurl
-Blockly.Msg.KF_INSTANCE_EXECUTE_HELPURL = '';
-
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_PROPERTIES_SET_TOOLTIP = '';
-/// url -
-Blockly.Msg.KF_INSTANCE_PROPERTIES_SET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_INSTANCE_PROPERTIES_SET_MESSAGE_ONE = 'set key';
-/// message -
-Blockly.Msg.KF_INSTANCE_PROPERTIES_SET_MESSAGE_TWO = 'to';
-/// message -
-Blockly.Msg.KF_INSTANCE_PROPERTIES_SET_MESSAGE_THREE = 'on';
-
-/// url -
-Blockly.Msg.KF_INSTANCE_PROPERTIES_GET_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_PROPERTIES_GET_TOOLTIP = '';
-/// message -
-Blockly.Msg.KF_INSTANCE_PROPERTIES_GET_MESSAGE_ONE = 'get key';
-/// message -
-Blockly.Msg.KF_INSTANCE_PROPERTIES_GET_MESSAGE_TWO = 'on';
-
-/// url -
-Blockly.Msg.KF_INTERSECTS_OVERLAPS_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_INTERSECTS_OVERLAPS_MESSAGE = 'overlaps';
-/// tooltip -
-Blockly.Msg.KF_INTERSECTS_OVERLAPS_TOOLTIP = 'Checks to see if the two passed instances overlap.';
-/// url -
-Blockly.Msg.KF_INTERSECTS_CONTAINS_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_INTERSECTS_CONTAINS_MESSAGE = 'contains';
-/// tooltip -
-Blockly.Msg.KF_INTERSECTS_CONTAINS_TOOLTIP = 'Checks to see if an x/y location is within an instance\'s hitbox.';
-
-/// Label for the keyboard key block
-Blockly.Msg.KF_KEY_SPECIAL_MESSAGE = 'key:';
-/// tooltip - A special keyboard key
-Blockly.Msg.KF_KEY_SPECIAL_TOOLTIP = 'A special keyboard key';
-/// url - information on the special key block
-Blockly.Msg.KF_KEY_SPECIAL_HELPURL = '';
-/// Label for the mouse position block
-Blockly.Msg.KF_INPUT_MOUSE_MESSAGE = 'of mouse';
-/// tooltip - The position of the mouse in the level
-Blockly.Msg.KF_INPUT_MOUSE_TOOLTIP = 'The position of the mouse in the current level';
-/// url - Information on the mouse position block
-Blockly.Msg.KF_INPUT_MOUSE_HELPURL = '';
-/// helpurl -
-Blockly.Msg.KF_INPUT_FINGERS_HELPURL = '';
-/// message -
-Blockly.Msg.KF_INPUT_FINGERS_MESSAGE = 'all fingers';
-/// tooltip -
-Blockly.Msg.KF_INPUT_FINGERS_TOOLTIP = 'Returns a list of all the finger objects.';
-/// helpurl -
-Blockly.Msg.KF_INPUT_FINGER_SELECT_HELPURL = '';
-/// message -
-Blockly.Msg.KF_INPUT_FINGER_SELECT_MESSAGE = 'finger';
-/// tooltip -
-Blockly.Msg.KF_INPUT_FINGER_SELECT_TOOLTIP = 'Returns the finger associated with the number passed.';
-/// helpurl -
-Blockly.Msg.KF_INPUT_FINGER_GET_COORDS_HELPURL = '';
-/// message -
-Blockly.Msg.KF_INPUT_FINGER_GET_COORDS_MESSAGE = 'of';
-/// tooltip
-Blockly.Msg.KF_INPUT_FINGER_GET_COORDS_TOOLTIP = '';
-/// helpurl -
-Blockly.Msg.KF_INPUT_FINGER_GET_BOOL_HELPURL = '';
-/// message -
-Blockly.Msg.KF_INPUT_FINGER_GET_BOOL_MESSAGE = 'is';
-/// tooltip -
-Blockly.Msg.KF_INPUT_FINGER_GET_BOOL_TOOLTIP = 'Returns a boolean associated with the selected statement.';
-/// helpurl -
-Blockly.Msg.KF_INPUT_FINGER_GET_TIMES_HELPURL = '';
-/// message -
-Blockly.Msg.KF_INPUT_FINGER_GET_TIMES_MESSAGE = 'of';
-/// tooltip -
-Blockly.Msg.KF_INPUT_FINGER_GET_TIMES_TOOLTIP = 'A number associated with the time selected.';
-/// helpurl -
-Blockly.Msg.KF_INPUT_FINGER_LATEST_HELPURL = '';
-/// message -
-Blockly.Msg.KF_INPUT_FINGER_LATEST_MESSAGE = 'latest finger';
-/// tooltip -
-Blockly.Msg.KF_INPUT_FINGER_LATEST_TOOLTIP = 'The finger which was used in the last event.';
-
-/// tooltip - A list of all the sounds included in the game
-Blockly.Msg.KF_SOUND_TOOLTIP = 'A list of all the sounds included in the game.';
-/// url - Information on the sound block
-Blockly.Msg.KF_SOUND_HELPURL = '';
-/// Label for the 'play music' block
-Blockly.Msg.KF_SOUND_PLAY_BACKGROUND_MESSAGE = 'play music';
-/// tooltip - Starts playing the specified music from the beginning
-Blockly.Msg.KF_SOUND_PLAY_BACKGROUND_TOOLTIP = 'Starts playing the specified music from the beginning.';
-/// url - Information on the play background music block
-Blockly.Msg.KF_SOUND_PLAY_BACKGROUND_HELPURL = '';
-/// Label for the 'stop music' block
-Blockly.Msg.KF_SOUND_STOP_BACKGROUND_MESSAGE = 'stop the current music';
-/// tooltip - Stops playing the current music and clears the playhead. If resumed it will start from the beginning.
-Blockly.Msg.KF_SOUND_STOP_BACKGROUND_TOOLTIP = 'Stops playing the current music and clears the playhead. If resumed it will start from the beginning.';
-/// url - Information on the stop background music block
-Blockly.Msg.KF_SOUND_STOP_BACKGROUND_HELPURL = '';
-/// Label for the 'stop music' block
-Blockly.Msg.KF_SOUND_PLAY_EFFECT_MESSAGE = 'play sound effect';
-/// tooltip - Plays the given sound effect once.
-Blockly.Msg.KF_SOUND_PLAY_EFFECT_TOOLTIP = 'Plays the given sound effect once.';
-/// url - Information on the play sound effect block
-Blockly.Msg.KF_SOUND_PLAY_EFFECT_HELPURL = '';
-/// url -
-Blockly.Msg.KF_SOUND_BACKGROUND_STATE_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_SOUND_BACKGROUND_STATE_MESSAGE = 'music';
-/// tooltip -
-Blockly.Msg.KF_SOUND_BACKGROUND_STATE_TOOLTIP = 'Pauses or resumes the current background track.';
-/// url -
-Blockly.Msg.KF_SOUND_SET_MUTE_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_SOUND_SET_MUTE_MESSAGE = 'mute';
-/// tooltip -
-Blockly.Msg.KF_SOUND_SET_MUTE_TOOLTIP = 'Sets the mute state of the selected piece of audio by a boolean passed.';
-/// url -
-Blockly.Msg.KF_SOUND_GET_MUTE_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_SOUND_GET_MUTE_MESSAGE = 'mute';
-/// tooltip -
-Blockly.Msg.KF_SOUND_GET_MUTE_TOOLTIP = 'Sets the mute state of the selected piece of audio by a boolean passed.';
-/// url -
-Blockly.Msg.KF_SOUND_GET_VOLUME_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_SOUND_GET_VOLUME_MESSAGE = 'get volume';
-/// tooltip -
-Blockly.Msg.KF_SOUND_GET_VOLUME_TOOLTIP = 'Gets the volume of all sounds played. A number from 0 - 100.';
-/// url -
-Blockly.Msg.KF_SOUND_SET_VOLUME_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_SOUND_SET_VOLUME_MESSAGE = 'set volume';
-/// tooltip -
-Blockly.Msg.KF_SOUND_SET_VOLUME_TOOLTIP = 'Sets the volume of all sounds played. A number from 0 - 100.';
-/// url -
-Blockly.Msg.KF_SOUND_GET_EDITOR_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_SOUND_GET_EDITOR_MESSAGE = 'audio';
-/// tooltip -
-Blockly.Msg.KF_SOUND_GET_EDITOR_TOOLTIP = 'Gets audio from the Editor';
-/// message -
-Blockly.Msg.KF_ANIMATION_PLAY_MESSAGE = 'play animation';
-/// url -
-Blockly.Msg.KF_ANIMATION_PLAY_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ANIMATION_PLAY_TOOLTIP = 'Starts playing an animation on this gameobject.';
-/// message -
-Blockly.Msg.KF_ANIMATION_STATE_MESSAGE = 'current animation';
-/// url -
-Blockly.Msg.KF_ANIMATION_STATE_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ANIMATION_STATE_TOOLTIP = ' The state of the current animation.';
-/// message before -
-Blockly.Msg.KF_ANIMATION_FRAME_MESSAGE_BEFORE = 'goto';
-/// message after -
-Blockly.Msg.KF_ANIMATION_FRAME_MESSAGE_AFTER = 'animation frame';
-/// url -
-Blockly.Msg.KF_ANIMATION_FRAME_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ANIMATION_FRAME_TOOLTIP = 'Goes to the selected frame in the current animation. If at the end of an animation it will go to the first frame, or the start if at the end.';
-
-/// message -
-Blockly.Msg.KF_ANIMATION_CURRENT_MESSAGE = 'current animation';
-/// url -
-Blockly.Msg.KF_ANIMATION_CURRENT_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ANIMATION_CURRENT_TOOLTIP = 'Returns the current animation that is playing on this game object.';
-
-/// message -
-Blockly.Msg.KF_ANIMATION_NUMBERS_MESSAGE = 'current animation';
-/// url -
-Blockly.Msg.KF_ANIMATION_NUMBERS_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ANIMATION_NUMBERS_TOOLTIP = 'Returns a number related to the selected field..';
-
-/// message -
-Blockly.Msg.KF_ANIMATION_BOOLEAN_MESSAGE = 'current animation';
-/// url -
-Blockly.Msg.KF_ANIMATION_BOOLEAN_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ANIMATION_BOOLEAN_TOOLTIP = 'Returns true if the statement is true. False if the statement isn\'t.';
-
-
-/// message -
-Blockly.Msg.KF_CAMERA_PAN_TO_MESSAGE = 'camera to';
-/// url -
-Blockly.Msg.KF_CAMERA_PAN_TO_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_PAN_TO_TOOLTIP = 'Returns true if the statement is true. False if the statement isn\'t.';
-
-/// message -
-Blockly.Msg.KF_CAMERA_SET_MESSAGE_BEFORE = 'set camera';
-/// message -
-Blockly.Msg.KF_CAMERA_SET_MESSAGE_AFTER = 'to';
-/// url -
-Blockly.Msg.KF_CAMERA_SET_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_SET_TOOLTIP = 'Sets a selected property on the camera to the value passed.';
-
-/// message -
-Blockly.Msg.KF_CAMERA_GET_MESSAGE = 'camera';
-/// url -
-Blockly.Msg.KF_CAMERA_GET_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_GET_TOOLTIP = 'Returns a selected property on the camera.';
-
-/// url -
-Blockly.Msg.KF_CAMERA_GET_READ_ONLY_HELPURL = '';
-/// message -
-Blockly.Msg.KF_CAMERA_GET_READ_ONLY_MESSAGE = 'camera';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_GET_READ_ONLY_TOOLTIP = 'Returns a selected read only property on the camera.';
-
-/// message -
-Blockly.Msg.KF_CAMERA_LOCK_ON_MESSAGE = 'lock camera on';
-/// url -
-Blockly.Msg.KF_CAMERA_LOCK_ON_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_LOCK_ON_TOOLTIP = 'Locks the camera to an Instance passed.';
-
-/// message -
-Blockly.Msg.KF_CAMERA_UNLOCK_MESSAGE = 'unlock camera';
-/// url -
-Blockly.Msg.KF_CAMERA_UNLOCK_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_UNLOCK_TOOLTIP = 'Unlocks the camera.';
-
-
-/// message -
-Blockly.Msg.KF_CAMERA_STATE_MESSAGE = 'is camera';
-/// url -
-Blockly.Msg.KF_CAMERA_STATE_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_STATE_TOOLTIP = 'Returns true if the statement is correct.';
-
-/// url -
-Blockly.Msg.KF_CAMERA_SCALE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_CAMERA_SCALE_MESSAGE = 'camera scale';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_SCALE_TOOLTIP = 'Sets the camera scale on the selected axis to a value passed.';
-/// url -
-Blockly.Msg.KF_CAMERA_SCALE_GET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_CAMERA_SCALE_GET_MESSAGE = 'camera scale';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_SCALE_GET_TOOLTIP = 'Returns the values for the cameras scale on the selected axis.';
-
-/// url -
-Blockly.Msg.KF_CAMERA_SET_SPEED_HELPURL = '';
-/// message -
-Blockly.Msg.KF_CAMERA_SET_SPEED_MESSAGE = 'set camera pan speed';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_SET_SPEED_TOOLTIP = 'Sets the cameras pan speed to a value passed.';
-
-/// url -
-Blockly.Msg.KF_CAMERA_GET_SPEED_HELPURL = '';
-/// message -
-Blockly.Msg.KF_CAMERA_GET_SPEED_MESSAGE = 'camera pan speed';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_GET_SPEED_TOOLTIP = 'Returns the cameras pan speed.';
-
-/// url -
-Blockly.Msg.KF_CAMERA_CENTER_ON_INSTANCE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_CAMERA_CENTER_ON_INSTANCE_MESSAGE = 'center camera on';
-/// tooltip -
-Blockly.Msg.KF_CAMERA_CENTER_ON_INSTANCE_TOOLTIP = 'Centers the cameras to the instances current position.';
-
-/// helpurl -
-Blockly.Msg.KF_MATH_LERP_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_MATH_LERP_MESSAGE_TOOLTIP = '';
-/// message -
-Blockly.Msg.KF_MATH_LERP_MESSAGE_ONE = 'linear interpolation from';
-/// message -
-Blockly.Msg.KF_MATH_LERP_MESSAGE_TWO = 'to';
-/// message -
-Blockly.Msg.KF_MATH_LERP_MESSAGE_THREE = 'by';
-
-/// url -
-Blockly.Msg.KF_MATH_INSTANCE_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_MATH_INSTANCE_MESSAGE_BEFORE = 'from';
-/// Label -
-Blockly.Msg.KF_MATH_INSTANCE_MESSAGE_AFTER = 'to';
-/// tooltip -
-Blockly.Msg.KF_MATH_INSTANCE_TOOLTIP = 'Returns the selected value between two instances.';
-
-/// url -
-Blockly.Msg.KF_MATH_XY_TO_XY_HELPURL = '';
-/// message -
-Blockly.Msg.KF_MATH_XY_TO_XY_MESSAGE_BEFORE = Blockly.Msg.KF_MATH_INSTANCE_MESSAGE_BEFORE;
-/// message
-Blockly.Msg.KF_MATH_XY_TO_XY_MESSAGE_AFTER = Blockly.Msg.KF_MATH_INSTANCE_MESSAGE_AFTER;
-
-/// tooltip -
-Blockly.Msg.KF_MATH_XY_TO_XY_TOOLTIP = 'Returns the selected value between an instance and a location passed.';
-/// url -
-Blockly.Msg.KF_MATH_UTILS_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_MATH_UTILS_TOOLTIP = '';
-
-/// message -
-Blockly.Msg.KF_WRITE_MSG = "write";
-/// url -
-Blockly.Msg.KF_WRITE_URL = "";
-/// tooltip -
-Blockly.Msg.KF_WRITE_TOOLTIP = "Used to log a message in the console and to display it on the debug screen.";
-
-/// Label -
-Blockly.Msg.KF_CLASSES_INSTANCE_MESSAGE = 'class of';
-/// url -
-Blockly.Msg.KF_CLASSES_INSTANCE_HELPURL = '';
-/// tooltip
-Blockly.Msg.KF_CLASSES_INSTANCE_TOOLTIP = 'Returns the class of the selected instance.';
-
-/// url -
-Blockly.Msg.KF_CLASSES_SELECTOR_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_CLASSES_SELECTOR_TOOLTIP = 'Returns the class selected.';
-
-/// url -
-Blockly.Msg.KF_CLASSES_GET_INSTANCE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_CLASSES_GET_INSTANCE_MESSAGE = 'instance of';
-/// tooltip -
-Blockly.Msg.KF_CLASSES_GET_INSTANCE_TOOLTIP = 'Selects the corresponding instance.';
-
-/// url -
-Blockly.Msg.KF_CLASSES_GET_ALL_INSTANCES_HELPURL = '';
-/// message -
-Blockly.Msg.KF_CLASSES_GET_ALL_INSTANCES_MESSAGE = 'get all instances of';
-/// tooltip -
-Blockly.Msg.KF_CLASSES_GET_ALL_INSTANCES_TOOLTIP = 'Returns a list of all the instances with that class.';
-
-/// url -
-Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_HELPURL = '';
-/// Label -
-Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_MESSAGE_BEFORE = 'create new instance of';
-/// Label -
-Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_MESSAGE_AFTER = 'at';
-/// tooltip -
-Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_TOOLTIP = 'Creates a new instance of a class type at the location specified.';
-
-/// url -
-Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_WITH_VAR_HELPURL = '';
-/// label -
-Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_WITH_VAR_MESSAGE_BEFORE = 'create new';
-/// label -
-Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_WITH_VAR_MESSAGE_AFTER = 'of';
-/// tooltip -
-Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_WITH_VAR_TOOLTIP = 'Creates a new instance of a class and assigns a variable to the instance.';
-
-/// url -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_NUMERIC_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_NUMERIC_TOOLTIP = 'Returns a value for the selected property.';
-/// url -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_TOOLTIP = 'Sets a numeric property selected.';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_MESSAGE = 'set';
-/// url -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_HELPURL = '';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_MESSAGE = 'set';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_TOOLTIP = 'Sets a boolean property selected.';
-/// url -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_BOOLEAN_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_BOOLEAN_TOOLTIP = 'Returns the state of a property selected.';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_ROTATION_FROM_MESSAGE = 'get rotation based on';
-/// helpurl -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_ROTATION_FROM_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_ROTATION_FROM_TOOLTIP = 'Returns a rotation for the property based on a selected property.';
-
-
-/// url -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_COLLISIONS_HELPURL = '';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_COLLISIONS_MESSAGE_BEFORE = 'on';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_COLLISIONS_MESSAGE_AFTER = 'side';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_COLLISIONS_TOOLTIP = 'Returns a Boolean indiciating the state of the selected statement for this gameobject.';
-
-/// url -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_COLLISIONS_HELPURL = '';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_COLLISIONS_MESSAGE_BEFORE = 'set';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_COLLISIONS_MESSAGE_AFTER = 'side collisions to';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_COLLISIONS_TOOLTIP = 'Sets the sides of this gameobject that can collide with other gameobjects.';
-
-/// url -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_GRAVITY_HELPURL = '';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_GRAVITY_MESSAGE = 'set gravity';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_GRAVITY_TOOLTIP = 'Sets the global gravity property to a value passed.';
-/// url -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_GRAVITY_HELPURL = '';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_GRAVITY_MESSAGE = 'gravity';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_GRAVITY_TOOLTIP = 'Returns the selected gravity value.';
-/// helpurl -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_PHYSICS_ENABLED_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_PHYSICS_ENABLED_TOOLTIP = 'Set the state of this objects arcadephysics component.';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_SET_PHYSICS_ENABLED_MESSAGE = 'set physics enabled';
-/// helpurl -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_PHYSICS_ENABLED_HELPURL = '';
-///message -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_PHYSICS_ENABLED_MESSAGE = 'get physics enabled';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_GET_PHYSICS_ENABLED_TOOLTIP = 'A boolean indicating if physics are enabled or not.';
-
-/// url -
-Blockly.Msg.KF_MESSAGING_INSTANCE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_MESSAGING_INSTANCE_MESSAGE_BEFORE = 'send message';
-/// message -
-Blockly.Msg.KF_MESSAGING_INSTANCE_MESSAGE_AFTER = 'to';
-/// tooltip -
-Blockly.Msg.KF_MESSAGING_INSTANCE_TOOLTIP = 'Sends a message to a singular instance you passed.';
-/// url -
-Blockly.Msg.KF_MESSAGING_CLASS_HELPURL = '';
-/// message -
-Blockly.Msg.KF_MESSAGING_CLASS_MESSAGE_BEFORE = 'send message';
-/// message -
-Blockly.Msg.KF_MESSAGING_CLASS_MESSAGE_AFTER = 'to all';
-/// tooltip -
-Blockly.Msg.KF_MESSAGING_CLASS_TOOLTIP = 'Sends a message to all instances of a class you pass.';
-/// url -
-Blockly.Msg.KF_MESSAGING_EVERYONE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_MESSAGING_EVERYONE_MESSAGE = 'send every gameobject a message of';
-/// tooltip -
-Blockly.Msg.KF_MESSAGING_EVERYONE_TOOLTIP = 'Sends a message to every gameobject.';
-/// url -
-Blockly.Msg.KF_MESSAGING_LIST_HELPURL = '';
-/// message -
-Blockly.Msg.KF_MESSAGING_LIST_MESSAGE_BEFORE = 'send message';
-/// message -
-Blockly.Msg.KF_MESSAGING_LIST_MESSAGE_AFTER = 'to each instance in';
-/// tooltip -
-Blockly.Msg.KF_MESSAGING_LIST_TOOLTIP = 'Sends a message to every instance in a list.';
-/// helpurl
-Blockly.Msg.KF_MESSAGING_EVERYONE_VALUE_HELPURL = '';
-/// message one -
-Blockly.Msg.KF_MESSAGING_EVERYONE_VALUE_MESSAGE_ONE = 'send message to everyone';
-/// message two -
-Blockly.Msg.KF_MESSAGING_EVERYONE_VALUE_MESSAGE_TWO = 'with a value of';
-/// tooltip -
-Blockly.Msg.KF_MESSAGING_EVERYONE_VALUE_TOOLTIP = 'Sends a message and value defined to every gameobject.';
-/// tooltip -
-Blockly.Msg.KF_MESSAGING_INSTANCE_VALUE_TOOLTIP = 'Sends a message and value to an instance.';
-/// helpurl -
-Blockly.Msg.KF_MESSAGING_INSTANCE_VALUE_HELPURL = '';
-/// message one -
-Blockly.Msg.KF_MESSAGING_INSTANCE_VALUE_MESSAGE_ONE = 'send message';
-/// message two -
-Blockly.Msg.KF_MESSAGING_INSTANCE_VALUE_MESSAGE_TWO = 'to';
-/// message three -
-Blockly.Msg.KF_MESSAGING_INSTANCE_VALUE_MESSAGE_THREE = 'with a value of';
-
-/// url -
-Blockly.Msg.KF_ARCADEPHYSICS_PROBE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_PROBE_MESSAGE = 'collidable object exists at';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_PROBE_TOOLTIP = 'Returns a boolean indiciating if a colliable object exists at the cooridnates passed. ';
-/// tooltip -
-Blockly.Msg.KF_ARCADEPHYSICS_PROBE_LAYER_TOOLTIP = 'Returns a boolean indiciating if a colliable object (with the collision shape AND layer as passed) exists at the location passed.';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_PROBE_LAYER_MESSAGE_ONE = 'collidable object of';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_PROBE_LAYER_MESSAGE_TWO = 'side exists at';
-/// message -
-Blockly.Msg.KF_ARCADEPHYSICS_PROBE_LAYER_MESSAGE_THREE = 'and is on the layer';
-/// url -
-Blockly.Msg.KF_ARCADEPHYSICS_PROBE_LAYER_HELPURL = '';
-
-/// url -
-Blockly.Msg.KF_INSTANCE_MOVE_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_INSTANCE_MOVE_TOOLTIP = 'Changes the depth (layer ordering) of an instance passed by the selected dropdown method.';
-
-/// Label -
-Blockly.Msg.LOG_MESSAGE  = 'Log';
-/// url -
-Blockly.Msg.LOG_HELPURL = '';
-/// tooltip -
-Blockly.Msg.LOG_TOOLTIP = 'Log a value to the console';
-
-
-/// helpurl -
-Blockly.Msg.KF_PRIMITIVES_CREATE_RECTANGLE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_RECTANGLE_MESSAGE_BEFORE = 'create new';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_RECTANGLE_MESSAGE_AFTER = 'with a width/height of';
-/// tooltip -
-Blockly.Msg.KF_PRIMITIVES_CREATE_RECTANGLE_TOOLTIP = 'Creates a new rectangle with a width and height that you set.';
-
-
-/// helpurl -
-Blockly.Msg.KF_PRIMITIVES_CREATE_CIRCLE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_CIRCLE_MESSAGE_BEFORE = 'create new';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_CIRCLE_MESSAGE_AFTER = 'with a radius of';
-/// tooltip -
-Blockly.Msg.KF_PRIMITIVES_CREATE_CIRCLE_TOOLTIP = 'Creates a new circle with a radius that you set.';
-
-
-/// helpurl -
-Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_MESSAGE_ONE = 'create new';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_MESSAGE_TWO = 'from origin to';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_MESSAGE_THREE = 'with a width of';
-/// tooltip -
-Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_TOOLTIP = 'Creates a new line from the transforms origin to a point in space.';
-
-/// helpurl -
-Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_TOOLTIP = 'Creates a new star with a specified number of points.';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_MESSAGE_ONE = 'create new';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_MESSAGE_TWO = 'with a radius of';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_MESSAGE_THREE = 'and';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_MESSAGE_FOUR = 'points';
-
-/// helpurl -
-Blockly.Msg.KF_PRIMITIVES_CHANGE_COLOUR_HELPURL = '';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CHANGE_COLOUR_MESSAGE_ONE = 'set colour of shape';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CHANGE_COLOUR_MESSAGE_TWO = 'to';
-/// tooltip -
-Blockly.Msg.KF_PRIMITIVES_CHANGE_COLOUR_TOOLTIP = 'Sets the colour a shape will render to a particular value.';
-
-/// helpurl -
-Blockly.Msg.KF_PRIMITIVES_GET_COLOUR_HELPURL = '';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_GET_COLOUR_MESSAGE = 'get colour of shape';
-/// tooltip -
-Blockly.Msg.KF_PRIMITIVES_GET_COLOUR_TOOLTIP = 'Returns the colour of a shape passed.';
-
-/// helpurl -
-Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_HELPURL = '';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_MESSAGE_ONE = 'create new';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_MESSAGE_TWO = 'with a radius of';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_MESSAGE_THREE = ' and ';
-/// message -
-Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_MESSAGE_FOUR = ' edges';
-/// tooltip -
-Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_TOOLTIP = 'Creates a new polygon.';
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_CREATE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_TEXT_CREATE_MESSAGE_ONE = 'create new';
-/// message -
-Blockly.Msg.KF_TEXT_CREATE_MESSAGE_TWO = 'with text';
-/// tooltip -
-Blockly.Msg.KF_TEXT_CREATE_TOOLTIP = 'Creates a new textfield.';
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_NUMERIC_SET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_TEXT_NUMERIC_SET_MESSAGE_ONE = 'set';
-/// message -
-Blockly.Msg.KF_TEXT_NUMERIC_SET_MESSAGE_TWO = 'of';
-/// message -
-Blockly.Msg.KF_TEXT_NUMERIC_SET_MESSAGE_THREE = 'to';
-/// tooltip -
-Blockly.Msg.KF_TEXT_NUMERIC_SET_TOOLTIP = 'Sets the numeric value of a textfield to the value passed';
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_COLOUR_SET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_TEXT_COLOUR_SET_MESSAGE_ONE = 'set font colour of';
-/// message -
-Blockly.Msg.KF_TEXT_COLOUR_SET_MESSAGE_TWO = 'to';
-/// tooltip -
-Blockly.Msg.KF_TEXT_COLOUR_SET_TOOLTIP = 'Sets the font colour of a passed textfield to a colour passed';
-
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_TEXT_SET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_TEXT_TEXT_SET_MESSAGE_ONE = 'set text of';
-/// message -
-Blockly.Msg.KF_TEXT_TEXT_SET_MESSAGE_TWO = 'to';
-/// tooltip -
-Blockly.Msg.KF_TEXT_TEXT_SET_TOOLTIP = 'Sets the text which a textfield should display textfield to a string passed';
-
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_ALIGNMENT_SET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_TEXT_ALIGNMENT_SET_MESSAGE_ONE = 'set text alignment of';
-/// message -
-Blockly.Msg.KF_TEXT_ALIGNMENT_SET_MESSAGE_TWO = 'to';
-/// tooltip -
-Blockly.Msg.KF_TEXT_ALIGNMENT_SET_TOOLTIP = 'Sets the alignment of a textfield to a selected value in the dropdown';
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_WEIGHT_SET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_TEXT_WEIGHT_SET_MESSAGE_ONE = 'set text weight of';
-/// message -
-Blockly.Msg.KF_TEXT_WEIGHT_SET_MESSAGE_TWO = 'to';
-/// tooltip -
-Blockly.Msg.KF_TEXT_WEIGHT_SET_TOOLTIP = 'Sets the font weight of a textfield to a selected value in the dropdown';
-
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_FAMILY_SET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_TEXT_FAMILY_SET_MESSAGE_ONE = 'set font family of';
-/// message -
-Blockly.Msg.KF_TEXT_FAMILY_SET_MESSAGE_TWO = 'to';
-/// tooltip -
-Blockly.Msg.KF_TEXT_FAMILY_SET_TOOLTIP = 'Sets the font family that a textfield should use.';
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_FONT_PRESETS_HELPURL = '';
-/// tooltip -
-Blockly.Msg.KF_TEXT_FONT_PRESETS_TOOLTIP = 'Returns the string which identifies the font family selected';
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_NUMERIC_GET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_TEXT_NUMERIC_GET_MESSAGE_ONE = 'get';
-/// message -
-Blockly.Msg.KF_TEXT_NUMERIC_GET_MESSAGE_TWO = 'of';
-/// tooltip -
-Blockly.Msg.KF_TEXT_NUMERIC_GET_TOOLTIP = 'Returns the current value of the selected property from a textfield';
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_COLOUR_GET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_TEXT_COLOUR_GET_MESSAGE = 'get font colour of';
-/// tooltip -
-Blockly.Msg.KF_TEXT_COLOUR_GET_TOOLTIP = 'Returns the font colour of a textfield';
-
-/// helpurl -
-Blockly.Msg.KF_TEXT_TEXT_GET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_TEXT_TEXT_GET_MESSAGE = 'get text of';
-/// tooltip -
-Blockly.Msg.KF_TEXT_TEXT_GET_TOOLTIP = 'Returns the text of a textfield';
-
-/// helpurl -
-Blockly.Msg.KF_COORDINATE_GET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_COORDINATE_GET_MESSAGE_ONE = 'get';
-/// message -
-Blockly.Msg.KF_COORDINATE_GET_MESSAGE_TWO = 'of';
-/// tooltip -
-Blockly.Msg.KF_COORDINATE_GET_TOOLTIP = 'Returns the numeric value for the passed location';
-
-/// helpurl -
-Blockly.Msg.KF_COORDINATE_SET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_COORDINATE_SET_MESSAGE_ONE = 'set';
-/// message -
-Blockly.Msg.KF_COORDINATE_SET_MESSAGE_TWO = 'of';
-/// message -
-Blockly.Msg.KF_COORDINATE_SET_MESSAGE_THREE = 'to';
-/// tooltip -
-Blockly.Msg.KF_COORDINATE_SET_TOOLTIP = 'Sets the selected axis to a defined value for the passed location';
-
-/// helpurl -
-Blockly.Msg.KF_COORDINATE_CREATE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_COORDINATE_CREATE_MESSAGE = 'create new location at';
-/// tooltip -
-Blockly.Msg.KF_COORDINATE_CREATE_TOOLTIP = 'Creates a new location';
-
-/// helpurl -
-Blockly.Msg.KF_COORDINATE_GET_ANGLE_HELPURL = '';
-/// message -
-Blockly.Msg.KF_COORDINATE_GET_ANGLE_MESSAGE = 'angle to location';
-/// tooltip -
-Blockly.Msg.KF_COORDINATE_GET_ANGLE_TOOLTIP = 'Get angle from (0, 0) to this location';
-
-/// helpurl -
-Blockly.Msg.KF_SET_DEBUG_MODE_URL = '';
-/// message -
-Blockly.Msg.KF_SET_DEBUG_MODE_MESSAGE = 'set debug mode';
-/// tooltip -
-Blockly.Msg.KF_SET_DEBUG_MODE_TOOLTIP = 'Sets the debug mode of the game';
-
-/// helpurl -
-Blockly.Msg.KF_GET_DEBUG_MODE_URL = '';
-/// message -
-Blockly.Msg.KF_GET_DEBUG_MODE_MESSAGE = 'get debug mode';
-/// tooltip -
-Blockly.Msg.KF_GET_DEBUG_MODE_TOOLTIP = 'Returns the boolean indiciating if debug mode is currently on or off';
-
-/// helpurl -
-Blockly.Msg.KF_CLASSES_GET_BY_TEXT_HELPURL = '';
-/// message -
-Blockly.Msg.KF_CLASSES_GET_BY_TEXT_MESSAGE = 'get class of';
-/// tooltip -
-Blockly.Msg.KF_CLASSES_GET_BY_TEXT_TOOLTIP = 'Returns a class of the text passed.';
-
-/// helpurl -
-Blockly.Msg.KF_EVENT_CONSTANTLY_DROPDOWN_HELPURL = '';
-/// message -
-Blockly.Msg.KF_EVENT_CONSTANTLY_DROPDOWN_MESSAGE = '';
-/// tooltip -
-Blockly.Msg.KF_EVENT_CONSTANTLY_DROPDOWN_TOOLTIP = 'Executes every frame. The order of execution depends on the choosen dropdown item.';
-
-/// helpurl -
-Blockly.Msg.KF_DEVICE_COCOON_URL = '';
-/// message -
-Blockly.Msg.KF_DEVICE_COCOON_MESSAGE = 'targeting cocoon';
-/// tooltip -
-Blockly.Msg.KF_DEVICE_COCOON_TOOLTIP = 'Returns a boolean indicating if the game is currently targeting cocoon.';
-
-/// helpurl -
-Blockly.Msg.KF_HITBOX_POSITION_GET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_HITBOX_POSITION_GET_MESSAGE = 'get hitbox';
-/// tooltip -
-Blockly.Msg.KF_HITBOX_POSITION_GET_TOOLTIP = 'Returns the selected position of the hitbox in world coordinates.';
-
-/// helpurl -
-Blockly.Msg.KF_HITBOX_DIMENSIONS_GET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_HITBOX_DIMENSIONS_GET_MESSAGE = 'get hitbox';
-/// tooltip -
-Blockly.Msg.KF_HITBOX_DIMENSIONS_GET_TOOLTIP = 'Returns the selected dimensions of the hitbox in world coordinates.';
-
-/// helpurl -
-Blockly.Msg.KF_HITBOX_OFFSET_GET_HELPURL = '';
-/// message -
-Blockly.Msg.KF_HITBOX_OFFSET_GET_MESSAGE = 'get hitbox offset';
-/// tooltip -
-Blockly.Msg.KF_HITBOX_OFFSET_GET_TOOLTIP = 'Returns the difference between the hitbox position and the instances position.';

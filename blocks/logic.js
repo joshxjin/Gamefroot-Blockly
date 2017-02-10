@@ -29,6 +29,11 @@ goog.provide('Blockly.Blocks.logic');
 goog.require('Blockly.Blocks');
 
 
+/**
+ * Common HSV hue for all blocks in this category.
+ */
+Blockly.Blocks.logic.HUE = 210;
+
 Blockly.Blocks['controls_if'] = {
   /**
    * Block for if/elseif/else condition.
@@ -36,7 +41,7 @@ Blockly.Blocks['controls_if'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-    this.setColour( Blockly.Variables.COLOUR.CONTROL );
+    this.setColour(Blockly.Blocks.logic.HUE);
     this.appendValueInput('IF0')
         .setCheck('Boolean')
         .appendField(Blockly.Msg.CONTROLS_IF_MSG_IF);
@@ -64,24 +69,6 @@ Blockly.Blocks['controls_if'] = {
     this.elseCount_ = 0;
   },
   /**
-   * Create object to represent the number of else-if and else inputs.
-   * @return {object} Object to store mutation.
-   * @this Blockly.Block
-   */
-  mutationToObject: function(){
-    if (!this.elseifCount_ && !this.elseCount_) {
-      return null;
-    }
-    var obj = {};
-    if (this.elseifCount_) {
-      obj['elseif'] = this.elseifCount_;
-    }
-    if (this.elseCount_) {
-      obj['else'] = 1;
-    }
-    return obj;
-  },
-  /**
    * Create XML to represent the number of else-if and else inputs.
    * @return {Element} XML storage element.
    * @this Blockly.Block
@@ -100,46 +87,14 @@ Blockly.Blocks['controls_if'] = {
     return container;
   },
   /**
-   * Restores a mutation from a JSON object.
-   * @param {object} obj JSON storage element.
-   * @this Blockly.Block
-   */
-  objectToMutation: function(obj){
-    this.elseifCount_ = 0;
-    this.elseCount_ = 0;
-    if (obj['elseif']) this.elseifCount_ = obj['elseif'];
-    if (obj['else']) this.elseCount_ = obj['else'];
-    for (var i = 1; i <= this.elseifCount_; i++) {
-      this.appendValueInput('IF' + i)
-          .setCheck('Boolean')
-          .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF);
-      this.appendStatementInput('DO' + i)
-          .appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
-    }
-    if (this.elseCount_) {
-      this.appendStatementInput('ELSE')
-          .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSE);
-    }
-  },
-  /**
    * Parse XML to restore the else-if and else inputs.
    * @param {!Element} xmlElement XML storage element.
    * @this Blockly.Block
    */
   domToMutation: function(xmlElement) {
-    this.elseifCount_ = parseInt(xmlElement.getAttribute('elseif'), 10);
-    this.elseCount_ = parseInt(xmlElement.getAttribute('else'), 10);
-    for (var i = 1; i <= this.elseifCount_; i++) {
-      this.appendValueInput('IF' + i)
-          .setCheck('Boolean')
-          .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF);
-      this.appendStatementInput('DO' + i)
-          .appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
-    }
-    if (this.elseCount_) {
-      this.appendStatementInput('ELSE')
-          .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSE);
-    }
+    this.elseifCount_ = parseInt(xmlElement.getAttribute('elseif'), 10) || 0;
+    this.elseCount_ = parseInt(xmlElement.getAttribute('else'), 10) || 0;
+    this.updateShape_();
   },
   /**
    * Populate the mutator's dialog with this block's components.
@@ -148,17 +103,17 @@ Blockly.Blocks['controls_if'] = {
    * @this Blockly.Block
    */
   decompose: function(workspace) {
-    var containerBlock = Blockly.Block.obtain(workspace, 'controls_if_if');
+    var containerBlock = workspace.newBlock('controls_if_if');
     containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK').connection;
+    var connection = containerBlock.nextConnection;
     for (var i = 1; i <= this.elseifCount_; i++) {
-      var elseifBlock = Blockly.Block.obtain(workspace, 'controls_if_elseif');
+      var elseifBlock = workspace.newBlock('controls_if_elseif');
       elseifBlock.initSvg();
       connection.connect(elseifBlock.previousConnection);
       connection = elseifBlock.nextConnection;
     }
     if (this.elseCount_) {
-      var elseBlock = Blockly.Block.obtain(workspace, 'controls_if_else');
+      var elseBlock = workspace.newBlock('controls_if_else');
       elseBlock.initSvg();
       connection.connect(elseBlock.previousConnection);
     }
@@ -170,44 +125,23 @@ Blockly.Blocks['controls_if'] = {
    * @this Blockly.Block
    */
   compose: function(containerBlock) {
-    // Disconnect the else input blocks and remove the inputs.
-    if (this.elseCount_) {
-      this.removeInput('ELSE');
-    }
-    this.elseCount_ = 0;
-    // Disconnect all the elseif input blocks and remove the inputs.
-    for (var i = this.elseifCount_; i > 0; i--) {
-      this.removeInput('IF' + i);
-      this.removeInput('DO' + i);
-    }
+    var clauseBlock = containerBlock.nextConnection.targetBlock();
+    // Count number of inputs.
     this.elseifCount_ = 0;
-    // Rebuild the block's optional inputs.
-    var clauseBlock = containerBlock.getInputTargetBlock('STACK');
+    this.elseCount_ = 0;
+    var valueConnections = [null];
+    var statementConnections = [null];
+    var elseStatementConnection = null;
     while (clauseBlock) {
       switch (clauseBlock.type) {
         case 'controls_if_elseif':
           this.elseifCount_++;
-          var ifInput = this.appendValueInput('IF' + this.elseifCount_)
-              .setCheck('Boolean')
-              .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF);
-          var doInput = this.appendStatementInput('DO' + this.elseifCount_);
-          doInput.appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
-          // Reconnect any child blocks.
-          if (clauseBlock.valueConnection_) {
-            ifInput.connection.connect(clauseBlock.valueConnection_);
-          }
-          if (clauseBlock.statementConnection_) {
-            doInput.connection.connect(clauseBlock.statementConnection_);
-          }
+          valueConnections.push(clauseBlock.valueConnection_);
+          statementConnections.push(clauseBlock.statementConnection_);
           break;
         case 'controls_if_else':
           this.elseCount_++;
-          var elseInput = this.appendStatementInput('ELSE');
-          elseInput.appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSE);
-          // Reconnect any child blocks.
-          if (clauseBlock.statementConnection_) {
-            elseInput.connection.connect(clauseBlock.statementConnection_);
-          }
+          elseStatementConnection = clauseBlock.statementConnection_;
           break;
         default:
           throw 'Unknown block type.';
@@ -215,6 +149,13 @@ Blockly.Blocks['controls_if'] = {
       clauseBlock = clauseBlock.nextConnection &&
           clauseBlock.nextConnection.targetBlock();
     }
+    this.updateShape_();
+    // Reconnect any child blocks.
+    for (var i = 1; i <= this.elseifCount_; i++) {
+      Blockly.Mutator.reconnect(valueConnections[i], this, 'IF' + i);
+      Blockly.Mutator.reconnect(statementConnections[i], this, 'DO' + i);
+    }
+    Blockly.Mutator.reconnect(elseStatementConnection, this, 'ELSE');
   },
   /**
    * Store pointers to any connected child blocks.
@@ -222,7 +163,7 @@ Blockly.Blocks['controls_if'] = {
    * @this Blockly.Block
    */
   saveConnections: function(containerBlock) {
-    var clauseBlock = containerBlock.getInputTargetBlock('STACK');
+    var clauseBlock = containerBlock.nextConnection.targetBlock();
     var i = 1;
     while (clauseBlock) {
       switch (clauseBlock.type) {
@@ -246,6 +187,35 @@ Blockly.Blocks['controls_if'] = {
       clauseBlock = clauseBlock.nextConnection &&
           clauseBlock.nextConnection.targetBlock();
     }
+  },
+  /**
+   * Modify this block to have the correct number of inputs.
+   * @private
+   * @this Blockly.Block
+   */
+  updateShape_: function() {
+    // Delete everything.
+    if (this.getInput('ELSE')) {
+      this.removeInput('ELSE');
+    }
+    var i = 1;
+    while (this.getInput('IF' + i)) {
+      this.removeInput('IF' + i);
+      this.removeInput('DO' + i);
+      i++;
+    }
+    // Rebuild block.
+    for (var i = 1; i <= this.elseifCount_; i++) {
+      this.appendValueInput('IF' + i)
+          .setCheck('Boolean')
+          .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF);
+      this.appendStatementInput('DO' + i)
+          .appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
+    }
+    if (this.elseCount_) {
+      this.appendStatementInput('ELSE')
+          .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSE);
+    }
   }
 };
 
@@ -255,10 +225,10 @@ Blockly.Blocks['controls_if_if'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour( Blockly.Variables.COLOUR.CONTROL );
+    this.setColour(Blockly.Blocks.logic.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_IF_TITLE_IF);
-    this.appendStatementInput('STACK');
+    this.setNextStatement(true);
     this.setTooltip(Blockly.Msg.CONTROLS_IF_IF_TOOLTIP);
     this.contextMenu = false;
   }
@@ -266,11 +236,11 @@ Blockly.Blocks['controls_if_if'] = {
 
 Blockly.Blocks['controls_if_elseif'] = {
   /**
-   * Mutator bolck for else-if condition.
+   * Mutator block for else-if condition.
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour( Blockly.Variables.COLOUR.CONTROL );
+    this.setColour(Blockly.Blocks.logic.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_ELSEIF_TITLE_ELSEIF);
     this.setPreviousStatement(true);
@@ -286,12 +256,50 @@ Blockly.Blocks['controls_if_else'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour( Blockly.Variables.COLOUR.CONTROL );
+    this.setColour(Blockly.Blocks.logic.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_ELSE_TITLE_ELSE);
     this.setPreviousStatement(true);
     this.setTooltip(Blockly.Msg.CONTROLS_IF_ELSE_TOOLTIP);
     this.contextMenu = false;
+  }
+};
+
+Blockly.Blocks['controls_ifelse'] = {
+  /**
+   * If/else block that does not use a mutator.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "%{BKY_CONTROLS_IF_MSG_IF} %1",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "IF0",
+          "check": "Boolean"
+        }
+      ],
+      "message1": "%{BKY_CONTROLS_IF_MSG_THEN} %1",
+      "args1": [
+        {
+          "type": "input_statement",
+          "name": "DO0"
+        }
+      ],
+      "message2": "%{BKY_CONTROLS_IF_MSG_ELSE} %1",
+      "args2": [
+        {
+          "type": "input_statement",
+          "name": "ELSE"
+        }
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": Blockly.Blocks.logic.HUE,
+      "tooltip": Blockly.Msg.CONTROLS_IF_TOOLTIP_2,
+      "helpUrl": Blockly.Msg.CONTROLS_IF_HELPURL
+    });
   }
 };
 
@@ -301,23 +309,25 @@ Blockly.Blocks['logic_compare'] = {
    * @this Blockly.Block
    */
   init: function() {
-    var OPERATORS = Blockly.RTL ? [
-          ['=', 'EQ'],
-          ['\u2260', 'NEQ'],
-          ['>', 'LT'],
-          ['\u2265', 'LTE'],
-          ['<', 'GT'],
-          ['\u2264', 'GTE']
-        ] : [
-          ['=', 'EQ'],
-          ['\u2260', 'NEQ'],
-          ['<', 'LT'],
-          ['\u2264', 'LTE'],
-          ['>', 'GT'],
-          ['\u2265', 'GTE']
-        ];
+    var rtlOperators = [
+      ['=', 'EQ'],
+      ['\u2260', 'NEQ'],
+      ['\u200F<\u200F', 'LT'],
+      ['\u200F\u2264\u200F', 'LTE'],
+      ['\u200F>\u200F', 'GT'],
+      ['\u200F\u2265\u200F', 'GTE']
+    ];
+    var ltrOperators = [
+      ['=', 'EQ'],
+      ['\u2260', 'NEQ'],
+      ['<', 'LT'],
+      ['\u2264', 'LTE'],
+      ['>', 'GT'],
+      ['\u2265', 'GTE']
+    ];
+    var OPERATORS = this.RTL ? rtlOperators : ltrOperators;
     this.setHelpUrl(Blockly.Msg.LOGIC_COMPARE_HELPURL);
-    this.setColour( Blockly.Variables.COLOUR.OPERATORS );
+    this.setColour(Blockly.Blocks.logic.HUE);
     this.setOutput(true, 'Boolean');
     this.appendValueInput('A');
     this.appendValueInput('B')
@@ -342,26 +352,26 @@ Blockly.Blocks['logic_compare'] = {
   /**
    * Called whenever anything on the workspace changes.
    * Prevent mismatched types from being compared.
+   * @param {!Blockly.Events.Abstract} e Change event.
    * @this Blockly.Block
    */
-  onchange: function() {
-    if (!this.workspace) {
-      // Block has been deleted.
-      return;
-    }
+  onchange: function(e) {
     var blockA = this.getInputTargetBlock('A');
     var blockB = this.getInputTargetBlock('B');
-    // Kick blocks that existed prior to this change if they don't match.
+    // Disconnect blocks that existed prior to this change if they don't match.
     if (blockA && blockB &&
         !blockA.outputConnection.checkType_(blockB.outputConnection)) {
       // Mismatch between two inputs.  Disconnect previous and bump it away.
+      // Ensure that any disconnections are grouped with the causing event.
+      Blockly.Events.setGroup(e.group);
       for (var i = 0; i < this.prevBlocks_.length; i++) {
         var block = this.prevBlocks_[i];
         if (block === blockA || block === blockB) {
-          block.setParent(null);
+          block.unplug();
           block.bumpNeighbours_();
         }
       }
+      Blockly.Events.setGroup(false);
     }
     this.prevBlocks_[0] = blockA;
     this.prevBlocks_[1] = blockB;
@@ -378,7 +388,7 @@ Blockly.Blocks['logic_operation'] = {
         [[Blockly.Msg.LOGIC_OPERATION_AND, 'AND'],
          [Blockly.Msg.LOGIC_OPERATION_OR, 'OR']];
     this.setHelpUrl(Blockly.Msg.LOGIC_OPERATION_HELPURL);
-    this.setColour( Blockly.Variables.COLOUR.OPERATORS );
+    this.setColour(Blockly.Blocks.logic.HUE);
     this.setOutput(true, 'Boolean');
     this.appendValueInput('A')
         .setCheck('Boolean');
@@ -415,7 +425,7 @@ Blockly.Blocks['logic_negate'] = {
         }
       ],
       "output": "Boolean",
-      "colour": Blockly.Variables.COLOUR.OPERATORS,
+      "colour": Blockly.Blocks.logic.HUE,
       "tooltip": Blockly.Msg.LOGIC_NEGATE_TOOLTIP,
       "helpUrl": Blockly.Msg.LOGIC_NEGATE_HELPURL
     });
@@ -428,15 +438,23 @@ Blockly.Blocks['logic_boolean'] = {
    * @this Blockly.Block
    */
   init: function() {
-    var BOOLEANS =
-        [[Blockly.Msg.LOGIC_BOOLEAN_TRUE || "", 'TRUE'],
-         [Blockly.Msg.LOGIC_BOOLEAN_FALSE || "", 'FALSE']];
-    this.setHelpUrl(Blockly.Msg.LOGIC_BOOLEAN_HELPURL);
-    this.setColour(Blockly.Variables.COLOUR.OPERATORS);
-    this.setOutput(true, 'Boolean');
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown(BOOLEANS), 'BOOL');
-    this.setTooltip(Blockly.Msg.LOGIC_BOOLEAN_TOOLTIP);
+    this.jsonInit({
+      "message0": "%1",
+      "args0": [
+        {
+          "type": "field_dropdown",
+          "name": "BOOL",
+          "options": [
+            [Blockly.Msg.LOGIC_BOOLEAN_TRUE, "TRUE"],
+            [Blockly.Msg.LOGIC_BOOLEAN_FALSE, "FALSE"]
+          ]
+        }
+      ],
+      "output": "Boolean",
+      "colour": Blockly.Blocks.logic.HUE,
+      "tooltip": Blockly.Msg.LOGIC_BOOLEAN_TOOLTIP,
+      "helpUrl": Blockly.Msg.LOGIC_BOOLEAN_HELPURL
+    });
   }
 };
 
@@ -446,12 +464,13 @@ Blockly.Blocks['logic_null'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setHelpUrl(Blockly.Msg.LOGIC_NULL_HELPURL);
-    this.setColour(Blockly.Variables.COLOUR.OPERATORS);
-    this.setOutput(true);
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.LOGIC_NULL);
-    this.setTooltip(Blockly.Msg.LOGIC_NULL_TOOLTIP);
+    this.jsonInit({
+      "message0": Blockly.Msg.LOGIC_NULL,
+      "output": null,
+      "colour": Blockly.Blocks.logic.HUE,
+      "tooltip": Blockly.Msg.LOGIC_NULL_TOOLTIP,
+      "helpUrl": Blockly.Msg.LOGIC_NULL_HELPURL
+    });
   }
 };
 
@@ -462,7 +481,7 @@ Blockly.Blocks['logic_ternary'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.LOGIC_TERNARY_HELPURL);
-    this.setColour(Blockly.Variables.COLOUR.OPERATORS);
+    this.setColour(Blockly.Blocks.logic.HUE);
     this.appendValueInput('IF')
         .setCheck('Boolean')
         .appendField(Blockly.Msg.LOGIC_TERNARY_CONDITION);
@@ -472,5 +491,36 @@ Blockly.Blocks['logic_ternary'] = {
         .appendField(Blockly.Msg.LOGIC_TERNARY_IF_FALSE);
     this.setOutput(true);
     this.setTooltip(Blockly.Msg.LOGIC_TERNARY_TOOLTIP);
+    this.prevParentConnection_ = null;
+  },
+  /**
+   * Called whenever anything on the workspace changes.
+   * Prevent mismatched types.
+   * @param {!Blockly.Events.Abstract} e Change event.
+   * @this Blockly.Block
+   */
+  onchange: function(e) {
+    var blockA = this.getInputTargetBlock('THEN');
+    var blockB = this.getInputTargetBlock('ELSE');
+    var parentConnection = this.outputConnection.targetConnection;
+    // Disconnect blocks that existed prior to this change if they don't match.
+    if ((blockA || blockB) && parentConnection) {
+      for (var i = 0; i < 2; i++) {
+        var block = (i == 1) ? blockA : blockB;
+        if (block && !block.outputConnection.checkType_(parentConnection)) {
+          // Ensure that any disconnections are grouped with the causing event.
+          Blockly.Events.setGroup(e.group);
+          if (parentConnection === this.prevParentConnection_) {
+            this.unplug();
+            parentConnection.getSourceBlock().bumpNeighbours_();
+          } else {
+            block.unplug();
+            block.bumpNeighbours_();
+          }
+          Blockly.Events.setGroup(false);
+        }
+      }
+    }
+    this.prevParentConnection_ = parentConnection;
   }
 };

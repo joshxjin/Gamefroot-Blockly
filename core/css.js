@@ -84,9 +84,10 @@ Blockly.Css.inject = function(hasCss, pathToMedia) {
   // Strip off any trailing slash (either Unix or Windows).
   Blockly.Css.mediaPath_ = pathToMedia.replace(/[\\\/]$/, '');
   text = text.replace(/<<<PATH>>>/g, Blockly.Css.mediaPath_);
-  // Inject CSS tag.
+  // Inject CSS tag at start of head.
   var cssNode = document.createElement('style');
-  document.head.appendChild(cssNode);
+  document.head.insertBefore(cssNode, document.head.firstChild);
+
   var cssTextNode = document.createTextNode(text);
   cssNode.appendChild(cssTextNode);
   Blockly.Css.styleSheet_ = cssNode.sheet;
@@ -135,12 +136,46 @@ Blockly.Css.CONTENT = [
     'background-color: #fff;',
     'outline: none;',
     'overflow: hidden;',  /* IE overflows by default. */
+    'position: absolute;',
+    'display: block;',
   '}',
 
   '.blocklyWidgetDiv {',
     'display: none;',
     'position: absolute;',
-    'z-index: 999;',
+    'z-index: 99999;', /* big value for bootstrap3 compatibility */
+  '}',
+
+  '.injectionDiv {',
+    'height: 100%;',
+    'position: relative;',
+    'overflow: hidden;', /* So blocks in drag surface disappear at edges */
+  '}',
+
+  '.blocklyNonSelectable {',
+    'user-select: none;',
+    '-moz-user-select: none;',
+    '-webkit-user-select: none;',
+    '-ms-user-select: none;',
+  '}',
+
+  '.blocklyWsDragSurface {',
+    'display: none;',
+    'position: absolute;',
+    'overflow: visible;',
+    'top: 0;',
+    'left: 0;',
+  '}',
+
+  '.blocklyBlockDragSurface {',
+    'display: none;',
+    'position: absolute;',
+    'top: 0;',
+    'left: 0;',
+    'right: 0;',
+    'bottom: 0;',
+    'overflow: visible !important;',
+    'z-index: 50;', /* Display below toolbox, but above everything else. */
   '}',
 
   '.blocklyTooltipDiv {',
@@ -154,7 +189,7 @@ Blockly.Css.CONTENT = [
     'opacity: 0.9;',
     'padding: 2px;',
     'position: absolute;',
-    'z-index: 1000;',
+    'z-index: 100000;', /* big value for bootstrap3 compatibility */
   '}',
 
   '.blocklyResizeSE {',
@@ -216,11 +251,9 @@ Blockly.Css.CONTENT = [
   '.blocklyText {',
     'cursor: default;',
     'fill: #fff;',
-    'font-family: Roboto, sans-serif;',
+    'font-family: sans-serif;',
     'font-size: 11pt;',
   '}',
-
-
 
   '.blocklyNonEditableText>text {',
     'pointer-events: none;',
@@ -246,11 +279,40 @@ Blockly.Css.CONTENT = [
     'fill: #000;',
   '}',
 
+  '.blocklyFlyout {',
+    'position: absolute;',
+    'z-index: 20;',
+  '}',
+  '.blocklyFlyoutButton {',
+    'fill: #888;',
+    'cursor: default;',
+  '}',
+
+  '.blocklyFlyoutButtonShadow {',
+    'fill: #666;',
+  '}',
+
+  '.blocklyFlyoutButton:hover {',
+    'fill: #aaa;',
+  '}',
+
+  '.blocklyFlyoutLabel {',
+    'cursor: default;',
+  '}',
+
+  '.blocklyFlyoutLabelBackground {',
+    'opacity: 0;',
+  '}',
+
+  '.blocklyFlyoutLabelText {',
+    'fill: #000;',
+  '}',
+
   /*
     Don't allow users to select text.  It gets annoying when trying to
     drag a block and selected text moves instead.
   */
-  '.blocklySvg text {',
+  '.blocklySvg text, .blocklyBlockDragSurface text {',
     'user-select: none;',
     '-moz-user-select: none;',
     '-webkit-user-select: none;',
@@ -271,23 +333,30 @@ Blockly.Css.CONTENT = [
 
   '.blocklyIconGroup:not(:hover),',
   '.blocklyIconGroupReadonly {',
-    'opacity: 1;',
+    'opacity: .6;',
+  '}',
+
+  '.blocklyIconShape {',
+    'fill: #00f;',
+    'stroke: #fff;',
+    'stroke-width: 1px;',
+  '}',
+
+  '.blocklyIconSymbol {',
+    'fill: #fff;',
   '}',
 
   '.blocklyMinimalBody {',
     'margin: 0;',
     'padding: 0;',
-    'position: fixed;',
   '}',
 
   '.blocklyCommentTextarea {',
-    'background-color: #fff;',
+    'background-color: #ffc;',
     'border: 0;',
     'margin: 0;',
     'padding: 2px;',
     'resize: none;',
-    'font-family: Roboto, sans-serif;',
-    'margin-top: 7px;',
   '}',
 
   '.blocklyHtmlInput {',
@@ -313,20 +382,26 @@ Blockly.Css.CONTENT = [
   '}',
 
   '.blocklyFlyoutBackground {',
-    'fill: #f0f0f0;',
-    'fill-opacity: 0.9;',
+    'fill: #ddd;',
+    'fill-opacity: .8;',
+  '}',
+
+  '.blocklyScrollbarHorizontal, .blocklyScrollbarVertical {',
+    'position: absolute;',
+    'outline: none;',
+    'z-index: 30;',
   '}',
 
   '.blocklyScrollbarBackground {',
     'opacity: 0;',
   '}',
 
-  '.blocklyScrollbarKnob {',
+  '.blocklyScrollbarHandle {',
     'fill: #ccc;',
   '}',
 
-  '.blocklyScrollbarBackground:hover+.blocklyScrollbarKnob,',
-  '.blocklyScrollbarKnob:hover {',
+  '.blocklyScrollbarBackground:hover+.blocklyScrollbarHandle,',
+  '.blocklyScrollbarHandle:hover {',
     'fill: #bbb;',
   '}',
 
@@ -344,12 +419,12 @@ Blockly.Css.CONTENT = [
 
   /* Darken flyout scrollbars due to being on a grey background. */
   /* By contrast, workspace scrollbars are on a white background. */
-  '.blocklyFlyout .blocklyScrollbarKnob {',
+  '.blocklyFlyout .blocklyScrollbarHandle {',
     'fill: #bbb;',
   '}',
 
-  '.blocklyFlyout .blocklyScrollbarBackground:hover+.blocklyScrollbarKnob,',
-  '.blocklyFlyout .blocklyScrollbarKnob:hover {',
+  '.blocklyFlyout .blocklyScrollbarBackground:hover+.blocklyScrollbarHandle,',
+  '.blocklyFlyout .blocklyScrollbarHandle:hover {',
     'fill: #aaa;',
   '}',
 
@@ -371,7 +446,7 @@ Blockly.Css.CONTENT = [
 
   '.blocklyAngleGauge {',
     'fill: #f88;',
-    'fill-opacity: .8;  ',
+    'fill-opacity: .8;',
   '}',
 
   '.blocklyAngleLine {',
@@ -396,16 +471,15 @@ Blockly.Css.CONTENT = [
 
   /* Category tree in Toolbox. */
   '.blocklyToolboxDiv {',
-    'background-color: #f0f0f0;',
+    'background-color: #ddd;',
     'overflow-x: visible;',
     'overflow-y: auto;',
     'position: absolute;',
-    'width: 190px;',
-    'z-index: 9999;',
+    'z-index: 70;', /* so blocks go under toolbox when dragging */
   '}',
 
   '.blocklyTreeRoot {',
-    'padding: 10px;',
+    'padding: 4px 0;',
   '}',
 
   '.blocklyTreeRoot:focus {',
@@ -413,7 +487,21 @@ Blockly.Css.CONTENT = [
   '}',
 
   '.blocklyTreeRow {',
+    'height: 22px;',
+    'line-height: 22px;',
+    'margin-bottom: 3px;',
+    'padding-right: 8px;',
     'white-space: nowrap;',
+  '}',
+
+  '.blocklyHorizontalTree {',
+    'float: left;',
+    'margin: 1px 5px 8px 0;',
+  '}',
+
+  '.blocklyHorizontalTreeRtl {',
+    'float: right;',
+    'margin: 1px 0 8px 5px;',
   '}',
 
   '.blocklyToolboxDiv[dir="RTL"] .blocklyTreeRow {',
@@ -426,8 +514,31 @@ Blockly.Css.CONTENT = [
 
   '.blocklyTreeSeparator {',
     'border-bottom: solid #e5e5e5 1px;',
-    'height: 0px;',
+    'height: 0;',
     'margin: 5px 0;',
+  '}',
+
+  '.blocklyTreeSeparatorHorizontal {',
+    'border-right: solid #e5e5e5 1px;',
+    'width: 0;',
+    'padding: 5px 0;',
+    'margin: 0 5px;',
+  '}',
+
+
+  '.blocklyTreeIcon {',
+    'background-image: url(<<<PATH>>>/sprites.png);',
+    'height: 16px;',
+    'vertical-align: middle;',
+    'width: 16px;',
+  '}',
+
+  '.blocklyTreeIconClosedLtr {',
+    'background-position: -32px -1px;',
+  '}',
+
+  '.blocklyTreeIconClosedRtl {',
+    'background-position: 0px -1px;',
   '}',
 
   '.blocklyTreeIconOpen {',
@@ -453,8 +564,9 @@ Blockly.Css.CONTENT = [
 
   '.blocklyTreeLabel {',
     'cursor: default;',
-    'font-family: Roboto, sans-serif;',
-    'font-size: 15px;',
+    'font-family: sans-serif;',
+    'font-size: 16px;',
+    'padding: 0 3px;',
     'vertical-align: middle;',
   '}',
 
@@ -715,62 +827,5 @@ Blockly.Css.CONTENT = [
     'padding: 0;',
   '}',
 
-  /**
-   *
-   * Custom CSS for gamefroot editor
-   * 
-   */
-
-  //Sexy buttons
-
-  '.blocklyHidden, .blocklyTreeRow.blocklyHidden {',
-    'display: none;',
-  '}', 
-
-  '.blocklyTreeRow {',
-    'display: block;',
-    'text-overflow: ellipsis;',
-    'overflow: hidden;',
-    'position: relative;',
-    'height: 33px;',
-    'line-height: 33px;',
-    'text-indent: 10px;',
-    'background-color: #fff;',
-    'border-radius: 3px;',
-    'box-shadow: 0 2px 5px rgba(0,0,0,0.2);',
-    'margin-bottom: 5px;',
-  '}',
-
-  //Dropdown Button
-
-  '.blocklyTreeRow {',
-    'padding-left: 0 !important;',
-  '}', 
-
-  'div[role="treeitem"] > div[role="group"] {',
-    'margin-left: 10px;',
-  '}',
-
-  '.blocklyFlyout {',
-    'max-width: 360px;',
-    'width: 100%;',
-  '}',
-
-  '.blocklyBlocksCategory .blocklyText {',
-    'fill: #8c8c8c;',
-    'font-size: 16px;',
-    'font-weight: 300;',
-  '}',
-
-  '.blocklyBlocksCategory.blocklySelected>.blocklyPath {',
-    'stroke: transparent;',
-    'stroke-width: 0;',
-  '}',
-
-  '.blocklyBlocksCategory .blocklyPathDark, .blocklyBlocksCategory .blocklyPath {',
-    'fill: none;',
-  '}',
-  '.blocklyBlocksCategory .blocklyPathLight {',
-    'stroke-width: 0;',
-  '}'
+  ''
 ];
