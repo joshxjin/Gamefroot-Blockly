@@ -69,3 +69,4 @@ Blockly.Kiwifroot['kiwi_animation_booleans'] = function(block) {
   var code = Blockly.Kiwifroot.animation.COMPONENT_PREFIX + '.' + dropdown_value;
   return [code, Blockly.Kiwifroot.ORDER_ATOMIC];
 };
+
