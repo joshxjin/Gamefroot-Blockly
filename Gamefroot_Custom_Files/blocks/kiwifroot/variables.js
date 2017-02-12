@@ -1,6 +1,7 @@
 /**
  * Created by josh on 13/02/17.
  */
+
 /**
  * @license
  * Visual Blocks Editor
@@ -27,7 +28,7 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.kiwifroot.variables');
+goog.provide('Blockly.Blocks.Kiwifroot.variables');
 
 goog.require('Blockly.Blocks');
 
