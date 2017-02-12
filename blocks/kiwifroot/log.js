@@ -29,10 +29,55 @@ goog.provide('Blockly.Blocks.Kiwifroot.log');
 
 goog.require('Blockly.Blocks');
 
+
+
+Blockly.Blocks['kiwi_log'] = {
+  init: function() {
+    this.setHelpUrl( Blockly.Msg.LOG_HELPURL );
+    this.setColour( Blockly.Variables.COLOUR.CONTROL );
+    this.appendValueInput("LOG")
+        .appendField(Blockly.Msg.LOG_MESSAGE );
+
+    //this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip( Blockly.Msg.KF_WRITE_TOOLTIP );
+  }
+};
+
+
+Blockly.Blocks['kiwi_set_debug_mode'] = {
+  init: function() {
+    this.setHelpUrl( Blockly.Msg.KF_SET_DEBUG_MODE_URL );
+    this.setColour( Blockly.Variables.COLOUR.CONTROL );
+    this.appendValueInput("SET_DEBUG")
+        .setCheck('Boolean')
+        .appendField( Blockly.Msg.KF_SET_DEBUG_MODE_MESSAGE );
+
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip( Blockly.Msg.KF_SET_DEBUG_MODE_TOOLTIP );
+  }
+};
+
+Blockly.Blocks['kiwi_get_debug_mode'] = {
+  init: function() {
+    this.setHelpUrl( Blockly.Msg.KF_GET_DEBUG_MODE_URL );
+    this.setColour( Blockly.Variables.COLOUR.CONTROL );
+    this.appendDummyInput()
+        .appendField( Blockly.Msg.KF_GET_DEBUG_MODE_MESSAGE );
+
+    this.setInputsInline(true);
+    this.setOutput(true, "Boolean");
+    this.setTooltip( Blockly.Msg.KF_GET_DEBUG_MODE_TOOLTIP );
+  }
+};
+
 Blockly.Blocks['kiwi_block_category'] = {
   init: function( xmlBlock ) {
 
-    Blockly.addClass_( ( this.svgGroup_ ), 'blocklyBlocksCategory' );
+    Blockly.utils.addClass( ( this.svgGroup_ ), 'blocklyBlocksCategory' );
 
     this.setColour( "#f0f0f0" );
     this.setEditable( false );
@@ -60,5 +105,18 @@ Blockly.Blocks['kiwi_block_category'] = {
       this.svgPath_.setAttribute('fill','#f0f0f0');
     };
 
+  }
+};
+
+Blockly.Blocks['kiwi_device_cocoon'] = {
+  init: function() {
+    this.setHelpUrl( Blockly.Msg.KF_DEVICE_COCOON_URL );
+    this.setColour( Blockly.Variables.COLOUR.CONTROL );
+    this.appendDummyInput()
+        .appendField( Blockly.Msg.KF_DEVICE_COCOON_MESSAGE );
+
+    this.setInputsInline(true);
+    this.setOutput(true, "Boolean");
+    this.setTooltip( Blockly.Msg.KF_DEVICE_COCOON_TOOLTIP );
   }
 };
