@@ -1,407 +1,421 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Blockly Playground</title>
-<script src="../blockly_uncompressed.js"></script>
-<script src="../generators/javascript.js"></script>
-<script src="../generators/javascript/logic.js"></script>
-<script src="../generators/javascript/loops.js"></script>
-<script src="../generators/javascript/math.js"></script>
-<script src="../generators/javascript/text.js"></script>
-<script src="../generators/javascript/lists.js"></script>
-<script src="../generators/javascript/colour.js"></script>
-<script src="../generators/javascript/variables.js"></script>
-<script src="../generators/javascript/procedures.js"></script>
-  <script src="../generators/kiwifroot.js"></script>
-  <script src="../generators/kiwifroot/text.js"></script>
-  <script src="../generators/kiwifroot/loops.js"></script>
-  <script src="../generators/kiwifroot/lists.js"></script>
-  <script src="../generators/kiwifroot/math.js"></script>
-  <script src="../generators/kiwifroot/colour.js"></script>
-  <script src="../generators/kiwifroot/variables.js"></script>
-  <script src="../generators/kiwifroot/procedures.js"></script>
-  <script src="../generators/kiwifroot/events.js"></script>
-  <script src="../generators/kiwifroot/game.js"></script>
-  <script src="../generators/kiwifroot/instances.js"></script>
-  <script src="../generators/kiwifroot/classes.js"></script>
-  <script src="../generators/kiwifroot/inputs.js"></script>
-  <script src="../generators/kiwifroot/sound.js"></script>
-  <script src="../generators/kiwifroot/animation.js"></script>
-  <script src="../generators/kiwifroot/camera.js"></script>
-  <script src="../generators/kiwifroot/intersects.js"></script>
-  <script src="../generators/kiwifroot/physics.js"></script>
-  <script src="../generators/kiwifroot/messaging.js"></script>
-  <script src="../generators/kiwifroot/deprecated.js"></script>
-  <script src="../generators/kiwifroot/coordinate.js"></script>
-  <script src="../generators/kiwifroot/log.js"></script>
-  <script src="../generators/kiwifroot/plugins_primitives.js"></script>
-  <script src="../generators/kiwifroot/plugins_text.js"></script>
-  <script src="../generators/kiwifroot/hitbox.js"></script>
-<script src="../generators/python.js"></script>
-<script src="../generators/python/logic.js"></script>
-<script src="../generators/python/loops.js"></script>
-<script src="../generators/python/math.js"></script>
-<script src="../generators/python/text.js"></script>
-<script src="../generators/python/lists.js"></script>
-<script src="../generators/python/colour.js"></script>
-<script src="../generators/python/variables.js"></script>
-<script src="../generators/python/procedures.js"></script>
-<script src="../generators/php.js"></script>
-<script src="../generators/php/logic.js"></script>
-<script src="../generators/php/loops.js"></script>
-<script src="../generators/php/math.js"></script>
-<script src="../generators/php/text.js"></script>
-<script src="../generators/php/lists.js"></script>
-<script src="../generators/php/colour.js"></script>
-<script src="../generators/php/variables.js"></script>
-<script src="../generators/php/procedures.js"></script>
-<script src="../generators/lua.js"></script>
-<script src="../generators/lua/logic.js"></script>
-<script src="../generators/lua/loops.js"></script>
-<script src="../generators/lua/math.js"></script>
-<script src="../generators/lua/text.js"></script>
-<script src="../generators/lua/lists.js"></script>
-<script src="../generators/lua/colour.js"></script>
-<script src="../generators/lua/variables.js"></script>
-<script src="../generators/lua/procedures.js"></script>
-<script src="../generators/dart.js"></script>
-<script src="../generators/dart/logic.js"></script>
-<script src="../generators/dart/loops.js"></script>
-<script src="../generators/dart/math.js"></script>
-<script src="../generators/dart/text.js"></script>
-<script src="../generators/dart/lists.js"></script>
-<script src="../generators/dart/colour.js"></script>
-<script src="../generators/dart/variables.js"></script>
-<script src="../generators/dart/procedures.js"></script>
-<script src="../msg/messages.js"></script>
-<script src="../blocks/logic.js"></script>
-<script src="../blocks/loops.js"></script>
-<script src="../blocks/math.js"></script>
-<script src="../blocks/text.js"></script>
-<script src="../blocks/lists.js"></script>
-<script src="../blocks/colour.js"></script>
-<script src="../blocks/variables.js"></script>
-<script src="../blocks/procedures.js"></script>
-  <script src="../blocks/kiwifroot/math.js"></script>
-  <script src="../blocks/kiwifroot/events.js"></script>
-  <script src="../blocks/kiwifroot/game.js"></script>
-  <script src="../blocks/kiwifroot/instances.js"></script>
-  <script src="../blocks/kiwifroot/classes.js"></script>
-  <script src="../blocks/kiwifroot/inputs.js"></script>
-  <script src="../blocks/kiwifroot/sound.js"></script>
-  <script src="../blocks/kiwifroot/animation.js"></script>
-  <script src="../blocks/kiwifroot/camera.js"></script>
-  <script src="../blocks/kiwifroot/intersects.js"></script>
-  <script src="../blocks/kiwifroot/physics.js"></script>
-  <script src="../blocks/kiwifroot/messaging.js"></script>
-  <script src="../blocks/kiwifroot/deprecated.js"></script>
-  <script src="../blocks/kiwifroot/coordinate.js"></script>
-  <script src="../blocks/kiwifroot/log.js"></script>
-  <script src="../blocks/kiwifroot/plugins_primitives.js"></script>
-  <script src="../blocks/kiwifroot/plugins_text.js"></script>
-  <script src="../blocks/kiwifroot/hitbox.js"></script>
+    <meta charset="utf-8">
+    <title>Blockly Playground</title>
+    <script src="../blockly_uncompressed.js"></script>
+    <script src="../core/kiwifroot_variables.js"></script>
+    <script src="../generators/javascript.js"></script>
+    <script src="../generators/javascript/logic.js"></script>
+    <script src="../generators/javascript/loops.js"></script>
+    <script src="../generators/javascript/math.js"></script>
+    <script src="../generators/javascript/text.js"></script>
+    <script src="../generators/javascript/lists.js"></script>
+    <script src="../generators/javascript/colour.js"></script>
+    <script src="../generators/javascript/variables.js"></script>
+    <script src="../generators/javascript/procedures.js"></script>
+    <script src="../generators/kiwifroot.js"></script>
+    <script src="../generators/kiwifroot/text.js"></script>
+    <script src="../generators/kiwifroot/loops.js"></script>
+    <script src="../generators/kiwifroot/lists.js"></script>
+    <script src="../generators/kiwifroot/math.js"></script>
+    <script src="../generators/kiwifroot/colour.js"></script>
+    <script src="../generators/kiwifroot/variables.js"></script>
+    <script src="../generators/kiwifroot/procedures.js"></script>
+    <script src="../generators/kiwifroot/events.js"></script>
+    <script src="../generators/kiwifroot/game.js"></script>
+    <script src="../generators/kiwifroot/instances.js"></script>
+    <script src="../generators/kiwifroot/classes.js"></script>
+    <script src="../generators/kiwifroot/inputs.js"></script>
+    <script src="../generators/kiwifroot/sound.js"></script>
+    <script src="../generators/kiwifroot/animation.js"></script>
+    <script src="../generators/kiwifroot/camera.js"></script>
+    <script src="../generators/kiwifroot/intersects.js"></script>
+    <script src="../generators/kiwifroot/physics.js"></script>
+    <script src="../generators/kiwifroot/messaging.js"></script>
+    <script src="../generators/kiwifroot/deprecated.js"></script>
+    <script src="../generators/kiwifroot/coordinate.js"></script>
+    <script src="../generators/kiwifroot/log.js"></script>
+    <script src="../generators/kiwifroot/plugins_primitives.js"></script>
+    <script src="../generators/kiwifroot/plugins_text.js"></script>
+    <script src="../generators/kiwifroot/hitbox.js"></script>
+    <script src="../generators/python.js"></script>
+    <script src="../generators/python/logic.js"></script>
+    <script src="../generators/python/loops.js"></script>
+    <script src="../generators/python/math.js"></script>
+    <script src="../generators/python/text.js"></script>
+    <script src="../generators/python/lists.js"></script>
+    <script src="../generators/python/colour.js"></script>
+    <script src="../generators/python/variables.js"></script>
+    <script src="../generators/python/procedures.js"></script>
+    <script src="../generators/php.js"></script>
+    <script src="../generators/php/logic.js"></script>
+    <script src="../generators/php/loops.js"></script>
+    <script src="../generators/php/math.js"></script>
+    <script src="../generators/php/text.js"></script>
+    <script src="../generators/php/lists.js"></script>
+    <script src="../generators/php/colour.js"></script>
+    <script src="../generators/php/variables.js"></script>
+    <script src="../generators/php/procedures.js"></script>
+    <script src="../generators/lua.js"></script>
+    <script src="../generators/lua/logic.js"></script>
+    <script src="../generators/lua/loops.js"></script>
+    <script src="../generators/lua/math.js"></script>
+    <script src="../generators/lua/text.js"></script>
+    <script src="../generators/lua/lists.js"></script>
+    <script src="../generators/lua/colour.js"></script>
+    <script src="../generators/lua/variables.js"></script>
+    <script src="../generators/lua/procedures.js"></script>
+    <script src="../generators/dart.js"></script>
+    <script src="../generators/dart/logic.js"></script>
+    <script src="../generators/dart/loops.js"></script>
+    <script src="../generators/dart/math.js"></script>
+    <script src="../generators/dart/text.js"></script>
+    <script src="../generators/dart/lists.js"></script>
+    <script src="../generators/dart/colour.js"></script>
+    <script src="../generators/dart/variables.js"></script>
+    <script src="../generators/dart/procedures.js"></script>
+    <script src="../msg/messages.js"></script>
+    <!--<script src="../msg/kiwifroot/messages.js"></script>-->
+    <script src="../blocks/logic.js"></script>
+    <script src="../blocks/loops.js"></script>
+    <script src="../blocks/math.js"></script>
+    <script src="../blocks/text.js"></script>
+    <script src="../blocks/lists.js"></script>
+    <script src="../blocks/colour.js"></script>
+    <script src="../blocks/variables.js"></script>
+    <script src="../blocks/procedures.js"></script>
+    <script src="../blocks/kiwifroot/math.js"></script>
+    <script src="../blocks/kiwifroot/events.js"></script>
+    <script src="../blocks/kiwifroot/game.js"></script>
+    <script src="../blocks/kiwifroot/instances.js"></script>
+    <script src="../blocks/kiwifroot/classes.js"></script>
+    <script src="../blocks/kiwifroot/inputs.js"></script>
+    <script src="../blocks/kiwifroot/sound.js"></script>
+    <script src="../blocks/kiwifroot/animation.js"></script>
+    <script src="../blocks/kiwifroot/camera.js"></script>
+    <script src="../blocks/kiwifroot/intersects.js"></script>
+    <script src="../blocks/kiwifroot/physics.js"></script>
+    <script src="../blocks/kiwifroot/messaging.js"></script>
+    <script src="../blocks/kiwifroot/deprecated.js"></script>
+    <script src="../blocks/kiwifroot/coordinate.js"></script>
+    <script src="../blocks/kiwifroot/log.js"></script>
+    <script src="../blocks/kiwifroot/plugins_primitives.js"></script>
+    <script src="../blocks/kiwifroot/plugins_text.js"></script>
+    <script src="../blocks/kiwifroot/hitbox.js"></script>
 
     <!--<script src="../plugins/typeIndicator.js"></script>-->
 
-<script>
+    <script>
 
 
-'use strict';
-var workspace = null;
-var fakeDragStack = [];
+        'use strict';
+        var workspace = null;
+        var fakeDragStack = [];
 
-function start() {
-  // Parse the URL arguments.
-  var match = location.search.match(/dir=([^&]+)/);
-  var rtl = match && match[1] == 'rtl';
-  document.forms.options.elements.dir.selectedIndex = Number(rtl);
-  var toolbox = getToolboxElement();
-  document.forms.options.elements.toolbox.selectedIndex =
-      Number(toolbox.getElementsByTagName('category').length == 0);
-  match = location.search.match(/side=([^&]+)/);
-  var side = match ? match[1] : 'start';
-  document.forms.options.elements.side.value = side;
-  // Create main workspace.
-  workspace = Blockly.inject('blocklyDiv',
-          {comments: true,
-           collapse: true,
-           disable: true,
-           grid:
-             {spacing: 25,
-              length: 3,
-              colour: '#ccc',
-              snap: true},
-           horizontalLayout: side == 'top' || side == 'bottom',
-           maxBlocks: Infinity,
-           media: '../media/',
-           oneBasedIndex: true,
-           readOnly: false,
-           rtl: rtl,
-           scrollbars: true,
-           toolbox: toolbox,
-           toolboxPosition: side == 'top' || side == 'start' ? 'start' : 'end',
-           zoom:
-             {controls: true,
-              wheel: true,
-              startScale: 1.0,
-              maxScale: 4,
-              minScale: .25,
-              scaleSpeed: 1.1}
-          });
-  // Restore previously displayed text.
-  if (sessionStorage) {
-    var text = sessionStorage.getItem('textarea');
-    if (text) {
-      document.getElementById('importExport').value = text;
-    }
-    // Restore event logging state.
-    var state = sessionStorage.getItem('logEvents');
-    logEvents(Boolean(Number(state)));
-  } else {
-    // MSIE 11 does not support sessionStorage on file:// URLs.
-    logEvents(false);
-  }
-  taChange();
-}
+        function start() {
+            // Parse the URL arguments.
+            var match = location.search.match(/dir=([^&]+)/);
+            var rtl = match && match[1] == 'rtl';
+            document.forms.options.elements.dir.selectedIndex = Number(rtl);
+            var toolbox = getToolboxElement();
+            document.forms.options.elements.toolbox.selectedIndex =
+                Number(toolbox.getElementsByTagName('category').length == 0);
+            match = location.search.match(/side=([^&]+)/);
+            var side = match ? match[1] : 'start';
+            document.forms.options.elements.side.value = side;
+            // Create main workspace.
+            workspace = Blockly.inject('blocklyDiv',
+                {
+                    comments: true,
+                    collapse: true,
+                    disable: true,
+                    grid: {
+                        spacing: 25,
+                        length: 3,
+                        colour: '#ccc',
+                        snap: true
+                    },
+                    horizontalLayout: side == 'top' || side == 'bottom',
+                    maxBlocks: Infinity,
+                    media: '../media/',
+                    oneBasedIndex: true,
+                    readOnly: false,
+                    rtl: rtl,
+                    scrollbars: true,
+                    toolbox: toolbox,
+                    toolboxPosition: side == 'top' || side == 'start' ? 'start' : 'end',
+                    zoom: {
+                        controls: true,
+                        wheel: true,
+                        startScale: 1.0,
+                        maxScale: 4,
+                        minScale: .25,
+                        scaleSpeed: 1.1
+                    }
+                });
+            // Restore previously displayed text.
+            if (sessionStorage) {
+                var text = sessionStorage.getItem('textarea');
+                if (text) {
+                    document.getElementById('importExport').value = text;
+                }
+                // Restore event logging state.
+                var state = sessionStorage.getItem('logEvents');
+                logEvents(Boolean(Number(state)));
+            } else {
+                // MSIE 11 does not support sessionStorage on file:// URLs.
+                logEvents(false);
+            }
+            taChange();
+        }
 
-function getToolboxElement() {
-  var match = location.search.match(/toolbox=([^&]+)/);
-  return document.getElementById('toolbox-' + (match ? match[1] : 'categories'));
-}
+        function getToolboxElement() {
+            var match = location.search.match(/toolbox=([^&]+)/);
+            return document.getElementById('toolbox-' + (match ? match[1] : 'categories'));
+        }
 
-function toXml() {
-  var output = document.getElementById('importExport');
-  var xml = Blockly.Xml.workspaceToDom(workspace);
-  output.value = Blockly.Xml.domToPrettyText(xml);
-  output.focus();
-  output.select();
-  taChange();
-}
+        function toXml() {
+            var output = document.getElementById('importExport');
+            var xml = Blockly.Xml.workspaceToDom(workspace);
+            output.value = Blockly.Xml.domToPrettyText(xml);
+            output.focus();
+            output.select();
+            taChange();
+        }
 
-function fromXml() {
-  var input = document.getElementById('importExport');
-  var xml = Blockly.Xml.textToDom(input.value);
-  Blockly.Xml.domToWorkspace(xml, workspace);
-  taChange();
-}
+        function fromXml() {
+            var input = document.getElementById('importExport');
+            var xml = Blockly.Xml.textToDom(input.value);
+            Blockly.Xml.domToWorkspace(xml, workspace);
+            taChange();
+        }
 
-function toCode(lang) {
-  var output = document.getElementById('importExport');
-  output.value = Blockly[lang].workspaceToCode(workspace);
-  taChange();
-}
+        function toCode(lang) {
+            var output = document.getElementById('importExport');
+            output.value = Blockly[lang].workspaceToCode(workspace);
+            taChange();
+        }
 
-// Disable the "Import from XML" button if the XML is invalid.
-// Preserve text between page reloads.
-function taChange() {
-  var textarea = document.getElementById('importExport');
-  if (sessionStorage) {
-    sessionStorage.setItem('textarea', textarea.value);
-  }
-  var valid = true;
-  try {
-    Blockly.Xml.textToDom(textarea.value);
-  } catch (e) {
-    valid = false;
-  }
-  document.getElementById('import').disabled = !valid;
-}
+        // Disable the "Import from XML" button if the XML is invalid.
+        // Preserve text between page reloads.
+        function taChange() {
+            var textarea = document.getElementById('importExport');
+            if (sessionStorage) {
+                sessionStorage.setItem('textarea', textarea.value);
+            }
+            var valid = true;
+            try {
+                Blockly.Xml.textToDom(textarea.value);
+            } catch (e) {
+                valid = false;
+            }
+            document.getElementById('import').disabled = !valid;
+        }
 
-function logEvents(state) {
-  var checkbox = document.getElementById('logCheck');
-  checkbox.checked = state;
-  if (sessionStorage) {
-    sessionStorage.setItem('logEvents', Number(state));
-  }
-  if (state) {
-    workspace.addChangeListener(logger);
-  } else {
-    workspace.removeChangeListener(logger);
-  }
-}
+        function logEvents(state) {
+            var checkbox = document.getElementById('logCheck');
+            checkbox.checked = state;
+            if (sessionStorage) {
+                sessionStorage.setItem('logEvents', Number(state));
+            }
+            if (state) {
+                workspace.addChangeListener(logger);
+            } else {
+                workspace.removeChangeListener(logger);
+            }
+        }
 
-function logger(e) {
-  console.log(e);
-}
+        function logger(e) {
+            console.log(e);
+        }
 
-function airstrike(n) {
-  var prototypes = [];
-  var toolbox = getToolboxElement();
-  var blocks = toolbox.getElementsByTagName('block');
-  for (var i = 0, block; block = blocks[i]; i++) {
-    prototypes.push(block.getAttribute('type'));
-  }
-  for (var i = 0; i < n; i++) {
-    var prototype = prototypes[Math.floor(Math.random() * prototypes.length)];
-    var block = workspace.newBlock(prototype);
-    block.initSvg();
-    block.getSvgRoot().setAttribute('transform', 'translate(' +
-        Math.round(Math.random() * 450 + 40) + ', ' +
-        Math.round(Math.random() * 600 + 40) + ')');
-    block.render();
-  }
-}
+        function airstrike(n) {
+            var prototypes = [];
+            var toolbox = getToolboxElement();
+            var blocks = toolbox.getElementsByTagName('block');
+            for (var i = 0, block; block = blocks[i]; i++) {
+                prototypes.push(block.getAttribute('type'));
+            }
+            for (var i = 0; i < n; i++) {
+                var prototype = prototypes[Math.floor(Math.random() * prototypes.length)];
+                var block = workspace.newBlock(prototype);
+                block.initSvg();
+                block.getSvgRoot().setAttribute('transform', 'translate(' +
+                    Math.round(Math.random() * 450 + 40) + ', ' +
+                    Math.round(Math.random() * 600 + 40) + ')');
+                block.render();
+            }
+        }
 
-function fakeDrag(id, dx, dy, opt_workspace) {
-  var ws = opt_workspace || Blockly.getMainWorkspace();
-  var blockToDrag = ws.getBlockById(id);
+        function fakeDrag(id, dx, dy, opt_workspace) {
+            var ws = opt_workspace || Blockly.getMainWorkspace();
+            var blockToDrag = ws.getBlockById(id);
 
-  if (!blockToDrag) {
-    fakeDragWrapper();
-    return;
-  }
-  var blockTop = blockToDrag.svgGroup_.getBoundingClientRect().top;
-  var blockLeft = blockToDrag.svgGroup_.getBoundingClientRect().left;
+            if (!blockToDrag) {
+                fakeDragWrapper();
+                return;
+            }
+            var blockTop = blockToDrag.svgGroup_.getBoundingClientRect().top;
+            var blockLeft = blockToDrag.svgGroup_.getBoundingClientRect().left;
 
-  // Click somewhere on the block.
-  var mouseDownEvent = new MouseEvent('mousedown',
-      {clientX: blockLeft + 5, clientY: blockTop + 5});
-  blockToDrag.onMouseDown_(mouseDownEvent);
+            // Click somewhere on the block.
+            var mouseDownEvent = new MouseEvent('mousedown',
+                {clientX: blockLeft + 5, clientY: blockTop + 5});
+            blockToDrag.onMouseDown_(mouseDownEvent);
 
-  // Throw in a move for good measure.
-  setTimeout(
-    function() {
-      var mouseMoveEvent = new MouseEvent('mousemove',
-          {clientX: blockLeft + dx,
-          clientY: blockTop + dy});
-      blockToDrag.onMouseMove_(mouseMoveEvent);
+            // Throw in a move for good measure.
+            setTimeout(
+                function () {
+                    var mouseMoveEvent = new MouseEvent('mousemove',
+                        {
+                            clientX: blockLeft + dx,
+                            clientY: blockTop + dy
+                        });
+                    blockToDrag.onMouseMove_(mouseMoveEvent);
 
-      // Drop at dx, dy.
-      setTimeout(
-        function() {
-          var mouseUpEvent = new MouseEvent('mouseup',
-              {clientX: blockLeft + dx,
-              clientY: blockTop + dy});
-          blockToDrag.onMouseUp_(mouseUpEvent);
+                    // Drop at dx, dy.
+                    setTimeout(
+                        function () {
+                            var mouseUpEvent = new MouseEvent('mouseup',
+                                {
+                                    clientX: blockLeft + dx,
+                                    clientY: blockTop + dy
+                                });
+                            blockToDrag.onMouseUp_(mouseUpEvent);
 
-          setTimeout(fakeDragWrapper(), 100);
-        }, 30);
-    }, 30);
-};
+                            setTimeout(fakeDragWrapper(), 100);
+                        }, 30);
+                }, 30);
+        }
+        ;
 
-function fakeDragWrapper() {
-  var dragInfo = fakeDragStack.pop();
-  if (dragInfo) {
-    fakeDrag(dragInfo.id, dragInfo.dx, dragInfo.dy, dragInfo.workspace);
-  }
-}
+        function fakeDragWrapper() {
+            var dragInfo = fakeDragStack.pop();
+            if (dragInfo) {
+                fakeDrag(dragInfo.id, dragInfo.dx, dragInfo.dy, dragInfo.workspace);
+            }
+        }
 
-function fakeManyDrags() {
-  var blockList = workspace.getAllBlocks();
-  for (var i = 0; i < 2 * blockList.length; i++) {
-    fakeDragStack.push(
-      {
-        id: blockList[Math.round(Math.random() * (blockList.length - 1))].id,
-        // Move some blocks up and to the left, but mostly down and to the right.
-        dx: Math.round((Math.random() - 0.25) * 200),
-        dy: Math.round((Math.random() - 0.25) * 200),
-        workspace: workspace
-      });
-  }
-  fakeDragWrapper();
-}
+        function fakeManyDrags() {
+            var blockList = workspace.getAllBlocks();
+            for (var i = 0; i < 2 * blockList.length; i++) {
+                fakeDragStack.push(
+                    {
+                        id: blockList[Math.round(Math.random() * (blockList.length - 1))].id,
+                        // Move some blocks up and to the left, but mostly down and to the right.
+                        dx: Math.round((Math.random() - 0.25) * 200),
+                        dy: Math.round((Math.random() - 0.25) * 200),
+                        workspace: workspace
+                    });
+            }
+            fakeDragWrapper();
+        }
 
-function spaghetti(n) {
-  var xml = spaghettiXml;
-  for(var i = 0; i < n; i++) {
-    xml = xml.replace(/(<(statement|next)( name="DO0")?>)<\//g,
-        '$1' + spaghettiXml + '</');
-  }
-  xml = '<xml xmlns="http://www.w3.org/1999/xhtml">' + xml + '</xml>';
-  var dom = Blockly.Xml.textToDom(xml);
-  console.time('Spaghetti domToWorkspace');
-  Blockly.Xml.domToWorkspace(dom, workspace);
-  console.timeEnd('Spaghetti domToWorkspace');
-}
-var spaghettiXml = [
-  '  <block type="controls_if">',
-  '    <value name="IF0">',
-  '      <block type="logic_compare">',
-  '        <field name="OP">EQ</field>',
-  '        <value name="A">',
-  '          <block type="math_arithmetic">',
-  '            <field name="OP">MULTIPLY</field>',
-  '            <value name="A">',
-  '              <block type="math_number">',
-  '                <field name="NUM">6</field>',
-  '              </block>',
-  '            </value>',
-  '            <value name="B">',
-  '              <block type="math_number">',
-  '                <field name="NUM">7</field>',
-  '              </block>',
-  '            </value>',
-  '          </block>',
-  '        </value>',
-  '        <value name="B">',
-  '          <block type="math_number">',
-  '            <field name="NUM">42</field>',
-  '          </block>',
-  '        </value>',
-  '      </block>',
-  '    </value>',
-  '    <statement name="DO0"></statement>',
-  '    <next></next>',
-  '  </block>'].join('\n');
+        function spaghetti(n) {
+            var xml = spaghettiXml;
+            for (var i = 0; i < n; i++) {
+                xml = xml.replace(/(<(statement|next)( name="DO0")?>)<\//g,
+                    '$1' + spaghettiXml + '</');
+            }
+            xml = '<xml xmlns="http://www.w3.org/1999/xhtml">' + xml + '</xml>';
+            var dom = Blockly.Xml.textToDom(xml);
+            console.time('Spaghetti domToWorkspace');
+            Blockly.Xml.domToWorkspace(dom, workspace);
+            console.timeEnd('Spaghetti domToWorkspace');
+        }
+        var spaghettiXml = [
+            '  <block type="controls_if">',
+            '    <value name="IF0">',
+            '      <block type="logic_compare">',
+            '        <field name="OP">EQ</field>',
+            '        <value name="A">',
+            '          <block type="math_arithmetic">',
+            '            <field name="OP">MULTIPLY</field>',
+            '            <value name="A">',
+            '              <block type="math_number">',
+            '                <field name="NUM">6</field>',
+            '              </block>',
+            '            </value>',
+            '            <value name="B">',
+            '              <block type="math_number">',
+            '                <field name="NUM">7</field>',
+            '              </block>',
+            '            </value>',
+            '          </block>',
+            '        </value>',
+            '        <value name="B">',
+            '          <block type="math_number">',
+            '            <field name="NUM">42</field>',
+            '          </block>',
+            '        </value>',
+            '      </block>',
+            '    </value>',
+            '    <statement name="DO0"></statement>',
+            '    <next></next>',
+            '  </block>'].join('\n');
 
-</script>
+    </script>
 
-<style>
-html, body {
-  height: 100%;
-}
-body {
-  background-color: #fff;
-  font-family: sans-serif;
-  overflow: hidden;
-}
-h1 {
-  font-weight: normal;
-  font-size: 140%;
-}
-#blocklyDiv {
-  float: right;
-  height: 95%;
-  width: 70%;
-}
-#importExport {
-  font-family: monospace;
-}
+    <style>
+        html, body {
+            height: 100%;
+        }
 
-.ioLabel>.blocklyFlyoutLabelText {
-  font-style: italic;
-}
+        body {
+            background-color: #fff;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
 
-</style>
+        h1 {
+            font-weight: normal;
+            font-size: 140%;
+        }
+
+        #blocklyDiv {
+            float: right;
+            height: 95%;
+            width: 70%;
+        }
+
+        #importExport {
+            font-family: monospace;
+        }
+
+        .ioLabel > .blocklyFlyoutLabelText {
+            font-style: italic;
+        }
+
+    </style>
 </head>
 <body onload="start()">
 
-  <div id="blocklyDiv"></div>
+<div id="blocklyDiv"></div>
 
-  <h1>Blockly Playground</h1>
+<h1>Blockly Playground</h1>
 
-  <p><a href="javascript:void(workspace.setVisible(true))">Show</a>
-   - <a href="javascript:void(workspace.setVisible(false))">Hide</a></p>
+<p><a href="javascript:void(workspace.setVisible(true))">Show</a>
+    - <a href="javascript:void(workspace.setVisible(false))">Hide</a></p>
 
-  <form id="options">
+<form id="options">
     <select name="dir" onchange="document.forms.options.submit()">
-      <option value="ltr">LTR</option>
-      <option value="rtl">RTL</option>
+        <option value="ltr">LTR</option>
+        <option value="rtl">RTL</option>
     </select>
     <select name="toolbox" onchange="document.forms.options.submit()">
-      <option value="categories">Categories</option>
-      <option value="simple">Simple</option>
+        <option value="categories">Categories</option>
+        <option value="simple">Simple</option>
     </select>
     <select name="side" onchange="document.forms.options.submit()">
-      <option value="start">Start</option>
-      <option value="end">End</option>
-      <option value="top">Top</option>
-      <option value="bottom">Bottom</option>
+        <option value="start">Start</option>
+        <option value="end">End</option>
+        <option value="top">Top</option>
+        <option value="bottom">Bottom</option>
     </select>
-  </form>
+</form>
 
-  <p>
+<p>
     <input type="button" value="Export to XML" onclick="toXml()">
     &nbsp;
     <input type="button" value="Import from XML" onclick="fromXml()" id="import">
@@ -417,1544 +431,1543 @@ h1 {
     <input type="button" value="To Dart" onclick="toCode('Dart')">
     <br>
     <textarea id="importExport" style="width: 26%; height: 12em"
-      onchange="taChange();" onkeyup="taChange()"></textarea>
-  </p>
+              onchange="taChange();" onkeyup="taChange()"></textarea>
+</p>
 
-  <p>
+<p>
     Stress test: &nbsp;
     <input type="button" value="Airstrike!" onclick="airstrike(100)">
     <input type="button" value="Spaghetti!" onclick="spaghetti(8)">
     <input type="button" value="Fake some drags!" onclick="fakeManyDrags()">
-  </p>
-  <p>
+</p>
+<p>
     Log events: &nbsp;
     <input type="checkbox" onclick="logEvents(this.checked)" id="logCheck">
-  </p>
+</p>
 
-  <xml id="toolbox-simple" style="display: none">
+<xml id="toolbox-simple" style="display: none">
     <block type="controls_ifelse"></block>
     <block type="logic_compare"></block>
     <!-- <block type="control_repeat"></block> -->
     <block type="logic_operation"></block>
     <block type="controls_repeat_ext">
-      <value name="TIMES">
-        <shadow type="math_number">
-          <field name="NUM">10</field>
-        </shadow>
-      </value>
+        <value name="TIMES">
+            <shadow type="math_number">
+                <field name="NUM">10</field>
+            </shadow>
+        </value>
     </block>
     <block type="logic_operation"></block>
     <block type="logic_negate"></block>
     <block type="logic_boolean"></block>
     <block type="logic_null" disabled="true"></block>
     <block type="logic_ternary"></block>
-  </xml>
-
-  <xml id="toolbox-categories" style="display: none">
-      <category name="Events" colour="#edae00" >
-
-          <label text="Events" web-class="ioLabel"></label>
-          <block type="kiwi_event_level_start"></block>
-          <block type="kiwi_event_time">
-              <value name="MILLISECOND">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_event_create"></block>
-          <block type="kiwi_event_remove"></block>
-          <block type="kiwi_event_constantly_dropdown"></block>
-
-          <label text="Mouse" web-class="ioLabel"></label>
-          <block type="kiwi_event_stage_input"></block>
-          <block type="kiwi_event_inst_input">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-
-          <label text="Keyboard" web-class="ioLabel"></label>
-          <block type="kiwi_event_key_input">
-              <value name="KEY">
-                  <block type="kiwi_key_special"></block>
-              </value>
-          </block>
-
-          <label text="Touch" web-class="ioLabel"></label>
-          <block type="kiwi_event_stage_touched_local"></block>
-
-          <label text="Keys" web-class="ioLabel"></label>
-          <block type="kiwi_event_instance_properties_set">
-              <value name="PROP_NAME">
-                  <block type="text">
-                      <field name="TEXT">name</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_instance_properties_set">
-              <value name="PROP_NAME">
-                  <block type="text">
-                      <field name="TEXT">name</field>
-                  </block>
-              </value>
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-          <block type="kiwi_instance_properties_get">
-              <value name="PROP_NAME">
-                  <block type="text">
-                      <field name="TEXT">name</field>
-                  </block>
-              </value>
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-
-          <label text="Message Sensing" web-class="ioLabel"></label>
-          <block type="kiwi_event_message">
-              <value name="MESSAGE">
-                  <block type="text">
-                      <field name="TEXT">message</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_event_message_value_local">
-              <value name="MESSAGE">
-                  <block type="text">
-                      <field name="TEXT">message</field>
-                  </block>
-              </value>
-          </block>
-
-          <label text="Message Sending" web-class="ioLabel"></label>
-          <block type="kiwi_messaging_instance">
-              <value name="MESSAGE">
-                  <block type="text">
-                      <field name="TEXT">message</field>
-                  </block>
-              </value>
-              <value name="INST">
-                  <block type="variables_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">Other</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_messaging_list">
-              <value name="MESSAGE">
-                  <block type="text">
-                      <field name="TEXT">message</field>
-                  </block>
-              </value>
-              <value name="LIST">
-                  <block type="kiwi_classes_get_all_instances">
-                      <value name="CLASS">
-                          <block type="variables_get">
-                              <field name="TYPE">Class</field>
-                              <field name="VAR">Class</field>
-                          </block>
-                      </value>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_messaging_everyone">
-              <value name="MESSAGE">
-                  <block type="text">
-                      <field name="TEXT">message</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_messaging_instance_value">
-              <value name="MESSAGE">
-                  <block type="text">
-                      <field name="TEXT">message</field>
-                  </block>
-              </value>
-              <value name="INST">
-                  <block type="variables_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">Other</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_messaging_everyone_value">
-              <value name="MESSAGE">
-                  <block type="text">
-                      <field name="TEXT">message</field>
-                  </block>
-              </value>
-          </block>
-
-      </category>
-
-      <category name="Control Flow" colour="#ff8601" >
-
-          <block type="kiwi_game_goto_level_num">
-              <value name="LEVEL">
-                  <block type="kiwi_game_level_special"></block>
-              </value>
-          </block>
-          <block type="kiwi_instance_death">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-
-          <label text="Conditionals" web-class="ioLabel"></label>
-          <block type="controls_if"></block>
-
-          <label text="Loops" web-class="ioLabel"></label>
-          <block type="controls_repeat_ext">
-              <value name="TIMES">
-                  <block type="math_number">
-                      <field name="NUM">10</field>
-                  </block>
-              </value>
-          </block>
-          <block type="controls_whileUntil"></block>
-          <block type="controls_for_local">
-              <value name="FROM">
-                  <block type="math_number">
-                      <field name="NUM">1</field>
-                  </block>
-              </value>
-              <value name="TO">
-                  <block type="math_number">
-                      <field name="NUM">10</field>
-                  </block>
-              </value>
-              <value name="BY">
-                  <block type="math_number">
-                      <field name="NUM">1</field>
-                  </block>
-              </value>
-          </block>
-          <block type="controls_forEach_local"></block>
-          <block type="controls_flow_statements"></block>
-
-          <label text="Time" web-class="ioLabel"></label>
-          <block type="kiwi_event_time_single">
-              <value name="MILLISECOND">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_game_time_method"></block>
-
-          <label text="Device" web-class="ioLabel"></label>
-          <block type="kiwi_device_cocoon"></block>
-
-          <label text="Debug" web-class="ioLabel"></label>
-          <block type="kiwi_set_debug_mode">
-              <value name="SET_DEBUG">
-                  <block type="logic_boolean"></block>
-              </value>
-          </block>
-
-          <block type="kiwi_get_debug_mode"></block>
-          <block type="kiwi_log"></block>
-          <block type="text_print"></block>
-      </category>
-
-
-      <category name="Physics" colour="#e66b2f" >
-
-          <label text="Hitbox" web-class="ioLabel"></label>
-          <block type="kiwi_hitbox_position_get"></block>
-          <block type="kiwi_hitbox_dimensions_get"></block>
-          <block type="kiwi_hitbox_offset_get"></block>
-
-          <label text="Events" web-class="ioLabel"></label>
-          <block type="kiwi_event_touch_on">
-              <value name="INST">
-                  <block type="variables_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">Other</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_event_touch_return_instance_local"></block>
-
-          <label text="Gravity" web-class="ioLabel"></label>
-          <block type="kiwi_arcadephysics_set_gravity">
-              <value name="VALUE">
-                  <block type="math_number"></block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_get_gravity"></block>
-
-          <label text="Motion" web-class="ioLabel"></label>
-          <block type="kiwi_arcadephysics_set_numeric_velocity">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_set_numeric_acceleration">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_set_numeric_max_velo">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_set_numeric_drag">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_get_numeric_velocity"></block>
-          <block type="kiwi_arcadephysics_get_numeric_acceleration"></block>
-          <block type="kiwi_arcadephysics_get_numeric_max_velo"></block>
-          <block type="kiwi_arcadephysics_get_numeric_drag"></block>
-
-          <label text="Collisions" web-class="ioLabel"></label>
-          <block type="kiwi_arcadephysics_set_collisions">
-              <value name="VALUE">
-                  <block type="logic_boolean"></block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_get_collisions_touching"></block>
-          <block type="kiwi_arcadephysics_get_collisions_was_touching"></block>
-          <block type="kiwi_arcadephysics_get_collisions_can_collide"></block>
-
-          <label text="Probes" web-class="ioLabel"></label>
-          <block type="kiwi_arcadephysics_probe">
-              <value name="X_POS">
-                  <block type="math_number"></block>
-              </value>
-              <value name="Y_POS">
-                  <block type="math_number"></block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_probe_layer">
-              <value name="X_POS">
-                  <block type="math_number"></block>
-              </value>
-              <value name="Y_POS">
-                  <block type="math_number"></block>
-              </value>
-              <value name="LAYER">
-                  <block type="math_number"></block>
-              </value>
-          </block>
-
-          <label text="Misc" web-class="ioLabel"></label>
-          <block type="kiwi_arcadephysics_set_boolean_enabled">
-              <value name="VALUE">
-                  <block type="logic_boolean"></block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_set_boolean_moves">
-              <value name="VALUE">
-                  <block type="logic_boolean"></block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_set_boolean_immovable">
-              <value name="VALUE">
-                  <block type="logic_boolean"></block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_set_boolean_gravity">
-              <value name="VALUE">
-                  <block type="logic_boolean"></block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_set_numeric_misc">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_arcadephysics_get_boolean_enabled"></block>
-          <block type="kiwi_arcadephysics_get_boolean_moves"></block>
-          <block type="kiwi_arcadephysics_get_boolean_immovable"></block>
-          <block type="kiwi_arcadephysics_get_boolean_gravity"></block>
-          <block type="kiwi_arcadephysics_get_numeric_misc"></block>
-          <block type="kiwi_arcadephysics_get_rotation_from"></block>
-
-      </category>
-
-      <category name="Transform" colour="#e54e43" >
-          <block type="kiwi_instance_set_position">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_instance_set_rotation">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_instance_set_scale">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_instance_set_anchor_point">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_instance_get_position">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-          <block type="kiwi_instance_get_rotation">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-          <block type="kiwi_instance_get_scale">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-          <block type="kiwi_instance_get_anchor_point">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-          <block type="kiwi_instance_get_dimensions">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-
-          <label text="Location" web-class="ioLabel"></label>
-          <block type="kiwi_coordinate_create">
-              <value name="X">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-              <value name="Y">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-
-          <block type="kiwi_instance_set_position_from_location">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-
-          <block type="kiwi_coordinate_set">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-
-          <block type="kiwi_instance_get_location_from_position">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-
-          <block type="kiwi_coordinate_get"></block>
-
-          <block type="kiwi_coordinate_get_angle">
-          </block>
-
-      </category>
-
-      <category name="Animation" colour="#df358e">
-          <block type="kiwi_event_animation">
-              <value name="ANIM">
-                  <block type="text">
-                      <field name="TEXT">name</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_animation_play">
-              <value name="TEXT">
-                  <block type="text">
-                      <field name="TEXT">name</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_animation_frame"></block>
-          <block type="kiwi_animation_state"></block>
-          <block type="kiwi_animation_current"></block>
-          <block type="kiwi_animation_numbers"></block>
-          <block type="kiwi_animation_booleans"></block>
-      </category>
-
-      <category name="Looks" colour="#b443c9" >
-
-          <block type="kiwi_instance_set_visible">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-              <value name="VISIBLE">
-                  <block type="logic_boolean"></block>
-              </value>
-          </block>
-          <block type="kiwi_instance_set_alpha">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_instance_get_visible">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-          <block type="kiwi_instance_get_alpha">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-
-          <label text="Stage" web-class="ioLabel"></label>
-          <block type="kiwi_game_stage_set_colour">
-              <value name="VALUE">
-                  <block type="colour_picker"></block>
-              </value>
-          </block>
-          <block type="kiwi_game_stage_get_colour"></block>
-
-          <label text="Camera" web-class="ioLabel"></label>
-          <block type="kiwi_camera_go_to">
-              <value name="X_POS">
-                  <block type="math_number"></block>
-              </value>
-              <value name="Y_POS">
-                  <block type="math_number"></block>
-              </value>
-          </block>
-          <block type="kiwi_camera_set_speed">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_camera_set_offset">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_camera_scale">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">1</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_camera_get_read_only_position"></block>
-          <block type="kiwi_camera_get_speed"></block>
-          <block type="kiwi_camera_get_offset"></block>
-          <block type="kiwi_camera_scale_get"></block>
-          <block type="kiwi_camera_get_read_only_dimensions"></block>
-
-          <label text="Camera Lock" web-class="ioLabel"></label>
-          <block type="kiwi_camera_center_on_instance">
-              <value name="INSTANCE">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-          <block type="kiwi_camera_state"></block>
-
-          <label text="Camera Boundaries" web-class="ioLabel"></label>
-          <block type="kiwi_camera_set_min">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_camera_set_max">
-              <value name="VALUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_camera_get_min"></block>
-          <block type="kiwi_camera_get_max"></block>
-
-          <label text="Depth" web-class="ioLabel"></label>
-          <block type="kiwi_instance_move">
-              <value name="INST_ONE">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-              <value name="INST_TWO">
-                  <block type="variables_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">Other</field>
-                  </block>
-              </value>
-          </block>
-
-      </category>
-
-      <category name="Sensing" colour="#8121e7">
-
-          <block type="kiwi_instance_self"></block>
-
-          <label text="Mouse" web-class="ioLabel"></label>
-          <block type="kiwi_input_mouse"></block>
-          <block type="math_arithmetic">
-              <value name="A">
-                  <block type="kiwi_input_mouse"></block>
-              </value>
-              <value name="B">
-                  <block type="kiwi_camera_get_read_only_position"></block>
-              </value>
-          </block>
-
-          <label text="Touch" web-class="ioLabel"></label>
-          <block type="kiwi_input_fingers"></block>
-          <block type="kiwi_input_finger_select"></block>
-          <block type="kiwi_input_finger_latest"></block>
-          <block type="kiwi_input_finger_get_coords">
-              <value name="POINTER">
-                  <block type="kiwi_input_finger_select"></block>
-              </value>
-          </block>
-          <block type="kiwi_input_finger_get_bool">
-              <value name="POINTER">
-                  <block type="kiwi_input_finger_select"></block>
-              </value>
-          </block>
-          <block type="kiwi_input_finger_get_times">
-              <value name="POINTER">
-                  <block type="kiwi_input_finger_select"></block>
-              </value>
-          </block>
-
-          <label text="Tagging" web-class="ioLabel"></label>
-          <block type="kiwi_instance_tag_management">
-              <value name="TAG">
-                  <block type="text">
-                      <field name="TEXT">tag name</field>
-                  </block>
-              </value>
-              <value name="INSTANCE">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-          <block type="kiwi_instance_has_tags">
-              <value name="TAG">
-                  <block type="text">
-                      <field name="TEXT">tag name</field>
-                  </block>
-              </value>
-              <value name="INSTANCE">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-          <block type="kiwi_instance_get_by_tag">
-              <value name="TAG">
-                  <block type="text">
-                      <field name="TEXT">tag name</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_instance_get_all_by_tag">
-              <value name="TAG">
-                  <block type="text">
-                      <field name="TEXT">tag name</field>
-                  </block>
-              </value>
-          </block>
-
-          <label text="Game" web-class="ioLabel"></label>
-          <block type="kiwi_game_get_time"></block>
-          <block type="kiwi_game_stage_get_size"></block>
-
-          <label text="Class" web-class="ioLabel"></label>
-          <block type="kiwi_classes_instance_type">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-          </block>
-          <block type="kiwi_classes_get_instance">
-              <value name="CLASS">
-                  <block type="variables_get">
-                      <field name="TYPE">Class</field>
-                      <field name="VAR">Class</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_classes_get_all_instances">
-              <value name="CLASS">
-                  <block type="variables_get">
-                      <field name="TYPE">Class</field>
-                      <field name="VAR">Class</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_classes_get_by_text">
-              <value name="TEXT">
-                  <block type="text">
-                      <field name="TEXT">name</field>
-                  </block>
-              </value>
-          </block>
-
-          <label text="Misc" web-class="ioLabel"></label>
-          <block type="kiwi_intersects_instance_to_instance">
-              <value name="INST_ONE">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-              <value name="INST_TWO">
-                  <block type="variables_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">Toucher</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_intersects_instance_to_xy">
-              <value name="INST">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-              <value name="X_LOC">
-                  <block type="math_number"></block>
-              </value>
-              <value name="Y_LOC">
-                  <block type="math_number"></block>
-              </value>
-          </block>
-          <block type="kiwi_math_instance">
-              <value name="INST_ONE">
-                  <block type="kiwi_instance_self"></block>
-              </value>
-              <value name="INST_TWO">
-                  <block type="variables_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">Other</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_math_xy_to_xy">
-              <value name="X_LOC_ONE">
-                  <block type="math_number"></block>
-              </value>
-              <value name="Y_LOC_ONE">
-                  <block type="math_number"></block>
-              </value>
-              <value name="X_LOC_TWO">
-                  <block type="math_number"></block>
-              </value>
-              <value name="Y_LOC_TWO">
-                  <block type="math_number"></block>
-              </value>
-          </block>
-          <block type="kiwi_math_lerp">
-              <value name="VALUE_A">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-              <value name="VALUE_B">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-              <value name="TIME">
-                  <block type="math_number">
-                      <field name="NUM">0.5</field>
-                  </block>
-              </value>
-          </block>
-
-      </category>
-
-      <category name="Sound" colour="#0f6bf0" >
-
-          <block type="kiwi_sound_play_background">
-              <value name="SOUND">
-                  <block type="variables_get">
-                      <field name="TYPE">Sound</field>
-                      <field name="VAR">Sound</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_sound_play_effect">
-              <value name="SOUND">
-                  <block type="variables_get">
-                      <field name="TYPE">Sound</field>
-                      <field name="VAR">Sound</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_sound_background_state"></block>
-          <block type="kiwi_sound_set_volume">
-              <value name="VOLUME">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-          </block>
-
-
-
-          <block type="kiwi_sound_set_mute">
-              <value name="STATE">
-                  <block type="logic_boolean"></block>
-              </value>
-          </block>
-          <block type="kiwi_sound_get_volume"></block>
-          <block type="kiwi_sound_get_mute"></block>
-          <block type="kiwi_get_editor_sounds"></block>
-
-      </category>
-
-      <category name="Operators" colour="#21aefe" >
-
-          <label text="Boolean" web-class="ioLabel"></label>
-          <block type="logic_compare"></block>
-          <block type="logic_operation"></block>
-          <block type="logic_negate"></block>
-          <block type="logic_boolean"></block>
-          <block type="logic_null"></block>
-          <block type="logic_ternary"></block>
-
-          <label text="Numeric" web-class="ioLabel"></label>
-
-          <block type="math_number"></block>
-          <block type="math_arithmetic"></block>
-          <block type="math_single"></block>
-          <block type="math_trig"></block>
-          <block type="math_constant"></block>
-          <block type="math_number_property"></block>
-          <block type="math_change">
-              <value name="DELTA">
-                  <block type="math_number">
-                      <field name="NUM">1</field>
-                  </block>
-              </value>
-          </block>
-          <block type="math_round"></block>
-          <block type="math_on_list"></block>
-          <block type="math_modulo"></block>
-          <block type="math_constrain">
-              <value name="LOW">
-                  <block type="math_number">
-                      <field name="NUM">1</field>
-                  </block>
-              </value>
-              <value name="HIGH">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-          </block>
-          <block type="math_random_int">
-              <value name="FROM">
-                  <block type="math_number">
-                      <field name="NUM">1</field>
-                  </block>
-              </value>
-              <value name="TO">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-          </block>
-          <block type="math_random_float"></block>
-          <block type="kiwi_math_utils">
-              <value name="INPUT">
-                  <block type="math_number"></block>
-              </value>
-          </block>
-
-          <block type="text_prompt_ext">
-              <value name="NUMBER">
-                  <shadow type="text">
-                      <field name="TEXT"></field>
-                  </shadow>
-              </value>
-          </block>
-
-          <label text="Text" web-class="ioLabel"></label>
-          <block type="text"></block>
-          <block type="text_join"></block>
-          <block type="text_append">
-              <value name="TEXT">
-                  <block type="text"></block>
-              </value>
-          </block>
-          <block type="text_length"></block>
-          <block type="text_isEmpty"></block>
-          <block type="text_indexOf">
-              <value name="VALUE">
-                  <block type="variables_get">
-                      <field name="TYPE">String</field>
-                      <field name="VAR">text</field>
-                  </block>
-              </value>
-          </block>
-          <block type="text_charAt">
-              <value name="VALUE">
-                  <block type="variables_get">
-                      <field name="TYPE">String</field>
-                      <field name="VAR">text</field>
-                  </block>
-              </value>
-          </block>
-          <block type="text_getSubstring">
-              <value name="STRING">
-                  <block type="variables_get">
-                      <field name="TYPE">String</field>
-                      <field name="VAR">text</field>
-                  </block>
-              </value>
-          </block>
-          <block type="text_changeCase"></block>
-          <block type="text_trim"></block>
-
-          <block type="text_prompt_ext">
-              <value name="TEXT">
-                  <shadow type="text">
-                      <field name="TEXT">abc</field>
-                  </shadow>
-              </value>
-          </block>
-
-          <label text="Lists" web-class="ioLabel"></label>
-          <block type="lists_create_empty"></block>
-          <block type="lists_create_with"></block>
-          <block type="lists_repeat">
-              <value name="NUM">
-                  <block type="math_number">
-                      <field name="NUM">5</field>
-                  </block>
-              </value>
-          </block>
-          <block type="lists_length"></block>
-          <block type="lists_isEmpty"></block>
-          <block type="lists_indexOf">
-              <value name="VALUE">
-                  <block type="variables_get">
-                      <field name="TYPE">Array</field>
-                      <field name="VAR">list</field>
-                  </block>
-              </value>
-          </block>
-          <block type="lists_getIndex">
-              <value name="VALUE">
-                  <block type="variables_get">
-                      <field name="TYPE">Array</field>
-                      <field name="VAR">list</field>
-                  </block>
-              </value>
-          </block>
-          <block type="lists_setIndex">
-              <value name="LIST">
-                  <block type="variables_get">
-                      <field name="TYPE">Array</field>
-                      <field name="VAR">list</field>
-                  </block>
-              </value>
-          </block>
-          <block type="lists_getSublist">
-              <value name="LIST">
-                  <block type="variables_get">
-                      <field name="TYPE">Array</field>
-                      <field name="VAR">list</field>
-                  </block>
-              </value>
-          </block>
-          <block type="lists_split">
-              <value name="DELIM">
-                  <block type="text">
-                      <field name="TEXT">,</field>
-                  </block>
-              </value>
-          </block>
-          <block type="lists_add">
-              <value name="LIST">
-                  <block type="variables_get">
-                      <field name="TYPE">Array</field>
-                      <field name="VAR">list</field>
-                  </block>
-              </value>
-          </block>
-
-          <label text="Colour" web-class="ioLabel"></label>
-          <block type="colour_picker"></block>
-          <block type="colour_random"></block>
-          <block type="colour_rgb">
-              <value name="RED">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-              <value name="GREEN">
-                  <block type="math_number">
-                      <field name="NUM">50</field>
-                  </block>
-              </value>
-              <value name="BLUE">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-          </block>
-          <block type="colour_blend">
-              <value name="COLOUR1">
-                  <block type="colour_picker">
-                      <field name="COLOUR">#ff0000</field>
-                  </block>
-              </value>
-              <value name="COLOUR2">
-                  <block type="colour_picker">
-                      <field name="COLOUR">#3333ff</field>
-                  </block>
-              </value>
-              <value name="RATIO">
-                  <block type="math_number">
-                      <field name="NUM">0.5</field>
-                  </block>
-              </value>
-          </block>
-
-      </category>
-
-      <category name="Draw" colour="#38ce9e" >
-
-          <label text="Class" web-class="ioLabel"></label>
-          <block type="kiwi_classes_create_instance_with_var_local">
-              <value name="CLASS">
-                  <block type="variables_get">
-                      <field name="TYPE">Class</field>
-                      <field name="VAR">Class</field>
-                  </block>
-              </value>
-          </block>
-
-          <label text="Shapes" web-class="ioLabel"></label>
-          <block type="kiwi_primitives_create_rectangle_local">
-              <value name="WIDTH">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-              <value name="HEIGHT">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_primitives_create_circle_local">
-              <value name="RADIUS">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_primitives_create_line_local">
-              <value name="X">
-                  <block type="math_number">
-                      <field name="NUM">50</field>
-                  </block>
-              </value>
-              <value name="Y">
-                  <block type="math_number">
-                      <field name="NUM">0</field>
-                  </block>
-              </value>
-              <value name="WIDTH">
-                  <block type="math_number">
-                      <field name="NUM">5</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_primitives_create_star_local">
-              <value name="RADIUS">
-                  <block type="math_number">
-                      <field name="NUM">50</field>
-                  </block>
-              </value>
-              <value name="POINTS">
-                  <block type="math_number">
-                      <field name="NUM">5</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_primitives_create_polygon_local">
-              <value name="RADIUS">
-                  <block type="math_number">
-                      <field name="NUM">100</field>
-                  </block>
-              </value>
-              <value name="NUM_EDGES">
-                  <block type="math_number">
-                      <field name="NUM">5</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_primitives_change_colour">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">shape</field>
-                  </block>
-              </value>
-              <value name="COLOUR">
-                  <block type="colour_picker"></block>
-              </value>
-          </block>
-          <block type="kiwi_primitives_get_colour">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">shape</field>
-                  </block>
-              </value>
-          </block>
-
-          <label text="Text" web-class="ioLabel"></label>
-          <block type="kiwi_text_create_local">
-              <value name="TEXT">
-                  <block type="text"></block>
-              </value>
-          </block>
-          <block type="kiwi_text_text_set">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">textfield</field>
-                  </block>
-              </value>
-              <value name="TEXT">
-                  <block type="text"></block>
-              </value>
-          </block>
-          <block type="kiwi_text_numeric_set">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">textfield</field>
-                  </block>
-              </value>
-              <value name="NUMBER">
-                  <block type="math_number">
-                      <field name="NUM">32</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_text_colour_set">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">textfield</field>
-                  </block>
-              </value>
-              <value name="COLOUR">
-                  <block type="colour_picker"></block>
-              </value>
-          </block>
-          <block type="kiwi_text_alignment_set">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">textfield</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_text_weight_set">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">textfield</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_text_family_set">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">textfield</field>
-                  </block>
-              </value>
-              <value name="FAMILY">
-                  <block type="kiwi_text_font_presets"></block>
-              </value>
-          </block>
-          <block type="kiwi_text_text_get">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">textfield</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_text_numeric_get">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">textfield</field>
-                  </block>
-              </value>
-          </block>
-          <block type="kiwi_text_colour_get">
-              <value name="INST">
-                  <block type="variables_local_get">
-                      <field name="TYPE">Instance</field>
-                      <field name="VAR">textfield</field>
-                  </block>
-              </value>
-          </block>
-
-      </category>
-
-      <category name="Variables" colour="#348f32" custom="VARIABLE">
-
-      </category>
-
-      <category name="Functions" colour="#6bd101" custom="PROCEDURE">
-
-          <label text="Functions" web-class="ioLabel"></label>
-
-      </category>
+</xml>
+
+<xml id="toolbox-categories" style="display: none">
+    <category name="Events" colour="#edae00">
+
+        <label text="Events" web-class="ioLabel"></label>
+        <block type="kiwi_event_level_start"></block>
+        <block type="kiwi_event_time">
+            <value name="MILLISECOND">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_event_create"></block>
+        <block type="kiwi_event_remove"></block>
+        <block type="kiwi_event_constantly_dropdown"></block>
+
+        <label text="Mouse" web-class="ioLabel"></label>
+        <block type="kiwi_event_stage_input"></block>
+        <block type="kiwi_event_inst_input">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+
+        <label text="Keyboard" web-class="ioLabel"></label>
+        <block type="kiwi_event_key_input">
+            <value name="KEY">
+                <block type="kiwi_key_special"></block>
+            </value>
+        </block>
+
+        <label text="Touch" web-class="ioLabel"></label>
+        <block type="kiwi_event_stage_touched_local"></block>
+
+        <label text="Keys" web-class="ioLabel"></label>
+        <block type="kiwi_event_instance_properties_set">
+            <value name="PROP_NAME">
+                <block type="text">
+                    <field name="TEXT">name</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_instance_properties_set">
+            <value name="PROP_NAME">
+                <block type="text">
+                    <field name="TEXT">name</field>
+                </block>
+            </value>
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+        <block type="kiwi_instance_properties_get">
+            <value name="PROP_NAME">
+                <block type="text">
+                    <field name="TEXT">name</field>
+                </block>
+            </value>
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+
+        <label text="Message Sensing" web-class="ioLabel"></label>
+        <block type="kiwi_event_message">
+            <value name="MESSAGE">
+                <block type="text">
+                    <field name="TEXT">message</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_event_message_value_local">
+            <value name="MESSAGE">
+                <block type="text">
+                    <field name="TEXT">message</field>
+                </block>
+            </value>
+        </block>
+
+        <label text="Message Sending" web-class="ioLabel"></label>
+        <block type="kiwi_messaging_instance">
+            <value name="MESSAGE">
+                <block type="text">
+                    <field name="TEXT">message</field>
+                </block>
+            </value>
+            <value name="INST">
+                <block type="variables_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">Other</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_messaging_list">
+            <value name="MESSAGE">
+                <block type="text">
+                    <field name="TEXT">message</field>
+                </block>
+            </value>
+            <value name="LIST">
+                <block type="kiwi_classes_get_all_instances">
+                    <value name="CLASS">
+                        <block type="variables_get">
+                            <field name="TYPE">Class</field>
+                            <field name="VAR">Class</field>
+                        </block>
+                    </value>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_messaging_everyone">
+            <value name="MESSAGE">
+                <block type="text">
+                    <field name="TEXT">message</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_messaging_instance_value">
+            <value name="MESSAGE">
+                <block type="text">
+                    <field name="TEXT">message</field>
+                </block>
+            </value>
+            <value name="INST">
+                <block type="variables_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">Other</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_messaging_everyone_value">
+            <value name="MESSAGE">
+                <block type="text">
+                    <field name="TEXT">message</field>
+                </block>
+            </value>
+        </block>
+
+    </category>
+
+    <category name="Control Flow" colour="#ff8601">
+
+        <block type="kiwi_game_goto_level_num">
+            <value name="LEVEL">
+                <block type="kiwi_game_level_special"></block>
+            </value>
+        </block>
+        <block type="kiwi_instance_death">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+
+        <label text="Conditionals" web-class="ioLabel"></label>
+        <block type="controls_if"></block>
+
+        <label text="Loops" web-class="ioLabel"></label>
+        <block type="controls_repeat_ext">
+            <value name="TIMES">
+                <block type="math_number">
+                    <field name="NUM">10</field>
+                </block>
+            </value>
+        </block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for_local">
+            <value name="FROM">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="TO">
+                <block type="math_number">
+                    <field name="NUM">10</field>
+                </block>
+            </value>
+            <value name="BY">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+        </block>
+        <block type="controls_forEach_local"></block>
+        <block type="controls_flow_statements"></block>
+
+        <label text="Time" web-class="ioLabel"></label>
+        <block type="kiwi_event_time_single">
+            <value name="MILLISECOND">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_game_time_method"></block>
+
+        <label text="Device" web-class="ioLabel"></label>
+        <block type="kiwi_device_cocoon"></block>
+
+        <label text="Debug" web-class="ioLabel"></label>
+        <block type="kiwi_set_debug_mode">
+            <value name="SET_DEBUG">
+                <block type="logic_boolean"></block>
+            </value>
+        </block>
+
+        <block type="kiwi_get_debug_mode"></block>
+        <block type="kiwi_log"></block>
+        <block type="text_print"></block>
+    </category>
+
+
+    <category name="Physics" colour="#e66b2f">
+
+        <label text="Hitbox" web-class="ioLabel"></label>
+        <block type="kiwi_hitbox_position_get"></block>
+        <block type="kiwi_hitbox_dimensions_get"></block>
+        <block type="kiwi_hitbox_offset_get"></block>
+
+        <label text="Events" web-class="ioLabel"></label>
+        <block type="kiwi_event_touch_on">
+            <value name="INST">
+                <block type="variables_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">Other</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_event_touch_return_instance_local"></block>
+
+        <label text="Gravity" web-class="ioLabel"></label>
+        <block type="kiwi_arcadephysics_set_gravity">
+            <value name="VALUE">
+                <block type="math_number"></block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_get_gravity"></block>
+
+        <label text="Motion" web-class="ioLabel"></label>
+        <block type="kiwi_arcadephysics_set_numeric_velocity">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_set_numeric_acceleration">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_set_numeric_max_velo">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_set_numeric_drag">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_get_numeric_velocity"></block>
+        <block type="kiwi_arcadephysics_get_numeric_acceleration"></block>
+        <block type="kiwi_arcadephysics_get_numeric_max_velo"></block>
+        <block type="kiwi_arcadephysics_get_numeric_drag"></block>
+
+        <label text="Collisions" web-class="ioLabel"></label>
+        <block type="kiwi_arcadephysics_set_collisions">
+            <value name="VALUE">
+                <block type="logic_boolean"></block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_get_collisions_touching"></block>
+        <block type="kiwi_arcadephysics_get_collisions_was_touching"></block>
+        <block type="kiwi_arcadephysics_get_collisions_can_collide"></block>
+
+        <label text="Probes" web-class="ioLabel"></label>
+        <block type="kiwi_arcadephysics_probe">
+            <value name="X_POS">
+                <block type="math_number"></block>
+            </value>
+            <value name="Y_POS">
+                <block type="math_number"></block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_probe_layer">
+            <value name="X_POS">
+                <block type="math_number"></block>
+            </value>
+            <value name="Y_POS">
+                <block type="math_number"></block>
+            </value>
+            <value name="LAYER">
+                <block type="math_number"></block>
+            </value>
+        </block>
+
+        <label text="Misc" web-class="ioLabel"></label>
+        <block type="kiwi_arcadephysics_set_boolean_enabled">
+            <value name="VALUE">
+                <block type="logic_boolean"></block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_set_boolean_moves">
+            <value name="VALUE">
+                <block type="logic_boolean"></block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_set_boolean_immovable">
+            <value name="VALUE">
+                <block type="logic_boolean"></block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_set_boolean_gravity">
+            <value name="VALUE">
+                <block type="logic_boolean"></block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_set_numeric_misc">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_arcadephysics_get_boolean_enabled"></block>
+        <block type="kiwi_arcadephysics_get_boolean_moves"></block>
+        <block type="kiwi_arcadephysics_get_boolean_immovable"></block>
+        <block type="kiwi_arcadephysics_get_boolean_gravity"></block>
+        <block type="kiwi_arcadephysics_get_numeric_misc"></block>
+        <block type="kiwi_arcadephysics_get_rotation_from"></block>
+
+    </category>
+
+    <category name="Transform" colour="#e54e43">
+        <block type="kiwi_instance_set_position">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_instance_set_rotation">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_instance_set_scale">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_instance_set_anchor_point">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_instance_get_position">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+        <block type="kiwi_instance_get_rotation">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+        <block type="kiwi_instance_get_scale">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+        <block type="kiwi_instance_get_anchor_point">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+        <block type="kiwi_instance_get_dimensions">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+
+        <label text="Location" web-class="ioLabel"></label>
+        <block type="kiwi_coordinate_create">
+            <value name="X">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+            <value name="Y">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+
+        <block type="kiwi_instance_set_position_from_location">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+
+        <block type="kiwi_coordinate_set">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+
+        <block type="kiwi_instance_get_location_from_position">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+
+        <block type="kiwi_coordinate_get"></block>
+
+        <block type="kiwi_coordinate_get_angle">
+        </block>
+
+    </category>
+
+    <category name="Animation" colour="#df358e">
+        <block type="kiwi_event_animation">
+            <value name="ANIM">
+                <block type="text">
+                    <field name="TEXT">name</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_animation_play">
+            <value name="TEXT">
+                <block type="text">
+                    <field name="TEXT">name</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_animation_frame"></block>
+        <block type="kiwi_animation_state"></block>
+        <block type="kiwi_animation_current"></block>
+        <block type="kiwi_animation_numbers"></block>
+        <block type="kiwi_animation_booleans"></block>
+    </category>
+
+    <category name="Looks" colour="#b443c9">
+
+        <block type="kiwi_instance_set_visible">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+            <value name="VISIBLE">
+                <block type="logic_boolean"></block>
+            </value>
+        </block>
+        <block type="kiwi_instance_set_alpha">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_instance_get_visible">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+        <block type="kiwi_instance_get_alpha">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+
+        <label text="Stage" web-class="ioLabel"></label>
+        <block type="kiwi_game_stage_set_colour">
+            <value name="VALUE">
+                <block type="colour_picker"></block>
+            </value>
+        </block>
+        <block type="kiwi_game_stage_get_colour"></block>
+
+        <label text="Camera" web-class="ioLabel"></label>
+        <block type="kiwi_camera_go_to">
+            <value name="X_POS">
+                <block type="math_number"></block>
+            </value>
+            <value name="Y_POS">
+                <block type="math_number"></block>
+            </value>
+        </block>
+        <block type="kiwi_camera_set_speed">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_camera_set_offset">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_camera_scale">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_camera_get_read_only_position"></block>
+        <block type="kiwi_camera_get_speed"></block>
+        <block type="kiwi_camera_get_offset"></block>
+        <block type="kiwi_camera_scale_get"></block>
+        <block type="kiwi_camera_get_read_only_dimensions"></block>
+
+        <label text="Camera Lock" web-class="ioLabel"></label>
+        <block type="kiwi_camera_center_on_instance">
+            <value name="INSTANCE">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+        <block type="kiwi_camera_state"></block>
+
+        <label text="Camera Boundaries" web-class="ioLabel"></label>
+        <block type="kiwi_camera_set_min">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_camera_set_max">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_camera_get_min"></block>
+        <block type="kiwi_camera_get_max"></block>
+
+        <label text="Depth" web-class="ioLabel"></label>
+        <block type="kiwi_instance_move">
+            <value name="INST_ONE">
+                <block type="kiwi_instance_self"></block>
+            </value>
+            <value name="INST_TWO">
+                <block type="variables_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">Other</field>
+                </block>
+            </value>
+        </block>
+
+    </category>
+
+    <category name="Sensing" colour="#8121e7">
+
+        <block type="kiwi_instance_self"></block>
+
+        <label text="Mouse" web-class="ioLabel"></label>
+        <block type="kiwi_input_mouse"></block>
+        <block type="math_arithmetic">
+            <value name="A">
+                <block type="kiwi_input_mouse"></block>
+            </value>
+            <value name="B">
+                <block type="kiwi_camera_get_read_only_position"></block>
+            </value>
+        </block>
+
+        <label text="Touch" web-class="ioLabel"></label>
+        <block type="kiwi_input_fingers"></block>
+        <block type="kiwi_input_finger_select"></block>
+        <block type="kiwi_input_finger_latest"></block>
+        <block type="kiwi_input_finger_get_coords">
+            <value name="POINTER">
+                <block type="kiwi_input_finger_select"></block>
+            </value>
+        </block>
+        <block type="kiwi_input_finger_get_bool">
+            <value name="POINTER">
+                <block type="kiwi_input_finger_select"></block>
+            </value>
+        </block>
+        <block type="kiwi_input_finger_get_times">
+            <value name="POINTER">
+                <block type="kiwi_input_finger_select"></block>
+            </value>
+        </block>
+
+        <label text="Tagging" web-class="ioLabel"></label>
+        <block type="kiwi_instance_tag_management">
+            <value name="TAG">
+                <block type="text">
+                    <field name="TEXT">tag name</field>
+                </block>
+            </value>
+            <value name="INSTANCE">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+        <block type="kiwi_instance_has_tags">
+            <value name="TAG">
+                <block type="text">
+                    <field name="TEXT">tag name</field>
+                </block>
+            </value>
+            <value name="INSTANCE">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+        <block type="kiwi_instance_get_by_tag">
+            <value name="TAG">
+                <block type="text">
+                    <field name="TEXT">tag name</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_instance_get_all_by_tag">
+            <value name="TAG">
+                <block type="text">
+                    <field name="TEXT">tag name</field>
+                </block>
+            </value>
+        </block>
+
+        <label text="Game" web-class="ioLabel"></label>
+        <block type="kiwi_game_get_time"></block>
+        <block type="kiwi_game_stage_get_size"></block>
+
+        <label text="Class" web-class="ioLabel"></label>
+        <block type="kiwi_classes_instance_type">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+        </block>
+        <block type="kiwi_classes_get_instance">
+            <value name="CLASS">
+                <block type="variables_get">
+                    <field name="TYPE">Class</field>
+                    <field name="VAR">Class</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_classes_get_all_instances">
+            <value name="CLASS">
+                <block type="variables_get">
+                    <field name="TYPE">Class</field>
+                    <field name="VAR">Class</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_classes_get_by_text">
+            <value name="TEXT">
+                <block type="text">
+                    <field name="TEXT">name</field>
+                </block>
+            </value>
+        </block>
+
+        <label text="Misc" web-class="ioLabel"></label>
+        <block type="kiwi_intersects_instance_to_instance">
+            <value name="INST_ONE">
+                <block type="kiwi_instance_self"></block>
+            </value>
+            <value name="INST_TWO">
+                <block type="variables_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">Toucher</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_intersects_instance_to_xy">
+            <value name="INST">
+                <block type="kiwi_instance_self"></block>
+            </value>
+            <value name="X_LOC">
+                <block type="math_number"></block>
+            </value>
+            <value name="Y_LOC">
+                <block type="math_number"></block>
+            </value>
+        </block>
+        <block type="kiwi_math_instance">
+            <value name="INST_ONE">
+                <block type="kiwi_instance_self"></block>
+            </value>
+            <value name="INST_TWO">
+                <block type="variables_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">Other</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_math_xy_to_xy">
+            <value name="X_LOC_ONE">
+                <block type="math_number"></block>
+            </value>
+            <value name="Y_LOC_ONE">
+                <block type="math_number"></block>
+            </value>
+            <value name="X_LOC_TWO">
+                <block type="math_number"></block>
+            </value>
+            <value name="Y_LOC_TWO">
+                <block type="math_number"></block>
+            </value>
+        </block>
+        <block type="kiwi_math_lerp">
+            <value name="VALUE_A">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+            <value name="VALUE_B">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+            <value name="TIME">
+                <block type="math_number">
+                    <field name="NUM">0.5</field>
+                </block>
+            </value>
+        </block>
+
+    </category>
+
+    <category name="Sound" colour="#0f6bf0">
+
+        <block type="kiwi_sound_play_background">
+            <value name="SOUND">
+                <block type="variables_get">
+                    <field name="TYPE">Sound</field>
+                    <field name="VAR">Sound</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_sound_play_effect">
+            <value name="SOUND">
+                <block type="variables_get">
+                    <field name="TYPE">Sound</field>
+                    <field name="VAR">Sound</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_sound_background_state"></block>
+        <block type="kiwi_sound_set_volume">
+            <value name="VOLUME">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+
+
+        <block type="kiwi_sound_set_mute">
+            <value name="STATE">
+                <block type="logic_boolean"></block>
+            </value>
+        </block>
+        <block type="kiwi_sound_get_volume"></block>
+        <block type="kiwi_sound_get_mute"></block>
+        <block type="kiwi_get_editor_sounds"></block>
+
+    </category>
+
+    <category name="Operators" colour="#21aefe">
+
+        <label text="Boolean" web-class="ioLabel"></label>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+        <block type="logic_null"></block>
+        <block type="logic_ternary"></block>
+
+        <label text="Numeric" web-class="ioLabel"></label>
+
+        <block type="math_number"></block>
+        <block type="math_arithmetic"></block>
+        <block type="math_single"></block>
+        <block type="math_trig"></block>
+        <block type="math_constant"></block>
+        <block type="math_number_property"></block>
+        <block type="math_change">
+            <value name="DELTA">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+        </block>
+        <block type="math_round"></block>
+        <block type="math_on_list"></block>
+        <block type="math_modulo"></block>
+        <block type="math_constrain">
+            <value name="LOW">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="HIGH">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+        <block type="math_random_int">
+            <value name="FROM">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="TO">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+        <block type="math_random_float"></block>
+        <block type="kiwi_math_utils">
+            <value name="INPUT">
+                <block type="math_number"></block>
+            </value>
+        </block>
+
+        <block type="text_prompt_ext">
+            <value name="NUMBER">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+        </block>
+
+        <label text="Text" web-class="ioLabel"></label>
+        <block type="text"></block>
+        <block type="text_join"></block>
+        <block type="text_append">
+            <value name="TEXT">
+                <block type="text"></block>
+            </value>
+        </block>
+        <block type="text_length"></block>
+        <block type="text_isEmpty"></block>
+        <block type="text_indexOf">
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="TYPE">String</field>
+                    <field name="VAR">text</field>
+                </block>
+            </value>
+        </block>
+        <block type="text_charAt">
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="TYPE">String</field>
+                    <field name="VAR">text</field>
+                </block>
+            </value>
+        </block>
+        <block type="text_getSubstring">
+            <value name="STRING">
+                <block type="variables_get">
+                    <field name="TYPE">String</field>
+                    <field name="VAR">text</field>
+                </block>
+            </value>
+        </block>
+        <block type="text_changeCase"></block>
+        <block type="text_trim"></block>
+
+        <block type="text_prompt_ext">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
+        </block>
+
+        <label text="Lists" web-class="ioLabel"></label>
+        <block type="lists_create_empty"></block>
+        <block type="lists_create_with"></block>
+        <block type="lists_repeat">
+            <value name="NUM">
+                <block type="math_number">
+                    <field name="NUM">5</field>
+                </block>
+            </value>
+        </block>
+        <block type="lists_length"></block>
+        <block type="lists_isEmpty"></block>
+        <block type="lists_indexOf">
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="TYPE">Array</field>
+                    <field name="VAR">list</field>
+                </block>
+            </value>
+        </block>
+        <block type="lists_getIndex">
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="TYPE">Array</field>
+                    <field name="VAR">list</field>
+                </block>
+            </value>
+        </block>
+        <block type="lists_setIndex">
+            <value name="LIST">
+                <block type="variables_get">
+                    <field name="TYPE">Array</field>
+                    <field name="VAR">list</field>
+                </block>
+            </value>
+        </block>
+        <block type="lists_getSublist">
+            <value name="LIST">
+                <block type="variables_get">
+                    <field name="TYPE">Array</field>
+                    <field name="VAR">list</field>
+                </block>
+            </value>
+        </block>
+        <block type="lists_split">
+            <value name="DELIM">
+                <block type="text">
+                    <field name="TEXT">,</field>
+                </block>
+            </value>
+        </block>
+        <block type="lists_add">
+            <value name="LIST">
+                <block type="variables_get">
+                    <field name="TYPE">Array</field>
+                    <field name="VAR">list</field>
+                </block>
+            </value>
+        </block>
+
+        <label text="Colour" web-class="ioLabel"></label>
+        <block type="colour_picker"></block>
+        <block type="colour_random"></block>
+        <block type="colour_rgb">
+            <value name="RED">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+            <value name="GREEN">
+                <block type="math_number">
+                    <field name="NUM">50</field>
+                </block>
+            </value>
+            <value name="BLUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="colour_blend">
+            <value name="COLOUR1">
+                <block type="colour_picker">
+                    <field name="COLOUR">#ff0000</field>
+                </block>
+            </value>
+            <value name="COLOUR2">
+                <block type="colour_picker">
+                    <field name="COLOUR">#3333ff</field>
+                </block>
+            </value>
+            <value name="RATIO">
+                <block type="math_number">
+                    <field name="NUM">0.5</field>
+                </block>
+            </value>
+        </block>
+
+    </category>
+
+    <category name="Draw" colour="#38ce9e">
+
+        <label text="Class" web-class="ioLabel"></label>
+        <block type="kiwi_classes_create_instance_with_var_local">
+            <value name="CLASS">
+                <block type="variables_get">
+                    <field name="TYPE">Class</field>
+                    <field name="VAR">Class</field>
+                </block>
+            </value>
+        </block>
+
+        <label text="Shapes" web-class="ioLabel"></label>
+        <block type="kiwi_primitives_create_rectangle_local">
+            <value name="WIDTH">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+            <value name="HEIGHT">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_primitives_create_circle_local">
+            <value name="RADIUS">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_primitives_create_line_local">
+            <value name="X">
+                <block type="math_number">
+                    <field name="NUM">50</field>
+                </block>
+            </value>
+            <value name="Y">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+            <value name="WIDTH">
+                <block type="math_number">
+                    <field name="NUM">5</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_primitives_create_star_local">
+            <value name="RADIUS">
+                <block type="math_number">
+                    <field name="NUM">50</field>
+                </block>
+            </value>
+            <value name="POINTS">
+                <block type="math_number">
+                    <field name="NUM">5</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_primitives_create_polygon_local">
+            <value name="RADIUS">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+            <value name="NUM_EDGES">
+                <block type="math_number">
+                    <field name="NUM">5</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_primitives_change_colour">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">shape</field>
+                </block>
+            </value>
+            <value name="COLOUR">
+                <block type="colour_picker"></block>
+            </value>
+        </block>
+        <block type="kiwi_primitives_get_colour">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">shape</field>
+                </block>
+            </value>
+        </block>
+
+        <label text="Text" web-class="ioLabel"></label>
+        <block type="kiwi_text_create_local">
+            <value name="TEXT">
+                <block type="text"></block>
+            </value>
+        </block>
+        <block type="kiwi_text_text_set">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">textfield</field>
+                </block>
+            </value>
+            <value name="TEXT">
+                <block type="text"></block>
+            </value>
+        </block>
+        <block type="kiwi_text_numeric_set">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">textfield</field>
+                </block>
+            </value>
+            <value name="NUMBER">
+                <block type="math_number">
+                    <field name="NUM">32</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_text_colour_set">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">textfield</field>
+                </block>
+            </value>
+            <value name="COLOUR">
+                <block type="colour_picker"></block>
+            </value>
+        </block>
+        <block type="kiwi_text_alignment_set">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">textfield</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_text_weight_set">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">textfield</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_text_family_set">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">textfield</field>
+                </block>
+            </value>
+            <value name="FAMILY">
+                <block type="kiwi_text_font_presets"></block>
+            </value>
+        </block>
+        <block type="kiwi_text_text_get">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">textfield</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_text_numeric_get">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">textfield</field>
+                </block>
+            </value>
+        </block>
+        <block type="kiwi_text_colour_get">
+            <value name="INST">
+                <block type="variables_local_get">
+                    <field name="TYPE">Instance</field>
+                    <field name="VAR">textfield</field>
+                </block>
+            </value>
+        </block>
+
+    </category>
+
+    <category name="Variables" colour="#348f32" custom="VARIABLE">
+
+    </category>
+
+    <category name="Functions" colour="#6bd101" custom="PROCEDURE">
+
+        <label text="Functions" web-class="ioLabel"></label>
+
+    </category>
 
     <sep></sep>
     <category name="Logic" colour="210">
-      <block type="controls_if"></block>
-      <block type="logic_compare"></block>
-      <block type="logic_operation"></block>
-      <block type="logic_negate"></block>
-      <block type="logic_boolean"></block>
-      <block type="logic_null" disabled="true"></block>
-      <block type="logic_ternary"></block>
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+        <block type="logic_null" disabled="true"></block>
+        <block type="logic_ternary"></block>
     </category>
     <category name="Loops" colour="120">
-      <block type="controls_repeat_ext">
-        <value name="TIMES">
-          <shadow type="math_number">
-            <field name="NUM">10</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="controls_repeat" disabled="true"></block>
-      <block type="controls_whileUntil"></block>
-      <block type="controls_for">
-        <value name="FROM">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-        <value name="TO">
-          <shadow type="math_number">
-            <field name="NUM">10</field>
-          </shadow>
-        </value>
-        <value name="BY">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="controls_forEach"></block>
-      <block type="controls_flow_statements"></block>
+        <block type="controls_repeat_ext">
+            <value name="TIMES">
+                <shadow type="math_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="controls_repeat" disabled="true"></block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for">
+            <value name="FROM">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="TO">
+                <shadow type="math_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+            <value name="BY">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="controls_forEach"></block>
+        <block type="controls_flow_statements"></block>
     </category>
     <category name="Math" colour="230">
-      <block type="math_number" gap="32"></block>
-      <block type="math_arithmetic">
-        <value name="A">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-        <value name="B">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="math_single">
-        <value name="NUM">
-          <shadow type="math_number">
-            <field name="NUM">9</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="math_trig">
-        <value name="NUM">
-          <shadow type="math_number">
-            <field name="NUM">45</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="math_constant"></block>
-      <block type="math_number_property">
-        <value name="NUMBER_TO_CHECK">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="math_round">
-        <value name="NUM">
-          <shadow type="math_number">
-            <field name="NUM">3.1</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="math_on_list"></block>
-      <block type="math_modulo">
-        <value name="DIVIDEND">
-          <shadow type="math_number">
-            <field name="NUM">64</field>
-          </shadow>
-        </value>
-        <value name="DIVISOR">
-          <shadow type="math_number">
-            <field name="NUM">10</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="math_constrain">
-        <value name="VALUE">
-          <shadow type="math_number">
-            <field name="NUM">50</field>
-          </shadow>
-        </value>
-        <value name="LOW">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-        <value name="HIGH">
-          <shadow type="math_number">
-            <field name="NUM">100</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="math_random_int">
-        <value name="FROM">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-        <value name="TO">
-          <shadow type="math_number">
-            <field name="NUM">100</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="math_random_float"></block>
+        <block type="math_number" gap="32"></block>
+        <block type="math_arithmetic">
+            <value name="A">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="B">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_single">
+            <value name="NUM">
+                <shadow type="math_number">
+                    <field name="NUM">9</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_trig">
+            <value name="NUM">
+                <shadow type="math_number">
+                    <field name="NUM">45</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_constant"></block>
+        <block type="math_number_property">
+            <value name="NUMBER_TO_CHECK">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_round">
+            <value name="NUM">
+                <shadow type="math_number">
+                    <field name="NUM">3.1</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_on_list"></block>
+        <block type="math_modulo">
+            <value name="DIVIDEND">
+                <shadow type="math_number">
+                    <field name="NUM">64</field>
+                </shadow>
+            </value>
+            <value name="DIVISOR">
+                <shadow type="math_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_constrain">
+            <value name="VALUE">
+                <shadow type="math_number">
+                    <field name="NUM">50</field>
+                </shadow>
+            </value>
+            <value name="LOW">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="HIGH">
+                <shadow type="math_number">
+                    <field name="NUM">100</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_random_int">
+            <value name="FROM">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="TO">
+                <shadow type="math_number">
+                    <field name="NUM">100</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="math_random_float"></block>
     </category>
     <category name="Text" colour="160">
-      <block type="text"></block>
-      <block type="text_join"></block>
-      <block type="text_append">
-        <value name="TEXT">
-          <shadow type="text"></shadow>
-        </value>
-      </block>
-      <block type="text_length">
-        <value name="VALUE">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_isEmpty">
-        <value name="VALUE">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_indexOf">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR">text</field>
-          </block>
-        </value>
-        <value name="FIND">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_charAt">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR">text</field>
-          </block>
-        </value>
-      </block>
-      <block type="text_getSubstring">
-        <value name="STRING">
-          <block type="variables_get">
-            <field name="VAR">text</field>
-          </block>
-        </value>
-      </block>
-      <block type="text_changeCase">
-        <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_trim">
-        <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <label text="Input/Output:" web-class="ioLabel"></label>
-      <block type="text_print">
-        <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_prompt_ext">
-        <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
+        <block type="text"></block>
+        <block type="text_join"></block>
+        <block type="text_append">
+            <value name="TEXT">
+                <shadow type="text"></shadow>
+            </value>
+        </block>
+        <block type="text_length">
+            <value name="VALUE">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="text_isEmpty">
+            <value name="VALUE">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+        </block>
+        <block type="text_indexOf">
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="VAR">text</field>
+                </block>
+            </value>
+            <value name="FIND">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="text_charAt">
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="VAR">text</field>
+                </block>
+            </value>
+        </block>
+        <block type="text_getSubstring">
+            <value name="STRING">
+                <block type="variables_get">
+                    <field name="VAR">text</field>
+                </block>
+            </value>
+        </block>
+        <block type="text_changeCase">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="text_trim">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
+        </block>
+        <label text="Input/Output:" web-class="ioLabel"></label>
+        <block type="text_print">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="text_prompt_ext">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
+        </block>
     </category>
     <category name="Lists" colour="260">
-      <block type="lists_create_with">
-        <mutation items="0"></mutation>
-      </block>
-      <block type="lists_create_with"></block>
-      <block type="lists_repeat">
-        <value name="NUM">
-          <shadow type="math_number">
-            <field name="NUM">5</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="lists_length"></block>
-      <block type="lists_isEmpty"></block>
-      <block type="lists_indexOf">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR">list</field>
-          </block>
-        </value>
-      </block>
-      <block type="lists_getIndex">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR">list</field>
-          </block>
-        </value>
-      </block>
-      <block type="lists_setIndex">
-        <value name="LIST">
-          <block type="variables_get">
-            <field name="VAR">list</field>
-          </block>
-        </value>
-      </block>
-      <block type="lists_getSublist">
-        <value name="LIST">
-          <block type="variables_get">
-            <field name="VAR">list</field>
-          </block>
-        </value>
-      </block>
-      <block type="lists_split">
-        <value name="DELIM">
-          <shadow type="text">
-            <field name="TEXT">,</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="lists_sort"></block>
+        <block type="lists_create_with">
+            <mutation items="0"></mutation>
+        </block>
+        <block type="lists_create_with"></block>
+        <block type="lists_repeat">
+            <value name="NUM">
+                <shadow type="math_number">
+                    <field name="NUM">5</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="lists_length"></block>
+        <block type="lists_isEmpty"></block>
+        <block type="lists_indexOf">
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="VAR">list</field>
+                </block>
+            </value>
+        </block>
+        <block type="lists_getIndex">
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="VAR">list</field>
+                </block>
+            </value>
+        </block>
+        <block type="lists_setIndex">
+            <value name="LIST">
+                <block type="variables_get">
+                    <field name="VAR">list</field>
+                </block>
+            </value>
+        </block>
+        <block type="lists_getSublist">
+            <value name="LIST">
+                <block type="variables_get">
+                    <field name="VAR">list</field>
+                </block>
+            </value>
+        </block>
+        <block type="lists_split">
+            <value name="DELIM">
+                <shadow type="text">
+                    <field name="TEXT">,</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="lists_sort"></block>
     </category>
     <category name="Colour" colour="20">
-      <block type="colour_picker"></block>
-      <block type="colour_random"></block>
-      <block type="colour_rgb">
-        <value name="RED">
-          <shadow type="math_number">
-            <field name="NUM">100</field>
-          </shadow>
-        </value>
-        <value name="GREEN">
-          <shadow type="math_number">
-            <field name="NUM">50</field>
-          </shadow>
-        </value>
-        <value name="BLUE">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="colour_blend">
-        <value name="COLOUR1">
-          <shadow type="colour_picker">
-            <field name="COLOUR">#ff0000</field>
-          </shadow>
-        </value>
-        <value name="COLOUR2">
-          <shadow type="colour_picker">
-            <field name="COLOUR">#3333ff</field>
-          </shadow>
-        </value>
-        <value name="RATIO">
-          <shadow type="math_number">
-            <field name="NUM">0.5</field>
-          </shadow>
-        </value>
-      </block>
+        <block type="colour_picker"></block>
+        <block type="colour_random"></block>
+        <block type="colour_rgb">
+            <value name="RED">
+                <shadow type="math_number">
+                    <field name="NUM">100</field>
+                </shadow>
+            </value>
+            <value name="GREEN">
+                <shadow type="math_number">
+                    <field name="NUM">50</field>
+                </shadow>
+            </value>
+            <value name="BLUE">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="colour_blend">
+            <value name="COLOUR1">
+                <shadow type="colour_picker">
+                    <field name="COLOUR">#ff0000</field>
+                </shadow>
+            </value>
+            <value name="COLOUR2">
+                <shadow type="colour_picker">
+                    <field name="COLOUR">#3333ff</field>
+                </shadow>
+            </value>
+            <value name="RATIO">
+                <shadow type="math_number">
+                    <field name="NUM">0.5</field>
+                </shadow>
+            </value>
+        </block>
     </category>
     <sep></sep>
     <category name="Variables" colour="330" custom="VARIABLE"></category>
     <category name="Functions" colour="290" custom="PROCEDURE"></category>
-  </xml>
+</xml>
 </body>
 </html>
