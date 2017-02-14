@@ -472,7 +472,7 @@ Blockly.Blocks['kiwi_classes_create_instance_with_var'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -536,7 +536,7 @@ Blockly.Blocks['kiwi_event_touch_return_instance'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -601,7 +601,7 @@ Blockly.Blocks['kiwi_event_stage_touched'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_POINTER,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_POINTER,
             Blockly.mainWorkspace);
         },1);
       }
@@ -625,7 +625,7 @@ Blockly.Blocks['kiwi_event_message_value'] = {
   init: function() {
     this.setWarningText(Blockly.Msg.KF_BLOCK_DEPRECATED);
     this.setHelpUrl( Blockly.Msg.KF_EVENT_MESSAGE_VALUE_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.EVENT );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.EVENT );
     this.appendValueInput("MESSAGE")
         .setCheck("String")
         .appendField( Blockly.Msg.KF_EVENT_MESSAGE_VALUE_MESSAGE_ONE );
@@ -709,7 +709,7 @@ Blockly.Blocks['kiwi_primitives_create_rectangle'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -775,7 +775,7 @@ Blockly.Blocks['kiwi_primitives_create_circle'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -846,7 +846,7 @@ Blockly.Blocks['kiwi_primitives_create_line'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }

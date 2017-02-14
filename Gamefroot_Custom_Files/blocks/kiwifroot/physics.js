@@ -32,7 +32,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['kiwi_arcadephysics_set_collisions'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_COLLISIONS_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Boolean")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_COLLISIONS_MESSAGE_BEFORE )
@@ -55,7 +55,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_collisions'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_gravity'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_GRAVITY_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_GRAVITY_MESSAGE )
@@ -73,7 +73,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_gravity'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_gravity'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_GRAVITY_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_GET_GRAVITY_MESSAGE )
         .appendField(new Blockly.FieldDropdown([["x", "x"], ["y", "y"]]), "PROP");
@@ -86,7 +86,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_gravity'] = {
 Blockly.Blocks['kiwi_arcadephysics_probe'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_PROBE_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("X_POS")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_PROBE_MESSAGE );
@@ -102,7 +102,7 @@ Blockly.Blocks['kiwi_arcadephysics_probe'] = {
 Blockly.Blocks['kiwi_arcadephysics_probe_layer'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_PROBE_LAYER_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("X_POS")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_PROBE_LAYER_MESSAGE_ONE )
@@ -129,7 +129,7 @@ Blockly.Blocks['kiwi_arcadephysics_probe_layer'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_rotation_from'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_ROTATION_FROM_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_GET_ROTATION_FROM_MESSAGE )
         .appendField(new Blockly.FieldDropdown( [
@@ -145,7 +145,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_rotation_from'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_enabled'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_PHYSICS_ENABLED_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Boolean")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_PHYSICS_ENABLED_MESSAGE );
@@ -160,7 +160,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_enabled'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_enabled'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_PHYSICS_ENABLED_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_GET_PHYSICS_ENABLED_MESSAGE );
     this.setInputsInline(true);
@@ -176,7 +176,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_enabled'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_numeric_velocity'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_NUMERIC_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown( [
           ["velocity x", "velocity.x"], 
@@ -192,7 +192,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_numeric_velocity'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_numeric_acceleration'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_NUMERIC_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown( [
           ["acceleration x", "acceleration.x"], 
@@ -207,7 +207,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_numeric_acceleration'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_numeric_max_velo'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_NUMERIC_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown( [
           ["max velocity x", "maxVelocity.x"], 
@@ -222,7 +222,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_numeric_max_velo'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_numeric_drag'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_NUMERIC_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown( [
           ["drag x", "drag.x"], 
@@ -237,7 +237,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_numeric_drag'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_numeric_misc'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_NUMERIC_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown( [
           ["mass", "mass"], 
@@ -255,7 +255,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_numeric_misc'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_numeric_velocity'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_MESSAGE + ' velocity' )
@@ -273,7 +273,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_numeric_velocity'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_numeric_acceleration'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_MESSAGE + ' acceleration')
@@ -292,7 +292,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_numeric_acceleration'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_numeric_max_velo'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_MESSAGE + ' max velocity')
@@ -310,7 +310,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_numeric_max_velo'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_numeric_drag'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_MESSAGE + ' drag')
@@ -329,7 +329,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_numeric_drag'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_numeric_misc'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_NUMERIC_MESSAGE )
@@ -350,7 +350,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_numeric_misc'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_boolean_gravity'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Boolean")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_MESSAGE + " reacts to gravity" );
@@ -364,7 +364,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_boolean_gravity'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_boolean_immovable'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Boolean")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_MESSAGE + " immovable" );
@@ -379,7 +379,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_boolean_immovable'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_boolean_moves'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Boolean")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_MESSAGE + " moves");
@@ -394,7 +394,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_boolean_moves'] = {
 Blockly.Blocks['kiwi_arcadephysics_set_boolean_enabled'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendValueInput("VALUE")
         .setCheck("Boolean")
         .appendField( Blockly.Msg.KF_ARCADEPHYSICS_SET_BOOLEAN_MESSAGE + " physics enabled" );
@@ -408,7 +408,7 @@ Blockly.Blocks['kiwi_arcadephysics_set_boolean_enabled'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_boolean_gravity'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_BOOLEAN_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( "reacts to gravity" );
     this.setInputsInline(true);
@@ -421,7 +421,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_boolean_gravity'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_boolean_immovable'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_BOOLEAN_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( "immovable" );
     this.setInputsInline(true);
@@ -433,7 +433,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_boolean_immovable'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_boolean_moves'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_BOOLEAN_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( "moves" );
     this.setInputsInline(true);
@@ -445,7 +445,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_boolean_moves'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_boolean_enabled'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_BOOLEAN_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( "physics enabled" );
     this.setInputsInline(true);
@@ -459,7 +459,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_boolean_enabled'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_collisions_touching'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_COLLISIONS_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( "touching " + Blockly.Msg.KF_ARCADEPHYSICS_GET_COLLISIONS_MESSAGE_BEFORE )
         .appendField(new Blockly.FieldDropdown([
@@ -480,7 +480,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_collisions_touching'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_collisions_was_touching'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_COLLISIONS_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( "was touching " + Blockly.Msg.KF_ARCADEPHYSICS_GET_COLLISIONS_MESSAGE_BEFORE)
         .appendField(new Blockly.FieldDropdown([
@@ -501,7 +501,7 @@ Blockly.Blocks['kiwi_arcadephysics_get_collisions_was_touching'] = {
 Blockly.Blocks['kiwi_arcadephysics_get_collisions_can_collide'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_ARCADEPHYSICS_GET_COLLISIONS_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( "can collide " + Blockly.Msg.KF_ARCADEPHYSICS_GET_COLLISIONS_MESSAGE_BEFORE )
         .appendField(new Blockly.FieldDropdown([
