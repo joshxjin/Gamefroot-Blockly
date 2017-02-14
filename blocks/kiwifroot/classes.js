@@ -32,7 +32,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['kiwi_classes_instance_type'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CLASSES_INSTANCE_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.SENSING );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.SENSING );
     this.appendValueInput("INST")
         .setCheck("Instance")
         .appendField( Blockly.Msg.KF_CLASSES_INSTANCE_MESSAGE );
@@ -45,7 +45,7 @@ Blockly.Blocks['kiwi_classes_instance_type'] = {
 Blockly.Blocks['kiwi_classes_get_instance'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CLASSES_GET_INSTANCE_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.SENSING );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.SENSING );
     this.appendValueInput("CLASS")
         .setCheck("Class")
         .appendField(new Blockly.FieldDropdown( [ 
@@ -63,7 +63,7 @@ Blockly.Blocks['kiwi_classes_get_instance'] = {
 Blockly.Blocks['kiwi_classes_get_all_instances'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CLASSES_GET_ALL_INSTANCES_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.SENSING );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.SENSING );
     this.appendValueInput("CLASS")
         .setCheck("Class")
         .appendField( Blockly.Msg.KF_CLASSES_GET_ALL_INSTANCES_MESSAGE );
@@ -77,7 +77,7 @@ Blockly.Blocks['kiwi_classes_get_all_instances'] = {
 Blockly.Blocks['kiwi_classes_get_by_text'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CLASSES_GET_BY_TEXT_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.SENSING );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.SENSING );
     this.appendValueInput("TEXT")
         .setCheck("String")
         .appendField( Blockly.Msg.KF_CLASSES_GET_BY_TEXT_MESSAGE );
@@ -93,7 +93,7 @@ Blockly.Blocks['kiwi_classes_get_by_text'] = {
 Blockly.Blocks['kiwi_classes_create_instance_with_var_local'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_WITH_VAR_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.DRAW );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_WITH_VAR_MESSAGE_BEFORE )
         .appendField(new Blockly.FieldVariable('instance', null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR' );
@@ -120,7 +120,7 @@ Blockly.Blocks['kiwi_classes_create_instance_with_var_local'] = {
    */
   localTypeOf: function(name) {
     if (Blockly.Names.equals(name, this.getFieldValue('VAR'))) {
-      return Blockly.Variables.TYPE_INSTANCE;
+      return Blockly.KiwifrootVariables.TYPE_INSTANCE;
     }
     else return undefined;
   },
@@ -142,7 +142,7 @@ Blockly.Blocks['kiwi_classes_create_instance_with_var_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.KiwifrootVariables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
