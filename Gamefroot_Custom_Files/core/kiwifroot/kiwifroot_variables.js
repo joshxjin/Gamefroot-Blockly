@@ -24,8 +24,8 @@
  */
 'use strict';
 
-goog.provide('Blockly.Variables');
-// goog.require('Blockly.KiwifrootVariables'); // import the core variables file
+goog.provide('Blockly.KiwifrootVariables');
+// goog.require('Blockly.Variables'); // import the core variables file
 goog.require('Blockly.Blocks');
 goog.require('Blockly.Workspace');
 goog.require('goog.string');
