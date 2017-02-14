@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Kiwifroot Introduction</title>
+
+	<script src="libs/kiwi.js"></script>
+	<script src="libs/kiwifroot.js"></script>
+</head>
+<body>
+
+	<div id ="kfGame"></div>
+
+	<script>
+
+		// Listen for messages from the blockly playground
+		window.addEventListener("message", receiveMessage, false);
+		function receiveMessage(event) {
+			var code = event.data;
+			eval(code);
+			// Run the KiwiFroot Game.
+			window.game = new Kiwifroot.Game( {
+				jsonURL: 'game.json'
+			} );
+		}
+
+	</script>
+
+</body>
+
+</html>
