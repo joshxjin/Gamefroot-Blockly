@@ -32,7 +32,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['kiwi_primitives_change_colour'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_PRIMITIVES_CHANGE_COLOUR_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.DRAW );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendValueInput("INST")
         .setCheck("Instance")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CHANGE_COLOUR_MESSAGE_ONE );
@@ -49,7 +49,7 @@ Blockly.Blocks['kiwi_primitives_change_colour'] = {
 Blockly.Blocks['kiwi_primitives_get_colour'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_PRIMITIVES_GET_COLOUR_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.DRAW );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendValueInput("INST")
         .setCheck("Instance")
         .appendField( Blockly.Msg.KF_PRIMITIVES_GET_COLOUR_MESSAGE );
@@ -64,7 +64,7 @@ Blockly.Blocks['kiwi_primitives_get_colour'] = {
 Blockly.Blocks['kiwi_primitives_create_rectangle_local'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_PRIMITIVES_CREATE_RECTANGLE_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.DRAW );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_RECTANGLE_MESSAGE_BEFORE )
         .appendField(new Blockly.FieldVariable('rectangle', null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
@@ -115,7 +115,7 @@ Blockly.Blocks['kiwi_primitives_create_rectangle_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -156,7 +156,7 @@ Blockly.Blocks['kiwi_primitives_create_rectangle_local'] = {
 Blockly.Blocks['kiwi_primitives_create_circle_local'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_PRIMITIVES_CREATE_CIRCLE_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.DRAW );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_CIRCLE_MESSAGE_BEFORE )
         .appendField(new Blockly.FieldVariable('circle',null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
@@ -205,7 +205,7 @@ Blockly.Blocks['kiwi_primitives_create_circle_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -246,7 +246,7 @@ Blockly.Blocks['kiwi_primitives_create_circle_local'] = {
 Blockly.Blocks['kiwi_primitives_create_line_local'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.DRAW );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_MESSAGE_ONE)
         .appendField(new Blockly.FieldVariable('line',null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
@@ -300,7 +300,7 @@ Blockly.Blocks['kiwi_primitives_create_line_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -341,7 +341,7 @@ Blockly.Blocks['kiwi_primitives_create_line_local'] = {
 Blockly.Blocks['kiwi_primitives_create_star_local'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.DRAW );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_MESSAGE_ONE)
         .appendField(new Blockly.FieldVariable('star', null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
@@ -395,7 +395,7 @@ Blockly.Blocks['kiwi_primitives_create_star_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -436,7 +436,7 @@ Blockly.Blocks['kiwi_primitives_create_star_local'] = {
 Blockly.Blocks['kiwi_primitives_create_polygon_local'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.DRAW );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_MESSAGE_ONE )
         .appendField(new Blockly.FieldVariable('polygon', null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
@@ -491,7 +491,7 @@ Blockly.Blocks['kiwi_primitives_create_polygon_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
