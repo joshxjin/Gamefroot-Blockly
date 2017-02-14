@@ -33,7 +33,7 @@ Blockly.Blocks['kiwi_instance_select'] = {
   init: function() {
     this.setWarningText(Blockly.Msg.KF_BLOCK_DEPRECATED);
     this.setHelpUrl( Blockly.Msg.KF_INSTANCE_SELECT_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR_INSTANCE );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR_INSTANCE );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_INSTANCE_SELECT_MESSAGE )
         .appendField(new Blockly.FieldDropdown( Blockly.Kiwifroot.instances_ ), "ID");
@@ -49,7 +49,7 @@ Blockly.Blocks['kiwi_classes_selector'] = {
   init: function() {
     this.setWarningText(Blockly.Msg.KF_BLOCK_DEPRECATED);
     this.setHelpUrl( Blockly.Msg.KF_CLASSES_SELECTOR_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR_CLASS );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR_CLASS );
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown( Blockly.Kiwifroot.classes_ ), "NAME");
     this.setInputsInline(true);
@@ -216,7 +216,7 @@ Blockly.Blocks['kiwi_classes_create_instance'] = {
   init: function() {
     this.setWarningText(Blockly.Msg.KF_BLOCK_DEPRECATED);
     this.setHelpUrl( Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR_INSTANCE );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR_INSTANCE );
     this.appendValueInput("CLASS")
         .setCheck("Class")
         .appendField( Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_MESSAGE_BEFORE );
