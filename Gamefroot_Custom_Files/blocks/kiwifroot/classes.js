@@ -120,7 +120,7 @@ Blockly.Blocks['kiwi_classes_create_instance_with_var_local'] = {
    */
   localTypeOf: function(name) {
     if (Blockly.Names.equals(name, this.getFieldValue('VAR'))) {
-      return Blockly.Variables.TYPE_INSTANCE;
+      return Blockly.KiwifrootVariables.TYPE_INSTANCE;
     }
     else return undefined;
   },
@@ -142,7 +142,7 @@ Blockly.Blocks['kiwi_classes_create_instance_with_var_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.Local.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
