@@ -96,7 +96,7 @@ Blockly.Variables.COLOUR_ANY = '#71cd04';
  * The colour that should be applied to a block that outputs type 'boolean'
  * @const
  */
-Blockly.KiwifrootVariables.COLOUR_BOOLEAN = '#2db1f9';
+Blockly.Variables.COLOUR_BOOLEAN = '#2db1f9';
 /**
  * The colour that should be applied to a block that outputs type 'number'
  * @const
@@ -175,7 +175,7 @@ Blockly.Variables.NAME_TYPE = 'VARIABLE';
  * The hue that corresponds to each variable type
  */
 Blockly.Variables.COLOUR_FOR_TYPE = {};
-Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_BOOLEAN] = Blockly.KiwifrootVariables.COLOUR_BOOLEAN;
+Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_BOOLEAN] = Blockly.Variables.COLOUR_BOOLEAN;
 Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_NUMBER] = Blockly.Variables.COLOUR_NUMBER;
 Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_STRING] = Blockly.Variables.COLOUR_STRING;
 Blockly.Variables.COLOUR_FOR_TYPE[Blockly.Variables.TYPE_COLOUR] = Blockly.Variables.COLOUR_COLOUR;

@@ -32,7 +32,7 @@ Blockly.Blocks['kiwi_coordinate_create'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_COORDINATE_CREATE_HELPURL );
     this.setTooltip( Blockly.Msg.KF_COORDINATE_CREATE_TOOLTIP );
-    this.setColour( Blockly.Variables.COLOUR.MOTION );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.MOTION );
 
     this.appendValueInput("X")
         .setCheck("Number")
@@ -49,7 +49,7 @@ Blockly.Blocks['kiwi_coordinate_set'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_COORDINATE_SET_HELPURL );
     this.setTooltip( Blockly.Msg.KF_COORDINATE_SET_TOOLTIP );
-    this.setColour( Blockly.Variables.COLOUR.MOTION );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.MOTION );
 
     this.appendValueInput("COORDINATE")
         .setCheck("Coordinate")
@@ -73,7 +73,7 @@ Blockly.Blocks['kiwi_coordinate_get'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_COORDINATE_GET_HELPURL );
     this.setTooltip( Blockly.Msg.KF_COORDINATE_GET_TOOLTIP );
-    this.setColour( Blockly.Variables.COLOUR.MOTION );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.MOTION );
 
     this.appendValueInput("COORDINATE")
         .setCheck("Coordinate")
@@ -93,7 +93,7 @@ Blockly.Blocks[ "kiwi_coordinate_get_angle" ] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_COORDINATE_GET_ANGLE_HELPURL );
     this.setTooltip( Blockly.Msg.KF_COORDINATE_GET_ANGLE_TOOLTIP );
-    this.setColour( Blockly.Variables.COLOUR.MOTION );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.MOTION );
 
     this.appendValueInput( "COORDINATE" )
       .setCheck( "Coordinate" )
