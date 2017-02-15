@@ -42,7 +42,7 @@ Blockly.Flyout.prototype.CORNER_RADIUS = 1;
 Blockly.Flyout.prototype.MARGIN = 5;
 
 //NB: "Custom hack" comment comes from GameFroot
-Blockly.Flyout.prototype.show = function(xmlList) {
+Blockly.Flyout.prototype.show = function (xmlList) {
     this.hide();
     // Delete any blocks from a previous showing.
     var blocks = this.workspace_.getTopBlocks(false);
@@ -64,44 +64,45 @@ Blockly.Flyout.prototype.show = function(xmlList) {
     // Create the blocks to be shown in this flyout.
     var blocks = [];
     var gaps = [];
-if (xmlList == Blockly.Variables.NAME_TYPE) {
-    // Special category for variables.
-    Blockly.Variables.flyoutCategory(blocks, gaps, margin, /** @type {!Blockly.Workspace} */ (this.workspace_));
+    if (xmlList == Blockly.Variables.NAME_TYPE) {
+        // Special category for variables.
+        Blockly.Variables.flyoutCategory(blocks, gaps, margin, /** @type {!Blockly.Workspace} */ (this.workspace_));
 
-} else if (xmlList == Blockly.Procedures.NAME_TYPE) {
-    // Special category for procedures.
-    Blockly.Procedures.flyoutCategory(blocks, gaps, margin, /** @type {!Blockly.Workspace} */ (this.workspace_));
+    } else if (xmlList == Blockly.Procedures.NAME_TYPE) {
+        // Special category for procedures.
+        Blockly.Procedures.flyoutCategory(blocks, gaps, margin, /** @type {!Blockly.Workspace} */ (this.workspace_));
 
-} else {
+    } else {
 
-    //CUSTOM HACK: Support blocks with variables...
+        //CUSTOM HACK: Support blocks with variables...
 
-    for (var i = 0, xml; xml = xmlList[i]; i++) {
-        if (xml.tagName && xml.tagName.toUpperCase() == 'BLOCK') {
-            var block = Blockly.Xml.domToBlock( /** @type {!Blockly.Workspace} */ (this.workspace_), xml);
-            blocks.push(block);
-            gaps.push(margin * 3);
-        } else if( xml === Blockly.Variables.NAME_TYPE ) {
-            Blockly.Variables.flyoutCategory(blocks, gaps, margin, (this.workspace_));
+        for (var i = 0, xml; xml = xmlList[i]; i++) {
+            if (xml.tagName && xml.tagName.toUpperCase() == 'BLOCK') {
+                var block = Blockly.Xml.domToBlock(/** @type {!Blockly.Workspace} */ (this.workspace_), xml);
+                blocks.push(block);
+                gaps.push(margin * 3);
+            } else if (xml === Blockly.Variables.NAME_TYPE) {
+                Blockly.Variables.flyoutCategory(blocks, gaps, margin, (this.workspace_));
 
-        } else if( xml === Blockly.Procedures.NAME_TYPE ) {
-            Blockly.Procedures.flyoutCategory(blocks, gaps, margin, (this.workspace_));
+            } else if (xml === Blockly.Procedures.NAME_TYPE) {
+                Blockly.Procedures.flyoutCategory(blocks, gaps, margin, (this.workspace_));
+
+            }
 
         }
-
     }
-}
+};
 
 //NB: "Custom hack" comment comes from GameFroot
-Blockly.Flyout.prototype.filterForCapacity_ = function() {
+Blockly.Flyout.prototype.filterForCapacity_ = function () {
     var remainingCapacity = this.targetWorkspace_.remainingCapacity();
     var blocks = this.workspace_.getTopBlocks(false);
     for (var i = 0, block; block = blocks[i]; i++) {
         var allBlocks = block.getDescendants();
         //CUSTOM HACK: Only disable the block if it isn't already
-        if( !block.disabled ) {
+        if (!block.disabled) {
             var disabled = allBlocks.length > remainingCapacity;
-            block.setDisabled( disabled );
+            block.setDisabled(disabled);
         }
     }
 };
