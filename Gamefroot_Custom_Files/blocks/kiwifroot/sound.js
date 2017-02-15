@@ -33,7 +33,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['kiwi_sound'] = {
   init: function() {
     this.setHelpUrl(Blockly.Msg.KF_SOUND_HELPURL);
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.SOUND );
+    this.setColour( Blockly.Variables.COLOUR.SOUND );
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown(Blockly.Kiwifroot.sounds_), "SOUND");
     this.setOutput(true, "Sound");
@@ -44,7 +44,7 @@ Blockly.Blocks['kiwi_sound'] = {
 Blockly.Blocks['kiwi_sound_play_background'] = {
   init: function() {
     this.setHelpUrl(Blockly.Msg.KF_SOUND_PLAY_BACKGROUND_HELPURL);
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.SOUND );
+    this.setColour( Blockly.Variables.COLOUR.SOUND );
     this.appendDummyInput()
     	.appendField(Blockly.Msg.KF_SOUND_PLAY_BACKGROUND_MESSAGE)
     this.appendValueInput("SOUND")
@@ -59,7 +59,7 @@ Blockly.Blocks['kiwi_sound_play_background'] = {
 Blockly.Blocks['kiwi_sound_stop_background'] = {
   init: function() {
     this.setHelpUrl(Blockly.Msg.KF_SOUND_STOP_BACKGROUND_HELPURL);
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.SOUND );
+    this.setColour( Blockly.Variables.COLOUR.SOUND );
     this.appendDummyInput()
         .appendField(Blockly.Msg.KF_SOUND_STOP_BACKGROUND_MESSAGE);
     this.setInputsInline(true);
@@ -72,7 +72,7 @@ Blockly.Blocks['kiwi_sound_stop_background'] = {
 Blockly.Blocks['kiwi_sound_play_effect'] = {
   init: function() {
     this.setHelpUrl(Blockly.Msg.KF_SOUND_PLAY_EFFECT_HELPURL);
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.SOUND );
+    this.setColour( Blockly.Variables.COLOUR.SOUND );
     this.appendDummyInput()
         .appendField(Blockly.Msg.KF_SOUND_PLAY_EFFECT_MESSAGE)
     this.appendValueInput("SOUND")
@@ -88,7 +88,7 @@ Blockly.Blocks['kiwi_sound_play_effect'] = {
 Blockly.Blocks['kiwi_sound_background_state'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_SOUND_BACKGROUND_STATE_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.SOUND );
+    this.setColour( Blockly.Variables.COLOUR.SOUND );
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([
             ["pause", "pauseBackgroundTrack()"],
@@ -106,7 +106,7 @@ Blockly.Blocks['kiwi_sound_background_state'] = {
 Blockly.Blocks['kiwi_sound_set_mute'] = {
     init: function() {
         this.setHelpUrl( Blockly.Msg.KF_SOUND_SET_MUTE_HELPURL );
-        this.setColour( Blockly.KiwifrootVariables.COLOUR.SOUND );
+        this.setColour( Blockly.Variables.COLOUR.SOUND );
         this.appendValueInput("STATE")
             .setCheck("Boolean")
             .appendField( Blockly.Msg.KF_SOUND_SET_MUTE_MESSAGE )
@@ -124,7 +124,7 @@ Blockly.Blocks['kiwi_sound_set_mute'] = {
 Blockly.Blocks['kiwi_sound_get_mute'] = {
     init: function() {
         this.setHelpUrl( Blockly.Msg.KF_SOUND_GET_MUTE_HELPURL );
-        this.setColour( Blockly.KiwifrootVariables.COLOUR.SOUND );
+        this.setColour( Blockly.Variables.COLOUR.SOUND );
         this.appendDummyInput()
             .appendField( Blockly.Msg.KF_SOUND_GET_MUTE_MESSAGE )
             .appendField(new Blockly.FieldDropdown([
@@ -140,7 +140,7 @@ Blockly.Blocks['kiwi_sound_get_mute'] = {
 Blockly.Blocks['kiwi_get_editor_sounds'] = {
     init: function() {
         this.setHelpUrl( Blockly.Msg.KF_SOUND_GET_EDITOR_HELPURL );
-        this.setColour( Blockly.KiwifrootVariables.COLOUR.SOUND );
+        this.setColour( Blockly.Variables.COLOUR.SOUND );
         this.appendDummyInput()
             .appendField( Blockly.Msg.KF_SOUND_GET_EDITOR_MESSAGE )
             .appendField(new Blockly.FieldDropdown(function(){
@@ -160,7 +160,7 @@ Blockly.Blocks['kiwi_get_editor_sounds'] = {
 Blockly.Blocks['kiwi_sound_get_volume'] = {
     init: function() {
         this.setHelpUrl( Blockly.Msg.KF_SOUND_GET_VOLUME_HELPURL );
-        this.setColour( Blockly.KiwifrootVariables.COLOUR.SOUND );
+        this.setColour( Blockly.Variables.COLOUR.SOUND );
         this.appendDummyInput()
             .appendField( Blockly.Msg.KF_SOUND_GET_VOLUME_MESSAGE );
         this.setOutput(true, "Number");
@@ -171,7 +171,7 @@ Blockly.Blocks['kiwi_sound_get_volume'] = {
 Blockly.Blocks['kiwi_sound_set_volume'] = {
     init: function() {
         this.setHelpUrl( Blockly.Msg.KF_SOUND_SET_VOLUME_HELPURL );
-        this.setColour( Blockly.KiwifrootVariables.COLOUR.SOUND );
+        this.setColour( Blockly.Variables.COLOUR.SOUND );
         this.appendValueInput("VOLUME")
             .setCheck("Number")
             .appendField( Blockly.Msg.KF_SOUND_SET_VOLUME_MESSAGE );
