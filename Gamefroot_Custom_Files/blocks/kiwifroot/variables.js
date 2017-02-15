@@ -46,7 +46,7 @@ Blockly.Blocks['variables_get'] = {
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Variables.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField(new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
                 this.nameChangedHandler), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_GET_TAIL);
         this.setOutput(true);
@@ -195,7 +195,7 @@ Blockly.Blocks['variables_set'] = {
             .appendField( new Blockly.FieldDropdown(
                 Blockly.Variables.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField( new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
+            .appendField( new Blockly.FieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
                 this.nameChangedHandler), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_SET_MESSAGE_TWO);
 
@@ -240,8 +240,8 @@ Blockly.Blocks['variables_local_get'] = {
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Variables.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField(new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
-                this.nameChangedHandler, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR')
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
+                this.nameChangedHandler, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_GET_TAIL);
         this.setOutput(true);
         this.setTooltip(Blockly.Msg.VARIABLES_GET_TOOLTIP_LOCAL);
@@ -388,8 +388,8 @@ Blockly.Blocks['variables_local_set'] = {
             .appendField( new Blockly.FieldDropdown(
                 Blockly.Variables.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField( new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
-                this.nameChangedHandler, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR')
+            .appendField( new Blockly.FieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
+                this.nameChangedHandler, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_SET_MESSAGE_TWO);
 
         this.setInputsInline(true);
@@ -433,8 +433,8 @@ Blockly.Blocks['variables_global_get'] = {
             .appendField(new Blockly.FieldDropdown(
                 Blockly.Variables.Global.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField(new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
-                this.nameChangedHandler, Blockly.KiwifrootFieldVariable.SCOPE.GLOBAL), 'VAR')
+            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
+                this.nameChangedHandler, Blockly.FieldVariable.SCOPE.GLOBAL), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_GET_TAIL);
         this.setOutput(true);
         this.setTooltip(Blockly.Msg.VARIABLES_GET_TOOLTIP_GLOBAL);
@@ -584,8 +584,8 @@ Blockly.Blocks['variables_global_set'] = {
             .appendField( new Blockly.FieldDropdown(
                 Blockly.Variables.Global.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField( new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
-                this.nameChangedHandler, Blockly.KiwifrootFieldVariable.SCOPE.GLOBAL), 'VAR')
+            .appendField( new Blockly.FieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
+                this.nameChangedHandler, Blockly.FieldVariable.SCOPE.GLOBAL), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_SET_MESSAGE_TWO);
 
         this.setInputsInline(true);
