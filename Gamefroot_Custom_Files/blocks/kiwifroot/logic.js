@@ -81,12 +81,44 @@ Blockly.Blocks['controls_if'].objectToMutation = function(obj){
  * Prevent mismatched types from being compared.
  * @this Blockly.Block
  */
+
+var default_logic_compare_onchange = Blockly.Blocks['logic_compare'].onchange; //store the default onchange function for later use when function has been overwritten
+
 Blockly.Blocks['logic_compare'].onchange = function() {
     if (!this.workspace) {
         // Block has been deleted.
         return;
     }
-    Blockly.Blocks['logic_compare'].onchange(); //run default onchange() method.
+    default_logic_compare_onchange(); //run default onchange() method.
+};
+
+/**
+ * Block for boolean data type: true and false.
+ * @this Blockly.Block
+ */
+Blockly.Blocks['logic_boolean'].init = function() {
+    var BOOLEANS =
+        [[Blockly.Msg.LOGIC_BOOLEAN_TRUE || "", 'TRUE'],
+            [Blockly.Msg.LOGIC_BOOLEAN_FALSE || "", 'FALSE']];
+    this.setHelpUrl(Blockly.Msg.LOGIC_BOOLEAN_HELPURL);
+    this.setColour(Blockly.Variables.COLOUR.OPERATORS);
+    this.setOutput(true, 'Boolean');
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown(BOOLEANS), 'BOOL');
+    this.setTooltip(Blockly.Msg.LOGIC_BOOLEAN_TOOLTIP);
+};
+
+/**
+ * Block for null data type.
+ * @this Blockly.Block
+ */
+Blockly.Blocks['logic_null'].init = function() {
+    this.setHelpUrl(Blockly.Msg.LOGIC_NULL_HELPURL);
+    this.setColour(Blockly.Variables.COLOUR.OPERATORS);
+    this.setOutput(true);
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.LOGIC_NULL);
+    this.setTooltip(Blockly.Msg.LOGIC_NULL_TOOLTIP);
 };
 
 /**
