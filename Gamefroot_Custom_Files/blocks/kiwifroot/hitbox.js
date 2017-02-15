@@ -31,7 +31,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['kiwi_hitbox_position_get'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_HITBOX_POSITION_GET_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
+    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_HITBOX_POSITION_GET_MESSAGE )
         .appendField(new Blockly.FieldDropdown([
@@ -47,7 +47,7 @@ Blockly.Blocks['kiwi_hitbox_position_get'] = {
 Blockly.Blocks['kiwi_hitbox_dimensions_get'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_HITBOX_DIMENSIONS_GET_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
+    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_HITBOX_DIMENSIONS_GET_MESSAGE )
         .appendField(new Blockly.FieldDropdown([
@@ -63,7 +63,7 @@ Blockly.Blocks['kiwi_hitbox_dimensions_get'] = {
 Blockly.Blocks['kiwi_hitbox_offset_get'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_HITBOX_OFFSET_GET_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
+    this.setColour( Blockly.Variables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_HITBOX_OFFSET_GET_MESSAGE )
         .appendField(new Blockly.FieldDropdown([
