@@ -433,7 +433,7 @@ Blockly.Blocks['kiwi_classes_create_instance_with_var'] = {
     this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_WITH_VAR_MESSAGE_BEFORE )
-        .appendField(new Blockly.FieldVariable('instance'), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('instance'), 'VAR');
     this.appendValueInput("CLASS")
         .setCheck("Class")
         .appendField( Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_WITH_VAR_MESSAGE_AFTER );
@@ -472,7 +472,7 @@ Blockly.Blocks['kiwi_classes_create_instance_with_var'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -502,7 +502,7 @@ Blockly.Blocks['kiwi_event_touch_return_instance'] = {
     this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_EVENT_TOUCH_RETURN_MESSAGE )
-        .appendField(new Blockly.FieldVariable('toucher'), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('toucher'), 'VAR');
     this.appendStatementInput("STACK");
     this.setTooltip( Blockly.Msg.KF_EVENT_TOUCH_RETURN_TOOLTIP );
   },
@@ -536,7 +536,7 @@ Blockly.Blocks['kiwi_event_touch_return_instance'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -567,7 +567,7 @@ Blockly.Blocks['kiwi_event_stage_touched'] = {
           ["pressed", "onDown"], 
           ["released", "onUp"]
         ]), "TYPE")
-        .appendField(new Blockly.FieldVariable('pointer'), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('pointer'), 'VAR');
     this.appendStatementInput("STACK");
     this.setTooltip( Blockly.Msg.KF_EVENT_STAGE_TOUCHED_TOOLTIP );
   },
@@ -601,7 +601,7 @@ Blockly.Blocks['kiwi_event_stage_touched'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_POINTER,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_POINTER,
             Blockly.mainWorkspace);
         },1);
       }
@@ -625,13 +625,13 @@ Blockly.Blocks['kiwi_event_message_value'] = {
   init: function() {
     this.setWarningText(Blockly.Msg.KF_BLOCK_DEPRECATED);
     this.setHelpUrl( Blockly.Msg.KF_EVENT_MESSAGE_VALUE_HELPURL );
-    this.setColour( Blockly.Variables.COLOUR.EVENT );
+    this.setColour( Blockly.KiwifrootVariables.COLOUR.EVENT );
     this.appendValueInput("MESSAGE")
         .setCheck("String")
         .appendField( Blockly.Msg.KF_EVENT_MESSAGE_VALUE_MESSAGE_ONE );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_EVENT_MESSAGE_VALUE_MESSAGE_TWO )
-        .appendField(new Blockly.FieldVariable('value'), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('value'), 'VAR');
     this.appendStatementInput("STACK");
     this.setInputsInline(true);
     this.setTooltip( Blockly.Msg.KF_EVENT_MESSAGE_VALUE_TOOLTIP );
@@ -668,7 +668,7 @@ Blockly.Blocks['kiwi_primitives_create_rectangle'] = {
     this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_RECTANGLE_MESSAGE_BEFORE )
-        .appendField(new Blockly.FieldVariable('rectangle'), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('rectangle'), 'VAR');
     this.appendValueInput("WIDTH")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_RECTANGLE_MESSAGE_AFTER );
@@ -709,7 +709,7 @@ Blockly.Blocks['kiwi_primitives_create_rectangle'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -736,7 +736,7 @@ Blockly.Blocks['kiwi_primitives_create_circle'] = {
     this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_CIRCLE_MESSAGE_BEFORE )
-        .appendField(new Blockly.FieldVariable('circle'), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('circle'), 'VAR');
     this.appendValueInput("RADIUS")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_CIRCLE_MESSAGE_AFTER );
@@ -775,7 +775,7 @@ Blockly.Blocks['kiwi_primitives_create_circle'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -802,7 +802,7 @@ Blockly.Blocks['kiwi_primitives_create_line'] = {
     this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_MESSAGE_ONE)
-        .appendField(new Blockly.FieldVariable('line'), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('line'), 'VAR');
     this.appendValueInput("X")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_MESSAGE_TWO );
@@ -846,7 +846,7 @@ Blockly.Blocks['kiwi_primitives_create_line'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
+          Blockly.KiwifrootVariables.changeType(name, Blockly.KiwifrootVariables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -873,7 +873,7 @@ Blockly.Blocks['kiwi_primitives_create_star'] = {
     this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_MESSAGE_ONE)
-        .appendField(new Blockly.FieldVariable('star'), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('star'), 'VAR');
     this.appendValueInput("RADIUS")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_MESSAGE_TWO );
@@ -944,7 +944,7 @@ Blockly.Blocks['kiwi_primitives_create_polygon'] = {
     this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_MESSAGE_ONE )
-        .appendField(new Blockly.FieldVariable('polygon'), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('polygon'), 'VAR');
     this.appendValueInput("RADIUS")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_MESSAGE_TWO );
@@ -1016,7 +1016,7 @@ Blockly.Blocks['kiwi_text_create'] = {
     this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_TEXT_CREATE_MESSAGE_ONE )
-        .appendField(new Blockly.FieldVariable('textfield'), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('textfield'), 'VAR');
     this.appendValueInput("TEXT")
         .setCheck("String")
         .appendField( Blockly.Msg.KF_TEXT_CREATE_MESSAGE_TWO );
@@ -1200,7 +1200,7 @@ Blockly.Blocks['controls_forEach'] = {
     this.appendValueInput('LIST')
         .setCheck('Array')
         .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_ITEM)
-        .appendField(new Blockly.FieldVariable(null), 'VAR')
+        .appendField(new Blockly.KiwifrootFieldVariable(null), 'VAR')
         .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_INLIST);
     if (Blockly.Msg.CONTROLS_FOREACH_INPUT_INLIST_TAIL) {
       this.appendDummyInput()

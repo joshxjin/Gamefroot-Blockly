@@ -40,13 +40,13 @@ Blockly.Blocks['variables_get'] = {
      */
     init: function() {
         this.setHelpUrl( Blockly.Msg.VARIABLES_GET_HELPURL );
-        this.setColour( Blockly.Variables.COLOUR.VARIABLES );
+        this.setColour( Blockly.KiwifrootVariables.COLOUR.VARIABLES );
         this.appendDummyInput()
             .appendField(Blockly.Msg.VARIABLES_GET_TITLE)
             .appendField(new Blockly.FieldDropdown(
-                Blockly.Variables.allTypes(),
+                Blockly.KiwifrootVariables.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
+            .appendField(new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
                 this.nameChangedHandler), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_GET_TAIL);
         this.setOutput(true);
@@ -62,7 +62,7 @@ Blockly.Blocks['variables_get'] = {
         // Try to use the main workspace (blocks in the flyout)
         var workspace = Blockly.mainWorkspace || this.workspace;
         var name = this.getFieldValue('VAR');
-        var type = Blockly.Variables.typeOf(name, workspace) || this.getFieldValue('TYPE');
+        var type = Blockly.KiwifrootVariables.typeOf(name, workspace) || this.getFieldValue('TYPE');
         if (type) this.setType(type, true);
         this.postInitExecuted_ = true;
     },
@@ -168,7 +168,7 @@ Blockly.Blocks['variables_get'] = {
     typeChangedHandler: function(type){
         var self = this.sourceBlock_;
         var name = self.getFieldValue('VAR');
-        Blockly.Variables.changeType(name, type, Blockly.mainWorkspace);
+        Blockly.KiwifrootVariables.changeType(name, type, Blockly.mainWorkspace);
     },
     /**
      * The function called when the name dropdown is changed
@@ -176,7 +176,7 @@ Blockly.Blocks['variables_get'] = {
      */
     nameChangedHandler: function(newName){
         var self = this.sourceBlock_;
-        var type = Blockly.Variables.typeOf(newName, Blockly.mainWorkspace);
+        var type = Blockly.KiwifrootVariables.typeOf(newName, Blockly.mainWorkspace);
         if (type) self.setType(type);
     }
 };
@@ -188,14 +188,14 @@ Blockly.Blocks['variables_set'] = {
      */
     init: function() {
         this.setHelpUrl(Blockly.Msg.VARIABLES_SET_HELPURL);
-        this.setColour( Blockly.Variables.COLOUR.VARIABLES );
+        this.setColour( Blockly.KiwifrootVariables.COLOUR.VARIABLES );
 
         this.appendValueInput('VALUE')
             .appendField(Blockly.Msg.VARIABLES_SET_MESSAGE_ONE)
             .appendField( new Blockly.FieldDropdown(
-                Blockly.Variables.allTypes(),
+                Blockly.KiwifrootVariables.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField( new Blockly.FieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
+            .appendField( new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
                 this.nameChangedHandler), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_SET_MESSAGE_TWO);
 
@@ -234,14 +234,14 @@ Blockly.Blocks['variables_local_get'] = {
      */
     init: function() {
         this.setHelpUrl(Blockly.Msg.VARIABLES_GET_HELPURL);
-        this.setColour( Blockly.Variables.COLOUR.LOCAL_VARIABLES );
+        this.setColour( Blockly.KiwifrootVariables.COLOUR.LOCAL_VARIABLES );
         this.appendDummyInput()
             .appendField(Blockly.Msg.VARIABLES_GET_TITLE)
             .appendField(new Blockly.FieldDropdown(
-                Blockly.Variables.allTypes(),
+                Blockly.KiwifrootVariables.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
-                this.nameChangedHandler, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR')
+            .appendField(new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
+                this.nameChangedHandler, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_GET_TAIL);
         this.setOutput(true);
         this.setTooltip(Blockly.Msg.VARIABLES_GET_TOOLTIP_LOCAL);
@@ -256,7 +256,7 @@ Blockly.Blocks['variables_local_get'] = {
         // Try to use the main workspace (blocks in the flyout)
         var workspace = Blockly.mainWorkspace || this.workspace;
         var name = this.getFieldValue('VAR');
-        var type = Blockly.Variables.Local.typeOf(name, workspace)
+        var type = Blockly.KiwifrootVariables.Local.typeOf(name, workspace)
             || this.getFieldValue('TYPE');
         if (type) this.localSetType(type, true);
         this.postInitExecuted_ = true;
@@ -361,7 +361,7 @@ Blockly.Blocks['variables_local_get'] = {
     typeChangedHandler: function(type){
         var self = this.sourceBlock_;
         var name = self.getFieldValue('VAR');
-        Blockly.Variables.Local.changeType(name, type, Blockly.mainWorkspace);
+        Blockly.KiwifrootVariables.Local.changeType(name, type, Blockly.mainWorkspace);
     },
     /**
      * The function called when the name dropdown is changed
@@ -369,7 +369,7 @@ Blockly.Blocks['variables_local_get'] = {
      */
     nameChangedHandler: function(newName){
         var self = this.sourceBlock_;
-        var type = Blockly.Variables.Local.typeOf(newName, Blockly.mainWorkspace);
+        var type = Blockly.KiwifrootVariables.Local.typeOf(newName, Blockly.mainWorkspace);
         if (type) self.localSetType(type);
     }
 };
@@ -381,15 +381,15 @@ Blockly.Blocks['variables_local_set'] = {
      */
     init: function() {
         this.setHelpUrl(Blockly.Msg.VARIABLES_SET_HELPURL);
-        this.setColour( Blockly.Variables.COLOUR.LOCAL_VARIABLES );
+        this.setColour( Blockly.KiwifrootVariables.COLOUR.LOCAL_VARIABLES );
 
         this.appendValueInput('VALUE')
             .appendField(Blockly.Msg.VARIABLES_SET_MESSAGE_ONE)
             .appendField( new Blockly.FieldDropdown(
-                Blockly.Variables.allTypes(),
+                Blockly.KiwifrootVariables.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField( new Blockly.FieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
-                this.nameChangedHandler, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR')
+            .appendField( new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
+                this.nameChangedHandler, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_SET_MESSAGE_TWO);
 
         this.setInputsInline(true);
@@ -427,14 +427,14 @@ Blockly.Blocks['variables_global_get'] = {
      */
     init: function() {
         this.setHelpUrl(Blockly.Msg.VARIABLES_GET_HELPURL);
-        this.setColour( Blockly.Variables.COLOUR.GLOBAL_VARIABLES );
+        this.setColour( Blockly.KiwifrootVariables.COLOUR.GLOBAL_VARIABLES );
         this.appendDummyInput()
             .appendField(Blockly.Msg.VARIABLES_GET_TITLE)
             .appendField(new Blockly.FieldDropdown(
-                Blockly.Variables.Global.allTypes(),
+                Blockly.KiwifrootVariables.Global.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField(new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
-                this.nameChangedHandler, Blockly.FieldVariable.SCOPE.GLOBAL), 'VAR')
+            .appendField(new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_GET_ITEM,
+                this.nameChangedHandler, Blockly.KiwifrootFieldVariable.SCOPE.GLOBAL), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_GET_TAIL);
         this.setOutput(true);
         this.setTooltip(Blockly.Msg.VARIABLES_GET_TOOLTIP_GLOBAL);
@@ -449,7 +449,7 @@ Blockly.Blocks['variables_global_get'] = {
         // Try to use the main workspace (blocks in the flyout)
         var workspace = Blockly.mainWorkspace || this.workspace;
         var name = this.getFieldValue('VAR');
-        var type = Blockly.Variables.Global.typeOf(name, workspace) || this.getFieldValue('TYPE');
+        var type = Blockly.KiwifrootVariables.Global.typeOf(name, workspace) || this.getFieldValue('TYPE');
         if (type) this.globalSetType(type, true);
         this.postInitExecuted_ = true;
     },
@@ -557,7 +557,7 @@ Blockly.Blocks['variables_global_get'] = {
     typeChangedHandler: function(type){
         var self = this.sourceBlock_;
         var name = self.getFieldValue('VAR');
-        Blockly.Variables.Global.changeType(name, type, Blockly.mainWorkspace);
+        Blockly.KiwifrootVariables.Global.changeType(name, type, Blockly.mainWorkspace);
     },
     /**
      * The function called when the name dropdown is changed
@@ -565,7 +565,7 @@ Blockly.Blocks['variables_global_get'] = {
      */
     nameChangedHandler: function(newName){
         var self = this.sourceBlock_;
-        var type = Blockly.Variables.Global.typeOf(newName, Blockly.mainWorkspace);
+        var type = Blockly.KiwifrootVariables.Global.typeOf(newName, Blockly.mainWorkspace);
         if (type) self.globalSetType(type);
     }
 };
@@ -577,15 +577,15 @@ Blockly.Blocks['variables_global_set'] = {
      */
     init: function() {
         this.setHelpUrl(Blockly.Msg.VARIABLES_SET_HELPURL);
-        this.setColour( Blockly.Variables.COLOUR.GLOBAL_VARIABLES );
+        this.setColour( Blockly.KiwifrootVariables.COLOUR.GLOBAL_VARIABLES );
 
         this.appendValueInput('VALUE')
             .appendField(Blockly.Msg.VARIABLES_SET_MESSAGE_ONE)
             .appendField( new Blockly.FieldDropdown(
-                Blockly.Variables.Global.allTypes(),
+                Blockly.KiwifrootVariables.Global.allTypes(),
                 this.typeChangedHandler), 'TYPE')
-            .appendField( new Blockly.FieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
-                this.nameChangedHandler, Blockly.FieldVariable.SCOPE.GLOBAL), 'VAR')
+            .appendField( new Blockly.KiwifrootFieldVariable(Blockly.Msg.VARIABLES_SET_ITEM,
+                this.nameChangedHandler, Blockly.KiwifrootFieldVariable.SCOPE.GLOBAL), 'VAR')
             .appendField(Blockly.Msg.VARIABLES_SET_MESSAGE_TWO);
 
         this.setInputsInline(true);

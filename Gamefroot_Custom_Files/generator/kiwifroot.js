@@ -289,7 +289,7 @@ Blockly.Kiwifroot.init = function(workspace) {
   }
 
   // Provide all the custom variables
-  var variables = Blockly.Variables.allVariablesAndTypes(workspace);
+  var variables = Blockly.KiwifrootVariables.allVariablesAndTypes(workspace);
 
   for (var x = 0; x < variables.length; x++) {
     var variableName = variables[x][0];
