@@ -28,7 +28,7 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.math');
+//goog.provide('Blockly.Blocks.math');
 
 goog.require('Blockly.Blocks');
 
