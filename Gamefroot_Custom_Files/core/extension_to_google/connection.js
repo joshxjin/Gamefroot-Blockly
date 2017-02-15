@@ -34,6 +34,8 @@ goog.require('goog.dom');
  * @param {string} type The type to check the connection for
  * @return {boolean}
  */
+
+
 Blockly.Connection.prototype.acceptsType = function(type){
     // If it accepts anything
     if (!this.check_) return true;
@@ -43,3 +45,4 @@ Blockly.Connection.prototype.acceptsType = function(type){
     }
     return false;
 };
+
