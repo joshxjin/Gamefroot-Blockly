@@ -67,7 +67,7 @@ Blockly.Blocks['kiwi_primitives_create_rectangle_local'] = {
     this.setColour( Blockly.Variables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_RECTANGLE_MESSAGE_BEFORE )
-        .appendField(new Blockly.KiwifrootFieldVariable('rectangle', null, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR');
+        .appendField(new Blockly.FieldVariable('rectangle', null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
     this.appendValueInput("WIDTH")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_RECTANGLE_MESSAGE_AFTER );
@@ -159,7 +159,7 @@ Blockly.Blocks['kiwi_primitives_create_circle_local'] = {
     this.setColour( Blockly.Variables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_CIRCLE_MESSAGE_BEFORE )
-        .appendField(new Blockly.KiwifrootFieldVariable('circle',null, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR');
+        .appendField(new Blockly.FieldVariable('circle',null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
     this.appendValueInput("RADIUS")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_CIRCLE_MESSAGE_AFTER );
@@ -249,7 +249,7 @@ Blockly.Blocks['kiwi_primitives_create_line_local'] = {
     this.setColour( Blockly.Variables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_MESSAGE_ONE)
-        .appendField(new Blockly.KiwifrootFieldVariable('line',null, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR');
+        .appendField(new Blockly.FieldVariable('line',null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
     this.appendValueInput("X")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_LINE_MESSAGE_TWO );
@@ -344,7 +344,7 @@ Blockly.Blocks['kiwi_primitives_create_star_local'] = {
     this.setColour( Blockly.Variables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_MESSAGE_ONE)
-        .appendField(new Blockly.KiwifrootFieldVariable('star', null, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR');
+        .appendField(new Blockly.FieldVariable('star', null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
     this.appendValueInput("RADIUS")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_STAR_MESSAGE_TWO );
@@ -439,7 +439,7 @@ Blockly.Blocks['kiwi_primitives_create_polygon_local'] = {
     this.setColour( Blockly.Variables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_MESSAGE_ONE )
-        .appendField(new Blockly.KiwifrootFieldVariable('polygon', null, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR');
+        .appendField(new Blockly.FieldVariable('polygon', null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
     this.appendValueInput("RADIUS")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_PRIMITIVES_CREATE_POLYGON_MESSAGE_TWO );
