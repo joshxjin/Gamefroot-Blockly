@@ -291,7 +291,7 @@ Blockly.Blocks['kiwi_event_touch_return_instance_local'] = {
     this.setColour( Blockly.KiwifrootVariables.COLOUR.PHYSICS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_EVENT_TOUCH_RETURN_MESSAGE )
-        .appendField(new Blockly.FieldVariable('toucher', null, Blockly.FieldVariable.SCOPE.LOCAL ), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('toucher', null, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL ), 'VAR');
     this.appendStatementInput("STACK");
     this.setTooltip( Blockly.Msg.KF_EVENT_TOUCH_RETURN_TOOLTIP );
   },
@@ -380,7 +380,7 @@ Blockly.Blocks['kiwi_event_stage_touched_local'] = {
           ["pressed", "onDown"], 
           ["released", "onUp"]
         ]), "TYPE")
-        .appendField(new Blockly.FieldVariable('pointer', null, Blockly.FieldVariable.SCOPE.LOCAL ), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('pointer', null, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL ), 'VAR');
     this.appendStatementInput("STACK");
     this.setTooltip( Blockly.Msg.KF_EVENT_STAGE_TOUCHED_TOOLTIP );
   },
@@ -468,7 +468,7 @@ Blockly.Blocks['kiwi_event_message_value_local'] = {
         .appendField( Blockly.Msg.KF_EVENT_MESSAGE_VALUE_MESSAGE_ONE );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_EVENT_MESSAGE_VALUE_MESSAGE_TWO )
-        .appendField(new Blockly.FieldVariable('value', null, Blockly.FieldVariable.SCOPE.LOCAL ), 'VAR');
+        .appendField(new Blockly.KiwifrootFieldVariable('value', null, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL ), 'VAR');
     this.appendStatementInput("STACK");
     this.setInputsInline(true);
     this.setTooltip( Blockly.Msg.KF_EVENT_MESSAGE_VALUE_TOOLTIP );
