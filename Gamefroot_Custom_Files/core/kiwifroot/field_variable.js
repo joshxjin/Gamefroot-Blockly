@@ -24,8 +24,6 @@
  */
 'use strict';
 
-// TODO
-// Unsure what this line does
 goog.provide('Blockly.KiwifrootFieldVariable');
 
 goog.require('Blockly.FieldDropdown');

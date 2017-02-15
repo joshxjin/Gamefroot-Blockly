@@ -96,7 +96,7 @@ Blockly.Blocks['kiwi_classes_create_instance_with_var_local'] = {
     this.setColour( Blockly.KiwifrootVariables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_WITH_VAR_MESSAGE_BEFORE )
-        .appendField(new Blockly.FieldVariable('instance', null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR' );
+        .appendField(new Blockly.KiwifrootFieldVariable('instance', null, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR' );
     this.appendValueInput("CLASS")
         .setCheck("Class")
         .appendField( Blockly.Msg.KF_CLASSES_CREATE_INSTANCE_WITH_VAR_MESSAGE_AFTER );
