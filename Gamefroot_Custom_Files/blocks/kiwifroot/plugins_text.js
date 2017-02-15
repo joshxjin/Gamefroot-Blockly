@@ -228,7 +228,7 @@ Blockly.Blocks['kiwi_text_create_local'] = {
     this.setColour( Blockly.Variables.COLOUR.DRAW );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_TEXT_CREATE_MESSAGE_ONE )
-        .appendField(new Blockly.KiwifrootFieldVariable('textfield', null, Blockly.KiwifrootFieldVariable.SCOPE.LOCAL), 'VAR');
+        .appendField(new Blockly.FieldVariable('textfield', null, Blockly.FieldVariable.SCOPE.LOCAL), 'VAR');
     this.appendValueInput("TEXT")
         .setCheck("String")
         .appendField( Blockly.Msg.KF_TEXT_CREATE_MESSAGE_TWO );
