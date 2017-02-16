@@ -66,7 +66,7 @@ goog.require('goog.userAgent');
  function should be unaffaected.
 
  This file needs to be added after blockly.js to ensure it overrides it
- so Kiwifroot code can use the functionality. Build.py may need to be editted to
+ so Kiwifroot code can use the functionality. Build.py may need to be edited to
  ensure this gets added after blockly.js is processed
  */
 
