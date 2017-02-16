@@ -305,6 +305,48 @@
             document.getElementById('import').disabled = !valid;
         }
 
+        /**
+         * Gamefroot Custom Buttons and functionalities
+         */
+
+        function gotoGame() {
+            var code = toCode("Kiwifroot");
+            var baseURL =
+                location.protocol +
+                "//" +
+                location.hostname +
+                (location.port ? ":" + location.port : "");
+            var path = location.pathname.replace(
+                "tests/playground.html",
+                "game/index.html");
+            var popup = window.open(baseURL + path);
+            popup.addEventListener("load", function() {
+                popup.postMessage(code, "*");
+            }, true);
+        }
+
+        function allVarsWithTypes() {
+            var output = document.getElementById('importExport');
+            var vars = Blockly.Variables.allVariablesAndTypes(Blockly.mainWorkspace);
+            output.value = JSON.stringify(vars);
+        }
+
+        function toJson() {
+            var output = document.getElementById('importExport');
+            var json = Blockly.Json.workspaceToObject(Blockly.mainWorkspace);
+            output.value = Blockly.Json.objectToText(json);
+            output.focus();
+            output.select();
+            saveOutput();
+        }
+
+        function fromJson() {
+            var input = document.getElementById('importExport');
+            var json = Blockly.Json.textToObject(input.value);
+            Blockly.Json.objectToWorkspace(Blockly.mainWorkspace, json);
+        }
+
+
         function logEvents(state) {
             var checkbox = document.getElementById('logCheck');
             checkbox.checked = state;
@@ -522,6 +564,11 @@
     &nbsp;
     <input type="button" value="To Dart" onclick="toCode('Dart')">
     <br>
+    <input type="button" value="Export to JSON" onclick="toJson()"> &nbsp;
+    <input type="button" value="Import from JSON" onclick="fromJson()">
+    <br>
+    <input type="button" value="To Kiwifroot" onclick="toCode('Kiwifroot')"> &nbsp;
+    <input type="button" value="Go to Game!" onclick="gotoGame()">
     <textarea id="importExport" style="width: 26%; height: 12em"
               onchange="taChange();" onkeyup="taChange()"></textarea>
 </p>
