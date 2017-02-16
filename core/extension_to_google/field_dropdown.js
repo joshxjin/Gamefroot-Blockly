@@ -53,9 +53,9 @@ Blockly.FieldDropdown.prototype.trimOptions_ = function() {
         return;
     }
     var strings = options.map(function(t) {return String( t[0] ); });
-    var shortest = Blockly.shortestStringLength(strings);
-    var prefixLength = Blockly.commonWordPrefix(strings, shortest);
-    var suffixLength = Blockly.commonWordSuffix(strings, shortest);
+    var shortest = Blockly.utils.shortestStringLength(strings);
+    var prefixLength = Blockly.utils.commonWordPrefix(strings, shortest);
+    var suffixLength = Blockly.utils.commonWordSuffix(strings, shortest);
     if (!prefixLength && !suffixLength) {
         return;
     }
