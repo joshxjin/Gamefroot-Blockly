@@ -24,6 +24,38 @@
  */
 'use strict';
 
+// Top level object for Blockly.
+// goog.provide('Blockly');
+
+goog.require('Blockly.BlockSvg');
+goog.require('Blockly.FieldAngle');
+goog.require('Blockly.FieldCheckbox');
+goog.require('Blockly.FieldColour');
+// Date picker commented out since it increases footprint by 60%.
+// Add it only if you need it.
+//goog.require('Blockly.FieldDate');
+goog.require('Blockly.FieldDropdown');
+goog.require('Blockly.FieldImage');
+goog.require('Blockly.FieldTextInput');
+goog.require('Blockly.FieldVariable');
+goog.require('Blockly.Generator');
+goog.require('Blockly.Msg');
+goog.require('Blockly.Procedures');
+// Realtime is currently badly broken.  Stub it out.
+//goog.require('Blockly.Realtime');
+// Blockly.Realtime = {
+//     isEnabled: function() {return false;},
+//     blockChanged: function() {},
+//     doCommand: function(cmdThunk) {cmdThunk();}
+// };
+goog.require('Blockly.Toolbox');
+goog.require('Blockly.WidgetDiv');
+goog.require('Blockly.WorkspaceSvg');
+goog.require('Blockly.inject');
+goog.require('Blockly.utils');
+goog.require('goog.color');
+goog.require('goog.userAgent');
+
 /*
     This is a kiwifroot created file
  */
@@ -38,13 +70,10 @@
  ensure this gets added after blockly.js is processed
  */
 
-// Store old funciton in old_function variable for later use
-var old_function = Blockly.makeColour;
-
-Blockly.makeColour = function() {
+Blockly.makeColour = function(hue) {
     //Already hex
     if( typeof hue === "string" && hue.charAt(0) === '#' ) {
         return hue;
     }
-    old_function();
-}
+    Blockly.hueToRgb(hue);
+};

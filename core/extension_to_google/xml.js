@@ -31,7 +31,7 @@
 //goog.provide('Blockly.Xml');
 
 // TODO(scr): Fix circular dependencies
-// goog.require('Blockly.Block');
+goog.require('Blockly.Block');
 goog.require('goog.dom');
 
 /**
@@ -44,7 +44,7 @@ goog.require('goog.dom');
  * @return {!Blockly.Block} The root block created.
  * @private
  */
-Blockly.Xml.domToBlockHeadless_ = function (workspace, xmlBlock, opt_reuseBlock) {
+Blockly.Xml.domToBlockHeadless_ = function (xmlBlock, workspace, opt_reuseBlock) {
     var block = null;
     var prototypeName = xmlBlock.getAttribute('type');
     if (!prototypeName) {

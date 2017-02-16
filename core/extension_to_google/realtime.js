@@ -327,7 +327,7 @@ Blockly.Realtime.placeBlockOnWorkspace_ = function(block, addToTop) {
 //    }
         var blockDom = Blockly.Xml.textToDom(block.xmlDom).firstChild;
         var newBlock =
-            Blockly.Xml.domToBlock(Blockly.mainWorkspace, blockDom, true);
+            Blockly.Xml.domToBlock(blockDom, Blockly.mainWorkspace, true);
         // TODO: The following is for debugging.  It should never actually happen.
         if (!newBlock) {
             return;

@@ -24,7 +24,7 @@
  */
 'use strict';
 
-goog.provide('Blockly.Kiwifroot.procedures');
+// goog.provide('Blockly.Kiwifroot.procedures');
 
 goog.require('Blockly.Kiwifroot');
 

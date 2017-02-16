@@ -78,7 +78,7 @@ Blockly.Flyout.prototype.show = function (xmlList) {
 
         for (var i = 0, xml; xml = xmlList[i]; i++) {
             if (xml.tagName && xml.tagName.toUpperCase() == 'BLOCK') {
-                var block = Blockly.Xml.domToBlock(/** @type {!Blockly.Workspace} */ (this.workspace_), xml);
+                var block = Blockly.Xml.domToBlock(xml, /** @type {!Blockly.Workspace} */ (this.workspace_));
                 blocks.push(block);
                 gaps.push(margin * 3);
             } else if (xml === Blockly.Variables.NAME_TYPE) {

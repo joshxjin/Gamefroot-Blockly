@@ -24,7 +24,7 @@
  */
 'use strict';
 
-goog.provide('Blockly.Toolbox');
+// goog.provide('Blockly.Toolbox');
 
 goog.require('Blockly.Flyout');
 goog.require('goog.dom');
@@ -72,7 +72,7 @@ Blockly.Toolbox.prototype.init = function() {
     // Clicking on toolbar closes popups.
     Blockly.bindEvent_(this.HtmlDiv, 'mousedown', this,
         function(e) {
-            if (Blockly.isRightButton(e) || e.target == this.HtmlDiv) {
+            if (Blockly.utils.isRightButton(e) || e.target == this.HtmlDiv) {
                 // Close flyout.
                 Blockly.hideChaff(false);
             } else {

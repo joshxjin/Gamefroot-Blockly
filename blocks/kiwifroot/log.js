@@ -78,7 +78,7 @@ Blockly.Blocks['kiwi_get_debug_mode'] = {
 Blockly.Blocks['kiwi_block_category'] = {
   init: function( xmlBlock ) {
 
-    Blockly.addClass_( ( this.svgGroup_ ), 'blocklyBlocksCategory' );
+    Blockly.utils.addClass( ( this.svgGroup_ ), 'blocklyBlocksCategory' );
 
     this.setColour( "#f0f0f0" );
     this.setEditable( false );
