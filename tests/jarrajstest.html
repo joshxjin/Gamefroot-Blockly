@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Javascript Testing</title>
+
+
+</head>
+
+<body>
+
+<script>
+
+function test1(name, hey){
+    this.name = name;
+    this.hey = hey;
+
+    this.print = function() {
+        return this.name + " " + this.hey;
+    }
+}
+
+ function test1(name, hey, extra=null)    {
+    this.name = name;
+    this.hey = hey;
+    this.extra = extra;
+
+    this.print = function() {
+        return this.name + " " + this.hey + " " + this.extra;
+    }
+}
+
+var test = new test1("John", "Brown");
+       console.log(test.print());
+
+var test_r = new test1("John", "Brown", "Banana");
+       console.log(test_r.print());
+
+// function makeColour(hue) {
+//     this.hue = hue;
+//     return this.hue;
+// }
+
+// function makeColour(hue) {
+//     if (hue < 5) {
+//         hue = 10;
+//     }
+//     makeColour(hue);
+// }
+
+// var colour = new makeColour(3);
+// console.log(colour.hue);
+
+var Person = {
+    init: function(name){
+    this.name = name;
+    },
+    onchange: function(){
+    this.name = "changed";
+    console.log(this.name);
+    }
+}
+
+var oldFunc = Person.onchange;
+
+Person.onchange = function(){
+    console.log("first_change");
+    oldFunc();
+}
+
+var p = Object.create(Person);
+    p.init("p_name");
+    p.onchange();
+
+</script>
+
+</body>
+
+</html>
