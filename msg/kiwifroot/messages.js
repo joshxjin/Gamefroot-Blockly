@@ -32,7 +32,9 @@
  */
 'use strict';
 
-goog.provide('Blockly.Msg.en');
+// Blockly.Msg.en is alaready provided in the /msg/messages.js file
+
+// goog.provide('Blockly.Msg.en');
 
 goog.require('Blockly.Msg');
 
