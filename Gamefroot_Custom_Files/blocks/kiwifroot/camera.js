@@ -32,7 +32,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['kiwi_camera_go_to'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_PAN_TO_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([
         ["pan", "panTo"],
@@ -58,7 +58,7 @@ Blockly.Blocks['kiwi_camera_go_to'] = {
 Blockly.Blocks['kiwi_camera_set_speed'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_SET_SPEED_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendValueInput("VALUE")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_CAMERA_SET_SPEED_MESSAGE );
@@ -72,7 +72,7 @@ Blockly.Blocks['kiwi_camera_set_speed'] = {
 Blockly.Blocks['kiwi_camera_get_speed'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_GET_SPEED_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_GET_SPEED_MESSAGE );
     this.setInputsInline(true);
@@ -85,7 +85,7 @@ Blockly.Blocks['kiwi_camera_get_speed'] = {
 Blockly.Blocks['kiwi_camera_lock_on'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_LOCK_ON_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_LOCK_ON_MESSAGE );
     this.appendValueInput("INSTANCE")
@@ -101,7 +101,7 @@ Blockly.Blocks['kiwi_camera_lock_on'] = {
 Blockly.Blocks['kiwi_camera_unlock'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_UNLOCK_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_UNLOCK_MESSAGE );
     this.setInputsInline(true);
@@ -114,7 +114,7 @@ Blockly.Blocks['kiwi_camera_unlock'] = {
 Blockly.Blocks['kiwi_camera_state'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_STATE_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_STATE_MESSAGE )
         .appendField(new Blockly.FieldDropdown( [
@@ -130,7 +130,7 @@ Blockly.Blocks['kiwi_camera_state'] = {
 Blockly.Blocks['kiwi_camera_scale'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_SCALE_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendValueInput("VALUE")
         .setCheck("Number")
         .appendField( Blockly.Msg.KF_CAMERA_SCALE_MESSAGE )
@@ -148,7 +148,7 @@ Blockly.Blocks['kiwi_camera_scale'] = {
 Blockly.Blocks['kiwi_camera_scale_get'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_SCALE_GET_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_SCALE_GET_MESSAGE )
         .appendField(new Blockly.FieldDropdown([
@@ -164,7 +164,7 @@ Blockly.Blocks['kiwi_camera_scale_get'] = {
 Blockly.Blocks['kiwi_camera_center_on_instance'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_CENTER_ON_INSTANCE_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendValueInput("INSTANCE")
         .setCheck("Instance")
         .appendField( Blockly.Msg.KF_CAMERA_CENTER_ON_INSTANCE_MESSAGE );
@@ -181,7 +181,7 @@ Blockly.Blocks['kiwi_camera_center_on_instance'] = {
 Blockly.Blocks['kiwi_camera_get_read_only_position'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_GET_READ_ONLY_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_GET_READ_ONLY_MESSAGE );
     this.appendDummyInput()
@@ -197,7 +197,7 @@ Blockly.Blocks['kiwi_camera_get_read_only_position'] = {
 Blockly.Blocks['kiwi_camera_get_read_only_dimensions'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_GET_READ_ONLY_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_GET_READ_ONLY_MESSAGE );
     this.appendDummyInput()
@@ -215,7 +215,7 @@ Blockly.Blocks['kiwi_camera_get_read_only_dimensions'] = {
 Blockly.Blocks['kiwi_camera_set_offset'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_SET_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_SET_MESSAGE_BEFORE );
     this.appendDummyInput()
@@ -235,7 +235,7 @@ Blockly.Blocks['kiwi_camera_set_offset'] = {
 Blockly.Blocks['kiwi_camera_set_min'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_SET_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_SET_MESSAGE_BEFORE );
     this.appendDummyInput()
@@ -255,7 +255,7 @@ Blockly.Blocks['kiwi_camera_set_min'] = {
 Blockly.Blocks['kiwi_camera_set_max'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_SET_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_SET_MESSAGE_BEFORE );
     this.appendDummyInput()
@@ -276,7 +276,7 @@ Blockly.Blocks['kiwi_camera_set_max'] = {
 Blockly.Blocks['kiwi_camera_get_offset'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_GET_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_GET_MESSAGE );
     this.appendDummyInput()
@@ -292,7 +292,7 @@ Blockly.Blocks['kiwi_camera_get_offset'] = {
 Blockly.Blocks['kiwi_camera_get_min'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_GET_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_GET_MESSAGE );
     this.appendDummyInput()
@@ -308,7 +308,7 @@ Blockly.Blocks['kiwi_camera_get_min'] = {
 Blockly.Blocks['kiwi_camera_get_max'] = {
   init: function() {
     this.setHelpUrl( Blockly.Msg.KF_CAMERA_GET_HELPURL );
-    this.setColour( Blockly.KiwifrootVariables.COLOUR.LOOKS );
+    this.setColour( Blockly.Variables.COLOUR.LOOKS );
     this.appendDummyInput()
         .appendField( Blockly.Msg.KF_CAMERA_GET_MESSAGE );
     this.appendDummyInput()

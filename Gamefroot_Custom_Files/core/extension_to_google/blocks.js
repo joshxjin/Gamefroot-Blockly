@@ -1,8 +1,12 @@
 /**
+ * Created by josh on 16/02/17.
+ */
+
+/**
  * @license
  * Visual Blocks Editor
  *
- * Copyright 2011 Google Inc.
+ * Copyright 2013 Google Inc.
  * https://developers.google.com/blockly/
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,30 +23,20 @@
  */
 
 /**
- * @fileoverview Components for creating connections between blocks.
- * @author fraser@google.com (Neil Fraser)
+ * @fileoverview Name space for the Blocks singleton.
+ * @author spertus@google.com (Ellen Spertus)
  */
 'use strict';
 
-// goog.provide('Blockly.Connection');
-// goog.provide('Blockly.ConnectionDB');
-
-goog.require('goog.dom');
+//goog.provide('Blockly.Blocks');
 
 /**
- * Returns whether or not the connection accepts the given type
- * @param {string} type The type to check the connection for
- * @return {boolean}
+ * The hue to use for statements
+ * @const
  */
-
-
-Blockly.Connection.prototype.acceptsType = function(type){
-    // If it accepts anything
-    if (!this.check_) return true;
-    // If it contains the type
-    if (this.check_.indexOf(type) != -1) {
-        return true;
-    }
-    return false;
-};
-
+Blockly.Blocks.STATEMENT_COLOUR = '#dc3b8b';
+/**
+ * The hue to use for blocks that are callbacks / functions / events etc.
+ * @const
+ */
+Blockly.Blocks.CALLABLE_COLOUR = '#ebaf11';
