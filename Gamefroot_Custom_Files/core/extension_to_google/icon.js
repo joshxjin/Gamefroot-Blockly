@@ -2,7 +2,7 @@
  * @license
  * Visual Blocks Editor
  *
- * Copyright 2011 Google Inc.
+ * Copyright 2013 Google Inc.
  * https://developers.google.com/blockly/
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,30 +19,19 @@
  */
 
 /**
- * @fileoverview Components for creating connections between blocks.
+ * @fileoverview Object representing an icon on a block.
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
 
-// goog.provide('Blockly.Connection');
-// goog.provide('Blockly.ConnectionDB');
+// goog.provide('Blockly.Icon');
 
 goog.require('goog.dom');
 
-/**
- * Returns whether or not the connection accepts the given type
- * @param {string} type The type to check the connection for
- * @return {boolean}
- */
 
-
-Blockly.Connection.prototype.acceptsType = function(type){
-    // If it accepts anything
-    if (!this.check_) return true;
-    // If it contains the type
-    if (this.check_.indexOf(type) != -1) {
-        return true;
+Blockly.Icon.prototype.updateColour = function() {
+    if (this.isVisible()) {
+        var hexColour = this.block_.getColour();
+        this.bubble_.setColour(hexColour);
     }
-    return false;
 };
-

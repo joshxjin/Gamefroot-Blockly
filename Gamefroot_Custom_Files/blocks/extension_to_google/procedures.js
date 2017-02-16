@@ -393,7 +393,7 @@ Blockly.Blocks['procedures_callnoreturn_local'].objectToMutation = function(obj)
  * @param {string} newName Renamed variable.
  * @this Blockly.Block
  */
-Blockly.Blocks['procedures_callnoreturn_local'].localRenameVar = renameVar;
+Blockly.Blocks['procedures_callnoreturn_local'].localRenameVar = Blockly.Blocks['procedures_callnoreturn_local'].renameVar;
 
 Blockly.Blocks['procedures_callreturn_local'] = {
     /**

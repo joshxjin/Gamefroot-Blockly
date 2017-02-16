@@ -2,7 +2,7 @@
  * @license
  * Visual Blocks Editor
  *
- * Copyright 2011 Google Inc.
+ * Copyright 2012 Google Inc.
  * https://developers.google.com/blockly/
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,30 +19,16 @@
  */
 
 /**
- * @fileoverview Components for creating connections between blocks.
+ * @fileoverview Object representing a warning.
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
 
-// goog.provide('Blockly.Connection');
-// goog.provide('Blockly.ConnectionDB');
+//goog.provide('Blockly.Warning');
 
-goog.require('goog.dom');
+goog.require('Blockly.Bubble');
+goog.require('Blockly.Icon');
 
-/**
- * Returns whether or not the connection accepts the given type
- * @param {string} type The type to check the connection for
- * @return {boolean}
- */
+Blockly.Warning.prototype.png_ = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAQAAAD8x0bcAAAAkklEQVQoFa3BMRLBQACG0X8yKVPkAlQ5RMqUHIOSY1ByDEpuQsURKKiZND67WZswki2M96RfMGSgMGKOHIgVwhRrom6kXLEupOrCEm+hdmSUeCWZ2rDFkIG10TcKKjJwCn0iYk9FBs6OSO8Y8yIDb6QGCWfanEjkMacmg8ZMDn3u1GTQuNGTxZqQlSRywh7k+psnmYf8iS8h6o8AAAAASUVORK5CYII=';
 
-
-Blockly.Connection.prototype.acceptsType = function(type){
-    // If it accepts anything
-    if (!this.check_) return true;
-    // If it contains the type
-    if (this.check_.indexOf(type) != -1) {
-        return true;
-    }
-    return false;
-};
-
+Blockly.Warning.prototype.SIZE = 18;
