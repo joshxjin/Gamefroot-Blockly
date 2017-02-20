@@ -174,7 +174,6 @@ Blockly.Procedures.flyoutCategory = function(blocks, gaps, margin, workspace) {
   }
   if (Blockly.Blocks['procedures_ifreturn']) {
     var block = Blockly.Block.obtain(workspace, 'procedures_ifreturn');
-    typeof block.postInit === 'function' && block.postInit.call(block);
     block.initSvg();
     blocks.push(block);
     gaps.push(margin * 2);
@@ -193,7 +192,6 @@ Blockly.Procedures.flyoutCategory = function(blocks, gaps, margin, workspace) {
         tempIds[t] = 'ARG' + t;
       }
       block.setProcedureParameters(procedureList[x][1], tempIds);
-      typeof block.postInit === 'function' && block.postInit.call(block);
       block.initSvg();
       blocks.push(block);
       gaps.push(margin * 2);
