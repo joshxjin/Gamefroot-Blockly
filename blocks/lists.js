@@ -64,25 +64,6 @@ Blockly.Blocks['lists_create_with'] = {
     this.setTooltip(Blockly.Msg.LISTS_CREATE_WITH_TOOLTIP);
   },
   /**
-   * Create an object to represent list inputs.
-   * @return {object} mutation data.
-   * @this Blockly.Block
-   */
-  mutationToObject: function() {
-    return {
-      'items': this.itemCount_
-    };
-  },
-  /**
-   * Parse mutation data to restore the list inputs.
-   * @param {object} obj Mutation data object.
-   * @this Blockly.Block
-   */
-  objectToMutation: function(obj) {
-    this.itemCount_ = obj['items'];
-    this.updateShape_();
-  },
-  /**
    * Create XML to represent list inputs.
    * @return {!Element} XML storage element.
    * @this Blockly.Block
@@ -361,30 +342,6 @@ Blockly.Blocks['lists_getIndex'] = {
     });
   },
   /**
-   * Create an object to represent mutation
-   * @return {object} mutation data.
-   * @this Blockly.Block
-   */
-  mutationToObject: function(){
-    var isStatement = !this.outputConnection;
-    var isAt = this.getInput('AT').type == Blockly.INPUT_VALUE;
-    return {
-      'statement':isStatement,
-      'at':isAt
-    };
-  },
-  /**
-   * Parse mutation data to restore mutation.
-   * @param {object} obj Mutation data object.
-   * @this Blockly.Block
-   */
-  objectToMutation: function(obj){
-    var isStatement = obj.statement;
-    this.updateStatement_(isStatement);
-    var isAt = obj.at;
-    this.updateAt_(isAt);
-  },
-  /**
    * Create XML to represent whether the block is a statement or a value.
    * Also represent whether there is an 'AT' input.
    * @return {Element} XML storage element.
@@ -512,26 +469,6 @@ Blockly.Blocks['lists_setIndex'] = {
     });
   },
   /**
-   * Create an object to represent mutation
-   * @return {object} mutation data.
-   * @this Blockly.Block
-   */
-  mutationToObject: function(){
-    var isAt = this.getInput('AT').type == Blockly.INPUT_VALUE;
-    return {
-      'at':isAt
-    };
-  },
-  /**
-   * Parse mutation data to restore mutation.
-   * @param {object} obj Mutation data object.
-   * @this Blockly.Block
-   */
-  objectToMutation: function(obj){
-    var isAt = obj.at;
-    this.updateAt_(isAt);
-  },
-  /**
    * Create XML to represent whether there is an 'AT' input.
    * @return {Element} XML storage element.
    * @this Blockly.Block
@@ -624,30 +561,6 @@ Blockly.Blocks['lists_getSublist'] = {
     this.updateAt_(1, true);
     this.updateAt_(2, true);
     this.setTooltip(Blockly.Msg.LISTS_GET_SUBLIST_TOOLTIP);
-  },
-  /**
-   * Create an object to represent mutation
-   * @return {object} mutation data.
-   * @this Blockly.Block
-   */
-  mutationToObject: function(){
-    var isAt1 = this.getInput('AT1').type == Blockly.INPUT_VALUE;
-    var isAt2 = this.getInput('AT2').type == Blockly.INPUT_VALUE;
-    return {
-      'at1':isAt1,
-      'at2':isAt2
-    };
-  },
-  /**
-   * Parse mutation data to restore mutation.
-   * @param {object} obj Mutation data object.
-   * @this Blockly.Block
-   */
-  objectToMutation: function(obj){
-    var isAt1 = obj.at1;
-    var isAt2 = obj.at2;
-    this.updateAt_(1, isAt1);
-    this.updateAt_(2, isAt2);
   },
   /**
    * Create XML to represent whether there are 'AT' inputs.
@@ -773,24 +686,6 @@ Blockly.Blocks['lists_split'] = {
     }
   },
   /**
-   * Create an object to represent mutation
-   * @return {object} mutation data.
-   * @this Blockly.Block
-   */
-  mutationToObject: function(){
-    return {
-      'mode': this.getFieldValue('MODE')
-    };
-  },
-  /**
-   * Parse mutation data to restore mutation.
-   * @param {object} obj Mutation data object.
-   * @this Blockly.Block
-   */
-  objectToMutation: function(obj){
-    this.updateType_( obj.mode );
-  },
-  /**
    * Create XML to represent the input and output types.
    * @return {!Element} XML storage element.
    * @this Blockly.Block
@@ -807,28 +702,5 @@ Blockly.Blocks['lists_split'] = {
    */
   domToMutation: function(xmlElement) {
     this.updateType_(xmlElement.getAttribute('mode'));
-  }
-};
-
-
-Blockly.Blocks['lists_add'] = {
-  init: function() {
-    this.setHelpUrl( Blockly.Msg.LISTS_ADD_HELPURL );
-    this.setColour(Blockly.Variables.COLOUR.OPERATORS);
-    this.appendValueInput("LIST")
-        .setCheck("Array")
-        .appendField( Blockly.Msg.LISTS_ADD_MESSAGE_ONE );
-    this.appendValueInput("INPUT")
-        .appendField( Blockly.Msg.LISTS_ADD_MESSAGE_TWO );
-    this.appendDummyInput()
-        .appendField( Blockly.Msg.LISTS_ADD_MESSAGE_THREE )
-        .appendField(new Blockly.FieldDropdown([
-          ["end", "end"], 
-          ["front", "front"]
-        ]), "POSITION");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip( Blockly.Msg.LISTS_ADD_TOOLTIP );
   }
 };
