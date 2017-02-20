@@ -131,22 +131,6 @@ Blockly.Trashcan.prototype.left_ = 0;
  */
 Blockly.Trashcan.prototype.top_ = 0;
 
-
-/**
- * The colour of the background cirlce when not highlighted
- * @type {string}
- * @private
- */
-Blockly.Trashcan.prototype.CIRCLE_COLOUR_ = '#333';
-
-/**
- * The colour of the background cirlce when highlighted
- * @type {string}
- * @private
- */
-Blockly.Trashcan.prototype.CIRCLE_HIGHLIGHT_ = '#0091fa';
-
-
 /**
  * Create the trash can elements.
  * @return {!Element} The trash can's SVG group.
