@@ -217,9 +217,7 @@ Blockly.Blocks['procedures_defnoreturn_local'].objectToMutation = function(obj) 
  * @return {!Array.<string>} List of variable names.
  * @this Blockly.Block
  */
-Blockly.Blocks['procedures_defnoreturn_local'].localGetVars = function() {
-    return this.arguments_;
-};
+Blockly.Blocks['procedures_defnoreturn_local'].localGetVars = Blockly.Blocks['procedures_defnoreturn_local'].getVars;
 
 /**
  * Notification that a variable is renaming.
@@ -228,28 +226,7 @@ Blockly.Blocks['procedures_defnoreturn_local'].localGetVars = function() {
  * @param {string} newName Renamed variable.
  * @this Blockly.Block
  */
-Blockly.Blocks['procedures_defnoreturn_local'].localRenameVar = function(oldName, newName) {
-    var change = false;
-    for (var i = 0; i < this.arguments_.length; i++) {
-        if (Blockly.Names.equals(oldName, this.arguments_[i])) {
-            this.arguments_[i] = newName;
-            change = true;
-        }
-    }
-    if (change) {
-        this.updateParams_();
-        // Update the mutator's variables if the mutator is open.
-        if (this.mutator.isVisible()) {
-            var blocks = this.mutator.workspace_.getAllBlocks();
-            for (var i = 0, block; block = blocks[i]; i++) {
-                if (block.type == 'procedures_mutatorarg' &&
-                    Blockly.Names.equals(oldName, block.getFieldValue('NAME'))) {
-                    block.setFieldValue(newName, 'NAME');
-                }
-            }
-        }
-    }
-};
+Blockly.Blocks['procedures_defnoreturn_local'].localRenameVar = Blockly.Blocks['procedures_defnoreturn_local'].renameVar;
 
 /**
  * Add custom menu options to this block's context menu.

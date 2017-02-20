@@ -37,7 +37,7 @@ goog.require('Blockly.Blocks');
  * @return {object} mutation data.
  * @this Blockly.Block
  */
-Blockly.Blocks['lists_create_empty'].mutationToObject = function() {
+Blockly.Blocks['lists_create_with'].mutationToObject = function() {
     return {
         'items': this.itemCount_
     };
@@ -48,7 +48,7 @@ Blockly.Blocks['lists_create_empty'].mutationToObject = function() {
  * @param {object} obj Mutation data object.
  * @this Blockly.Block
  */
-Blockly.Blocks['lists_create_empty'].objectToMutation = function(obj) {
+Blockly.Blocks['lists_create_with'].objectToMutation = function(obj) {
     this.itemCount_ = obj['items'];
     this.updateShape_();
 };
