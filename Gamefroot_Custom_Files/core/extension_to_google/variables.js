@@ -172,27 +172,6 @@ Blockly.Variables.COLOUR = {
 // code in the blocks/extensions_to_google folder as this has not been converted to
 // calling Variables namespace
 
-/*
- * New Colour Blocks....
- * Based on the category a block is in now.
- */
-Blockly.Variables.COLOUR = {
-    'EVENT': "#edae00",
-    'CONTROL': "#ff8601",
-    'MOTION': "#e54e43",
-    'ANIMATION': "#df358e",
-    'LOOKS': "#b443c9",
-    'SENSING': "#8121e7",
-    'SOUND': "#0f6bf0",
-    'OPERATORS': "#21aefe",
-    'PHYSICS': "#e66b2f",
-    'DRAW': "#38ce9e",
-    'VARIABLES': "#348f32",
-    'FUNCTIONS': "#6bd101",
-    'LOCAL_VARIABLES': "#56ae02",
-    'GLOBAL_VARIABLES': "#006d00"
-};
-
 /**
  * The hue that corresponds to each variable type
  */

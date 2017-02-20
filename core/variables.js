@@ -31,10 +31,13 @@ goog.provide('Blockly.Variables');
 goog.require('Blockly.Workspace');
 goog.require('goog.string');
 
+
 /**
  * Category to separate variable names from procedures and generated functions.
  */
 Blockly.Variables.NAME_TYPE = 'VARIABLE';
+
+
 
 /**
  * The hue that corresponds to each variable type
