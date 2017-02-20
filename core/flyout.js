@@ -79,10 +79,7 @@ Blockly.Flyout = function(workspaceOptions) {
    * @private
    */
   this.listeners_ = [];
-
 };
-
-Blockly.Flyout.prototype.GAP = 10;
 
 /**
  * Does the flyout automatically close when a block is created?
@@ -103,8 +100,6 @@ Blockly.Flyout.prototype.CORNER_RADIUS = 1;
  * @const
  */
 Blockly.Flyout.prototype.SCROLLBAR_PADDING = 2;
-
-Blockly.Flyout.prototype.MARGIN = 5;
 
 /**
  * Width of flyout.
