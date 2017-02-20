@@ -217,16 +217,6 @@ Blockly.Blocks['math_number_property'] = {
     return container;
   },
   /**
-   * Create object to represent whether the 'divisorInput' should be present.
-   * @return {object} JSON storage element.
-   * @this Blockly.Block
-   */
-  mutationToObject: function() {
-    return {
-      'divisor_input' : (this.getFieldValue('PROPERTY') == 'DIVISIBLE_BY')
-    };
-  },
-  /**
    * Parse XML to restore the 'divisorInput'.
    * @param {!Element} xmlElement XML storage element.
    * @this Blockly.Block
@@ -234,14 +224,6 @@ Blockly.Blocks['math_number_property'] = {
   domToMutation: function(xmlElement) {
     var divisorInput = (xmlElement.getAttribute('divisor_input') == 'true');
     this.updateShape_(divisorInput);
-  },
-  /**
-   * Restore the 'divisorInput'.
-   * @param {!object} obj JSON storage element.
-   * @this Blockly.Block
-   */
-  objectToMutation: function(obj) {
-    this.updateShape_(obj.divisor_input);
   },
   /**
    * Modify this block to have (or not have) an input for 'is divisible by'.
@@ -302,34 +284,6 @@ Blockly.Blocks['math_change'] = {
    */
   getVars: function() {
     return [this.getFieldValue('VAR')];
-  },
-  /**
-   * Iterator is always a number type, return this.
-   * @return {string}
-   * @this Blockly.Block
-   */
-  typeOf: function(name) {
-    if (Blockly.Names.equals(name, this.getFieldValue('VAR'))) {
-      return Blockly.Variables.TYPE_NUMBER;
-    }
-    else return undefined;
-  },
-  /**
-   * Notfication that the workspace wants to change this variables type.
-   * We can not change type! This is immutable.
-   * @this Blockly.Block
-   */
-  changeType: function(name, type) {
-    if (Blockly.Names.equals(name, this.getFieldValue('VAR'))) {
-      //Is the type different?
-      if( type !== this.typeOf(name) ) {
-        setTimeout(function(){
-          // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_NUMBER, 
-            Blockly.mainWorkspace);
-        },1);
-      }
-    }
   },
   /**
    * Notification that a variable is renaming.
