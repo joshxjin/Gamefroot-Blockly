@@ -76,16 +76,6 @@ Blockly.Blocks['text_join'] = {
     this.setTooltip(Blockly.Msg.TEXT_JOIN_TOOLTIP);
   },
   /**
-   * Create an object to represent number of text inputs.
-   * @return {object} the mutation data.
-   * @this Blockly.Block
-   */
-  mutationToObject: function(){
-    return {
-      'items': this.itemCount_
-    };
-  },
-  /**
    * Create XML to represent number of text inputs.
    * @return {Element} XML storage element.
    * @this Blockly.Block
@@ -94,15 +84,6 @@ Blockly.Blocks['text_join'] = {
     var container = document.createElement('mutation');
     container.setAttribute('items', this.itemCount_);
     return container;
-  },
-  /**
-   * Parse object to restore the text inputs.
-   * @param {object} obj The mutation data.
-   * @this Blockly.Block
-   */
-  objectToMutation: function(obj) {
-    this.itemCount_ = obj['items'];
-    this.updateShape_();
   },
   /**
    * Parse XML to restore the text inputs.
@@ -269,34 +250,6 @@ Blockly.Blocks['text_append'] = {
     return [this.getFieldValue('VAR')];
   },
   /**
-   * Iterator is always a number type, return this.
-   * @return {string}
-   * @this Blockly.Block
-   */
-  typeOf: function(name) {
-    if (Blockly.Names.equals(name, this.getFieldValue('VAR'))) {
-      return Blockly.Variables.TYPE_STRING;
-    }
-    else return undefined;
-  },
-  /**
-   * Notfication that the workspace wants to change this variables type.
-   * We can not change type! This is immutable.
-   * @this Blockly.Block
-   */
-  changeType: function(name, type) {
-    if (Blockly.Names.equals(name, this.getFieldValue('VAR'))) {
-      //Is the type different?
-      if( type !== this.typeOf(name) ) {
-        setTimeout(function(){
-          // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_STRING,
-            Blockly.mainWorkspace);
-        },1);
-      }
-    }
-  },
-  /**
    * Notification that a variable is renaming.
    * If the name matches one of this block's variables, rename it.
    * @param {string} oldName Previous name of variable.
@@ -417,17 +370,6 @@ Blockly.Blocks['text_charAt'] = {
     return container;
   },
   /**
-   * Create an object to represent number of text inputs.
-   * @return {object} the mutation data.
-   * @this Blockly.Block
-   */
-  mutationToObject: function(){
-    var isAt = this.getInput('AT').type == Blockly.INPUT_VALUE;
-    return {
-      'at': isAt
-    };
-  },
-  /**
    * Parse XML to restore the 'AT' input.
    * @param {!Element} xmlElement XML storage element.
    * @this Blockly.Block
@@ -436,15 +378,6 @@ Blockly.Blocks['text_charAt'] = {
     // Note: Until January 2013 this block did not have mutations,
     // so 'at' defaults to true.
     var isAt = (xmlElement.getAttribute('at') != 'false');
-    this.updateAt_(isAt);
-  },
-  /**
-   * Parse object to restore the text inputs.
-   * @param {object} obj The mutation data.
-   * @this Blockly.Block
-   */
-  objectToMutation: function(obj) {
-    var isAt = obj['at'];
     this.updateAt_(isAt);
   },
   /**
@@ -518,30 +451,6 @@ Blockly.Blocks['text_getSubstring'] = {
     this.updateAt_(1, true);
     this.updateAt_(2, true);
     this.setTooltip(Blockly.Msg.TEXT_GET_SUBSTRING_TOOLTIP);
-  },
-  /**
-   * Create an object to represent number of text inputs.
-   * @return {object} the mutation data.
-   * @this Blockly.Block
-   */
-  mutationToObject: function(){
-    var isAt1 = this.getInput('AT1').type == Blockly.INPUT_VALUE;
-    var isAt2 = this.getInput('AT2').type == Blockly.INPUT_VALUE;
-    return {
-      'at1': isAt1,
-      'at2': isAt2
-    };
-  },
-  /**
-   * Parse object to restore the text inputs.
-   * @param {object} obj The mutation data.
-   * @this Blockly.Block
-   */
-  objectToMutation: function(obj) {
-    var isAt1 = obj['at1'];
-    var isAt2 = obj['at2'];
-    this.updateAt_(1, isAt1);
-    this.updateAt_(2, isAt2);
   },
   /**
    * Create XML to represent whether there are 'AT' inputs.
@@ -678,75 +587,6 @@ Blockly.Blocks['text_print'] = {
       "helpUrl": Blockly.Msg.TEXT_PRINT_HELPURL
     });
   }
-};
-
-Blockly.Blocks['text_prompt_number'] = {
-    init: function() {
-        this.setHelpUrl(Blockly.Msg.TEXT_PROMPT_HELPURL);
-        this.setColour( Blockly.Variables.COLOUR.OPERATORS);
-
-        this.appendValueInput("TEXT")
-            .setCheck("String")
-            .appendField(Blockly.Msg.TEXT_PROMPT_TYPE_NUMBER);
-
-
-        this.setOutput(true, "Number");
-        this.setTooltip(Blockly.Msg.TEXT_PROMPT_TOOLTIP_NUMBER);
-    }
-}
-
-Blockly.Blocks['text_prompt_string'] = {
-    init: function() {
-        this.setHelpUrl(Blockly.Msg.TEXT_PROMPT_HELPURL);
-        this.setColour( Blockly.Variables.COLOUR.OPERATORS );
-        this.appendValueInput('TEXT')
-            .setCheck("String")
-            .appendField(Blockly.Msg.TEXT_PROMPT_TYPE_TEXT);
-
-
-        this.setOutput(true, "String");
-        this.setTooltip(Blockly.Msg.TEXT_PROMPT_TOOLTIP_TEXT);
-    }
-}
-
-
-Blockly.Blocks['text_prompt'] = {
-  /**
-   * Block for prompt function (internal message).
-   * @this Blockly.Block
-   */
-  init: function() {
-    var TYPES =
-        [[Blockly.Msg.TEXT_PROMPT_TYPE_TEXT, 'TEXT'],
-         [Blockly.Msg.TEXT_PROMPT_TYPE_NUMBER, 'NUMBER']];
-    // Assign 'this' to a variable for use in the closure below.
-    var thisBlock = this;
-    this.setHelpUrl(Blockly.Msg.TEXT_PROMPT_HELPURL);
-    this.setColour( Blockly.Variables.COLOUR.OPERATORS );
-    var dropdown = new Blockly.FieldDropdown(TYPES, function(newOp) {
-      if (newOp == 'NUMBER') {
-        thisBlock.setOutput(true, 'Number');
-        thisBlock.setColour(Blockly.Variables.COLOUR_NUMBER);
-      } else {
-        thisBlock.setOutput(true, 'String');
-        thisBlock.setColour(Blockly.Variables.COLOUR_STRING);
-      }
-    });
-    this.appendDummyInput()
-        .appendField(dropdown, 'TYPE')
-        .appendField(this.newQuote_(true))
-        .appendField(new Blockly.FieldTextInput(''), 'TEXT')
-        .appendField(this.newQuote_(false));
-    this.setOutput(true, 'String');
-    // Assign 'this' to a variable for use in the tooltip closure below.
-    var thisBlock = this;
-    this.setTooltip(function() {
-      return (thisBlock.getFieldValue('TYPE') == 'TEXT') ?
-          Blockly.Msg.TEXT_PROMPT_TOOLTIP_TEXT :
-          Blockly.Msg.TEXT_PROMPT_TOOLTIP_NUMBER;
-    });
-  },
-  newQuote_: Blockly.Blocks['text'].newQuote_
 };
 
 Blockly.Blocks['text_prompt_ext'] = {

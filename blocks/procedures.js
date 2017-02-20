@@ -117,6 +117,27 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     this.setFieldValue(paramString, 'PARAMS');
   },
   /**
+   * Create an object to represent the argument inputs.
+   * @return {object} mutation data.
+   * @this Blockly.Block
+   */
+  mutationToObject: function() {
+    return {
+      'arguments' : this.arguments_.concat()
+      ,'statements' : this.hasStatements_
+    };
+  },
+  /**
+   * Parse mutation data to restore the argument inputs.
+   * @param {object} obj The mutation data.
+   * @this Blockly.Block
+   */
+  objectToMutation: function(obj) {
+    this.arguments_ = obj.arguments.concat();
+    this.updateParams_();
+    this.setStatements_(!!obj.statements);
+  },
+  /**
    * Create XML to represent the argument inputs.
    * @return {!Element} XML storage element.
    * @this Blockly.Block
@@ -266,7 +287,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
    * @return {!Array.<string>} List of variable names.
    * @this Blockly.Block
    */
-  getVars: function() {
+  localGetVars: function() {
     return this.arguments_;
   },
   /**
@@ -276,7 +297,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
    * @param {string} newName Renamed variable.
    * @this Blockly.Block
    */
-  renameVar: function(oldName, newName) {
+  localRenameVar: function(oldName, newName) {
     var change = false;
     for (var i = 0; i < this.arguments_.length; i++) {
       if (Blockly.Names.equals(oldName, this.arguments_[i])) {
@@ -335,11 +356,11 @@ Blockly.Blocks['procedures_defnoreturn'] = {
       }
     }
   },
-  callType_: 'procedures_callnoreturn'
+  callType_: 'procedures_callnoreturn_local'
 };
 
 
-Blockly.Blocks['procedures_callnoreturn'] = {
+Blockly.Blocks['procedures_callnoreturn_local'] = {
   /**
    * Block for calling a procedure with no return value.
    * @this Blockly.Block
@@ -542,7 +563,7 @@ Blockly.Blocks['procedures_callnoreturn'] = {
    * @param {string} newName Renamed variable.
    * @this Blockly.Block
    */
-  renameVar: function(oldName, newName) {
+  localRenameVar: function(oldName, newName) {
     for (var i = 0; i < this.arguments_.length; i++) {
       if (Blockly.Names.equals(oldName, this.arguments_[i])) {
         this.arguments_[i] = newName;
