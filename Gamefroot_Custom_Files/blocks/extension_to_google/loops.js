@@ -51,6 +51,16 @@ Blockly.Blocks['controls_repeat'].init = function() {
     this.setTooltip(Blockly.Msg.CONTROLS_REPEAT_TOOLTIP);
 };
 
+var default_controls_flow_statements_onchange = Blockly.Blocks['controls_flow_statements'].onchange;
+
+Blockly.Blocks['controls_flow_statements'].onchange = function() {
+    if (!this.workspace) {
+        // Block has been deleted.
+        return;
+    }
+    default_controls_flow_statements_onchange();
+};
+
 Blockly.Blocks['controls_for_local'] = {
     /**
      * Block for 'for' loop.
