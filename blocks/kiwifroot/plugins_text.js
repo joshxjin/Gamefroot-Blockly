@@ -274,7 +274,7 @@ Blockly.Blocks['kiwi_text_create_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }

@@ -332,7 +332,7 @@ Blockly.Blocks['kiwi_event_touch_return_instance_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -421,7 +421,7 @@ Blockly.Blocks['kiwi_event_stage_touched_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_POINTER, 
+          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_POINTER,
             Blockly.mainWorkspace);
         },1);
       }

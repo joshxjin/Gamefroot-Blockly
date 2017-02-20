@@ -472,7 +472,7 @@ Blockly.Blocks['kiwi_classes_create_instance_with_var'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -536,7 +536,7 @@ Blockly.Blocks['kiwi_event_touch_return_instance'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -601,7 +601,7 @@ Blockly.Blocks['kiwi_event_stage_touched'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_POINTER, 
+          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_POINTER,
             Blockly.mainWorkspace);
         },1);
       }
@@ -709,7 +709,7 @@ Blockly.Blocks['kiwi_primitives_create_rectangle'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -775,7 +775,7 @@ Blockly.Blocks['kiwi_primitives_create_circle'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -846,7 +846,7 @@ Blockly.Blocks['kiwi_primitives_create_line'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -917,7 +917,7 @@ Blockly.Blocks['kiwi_primitives_create_star'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -988,7 +988,7 @@ Blockly.Blocks['kiwi_primitives_create_polygon'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -1055,7 +1055,7 @@ Blockly.Blocks['kiwi_text_create'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -1150,7 +1150,7 @@ Blockly.Blocks['controls_for'] = {
       if( type !== this.typeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_NUMBER, 
+          Blockly.Variables.changeType(name, Blockly.Variables.TYPE_NUMBER,
             Blockly.mainWorkspace);
         },1);
       }

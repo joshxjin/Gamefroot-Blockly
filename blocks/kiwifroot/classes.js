@@ -142,7 +142,7 @@ Blockly.Blocks['kiwi_classes_create_instance_with_var_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.KiwifrootVariables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE,
+          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }

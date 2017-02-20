@@ -115,7 +115,7 @@ Blockly.Blocks['kiwi_primitives_create_rectangle_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -205,7 +205,7 @@ Blockly.Blocks['kiwi_primitives_create_circle_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -300,7 +300,7 @@ Blockly.Blocks['kiwi_primitives_create_line_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -395,7 +395,7 @@ Blockly.Blocks['kiwi_primitives_create_star_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
@@ -491,7 +491,7 @@ Blockly.Blocks['kiwi_primitives_create_polygon_local'] = {
       if( type !== this.localTypeOf(name) ) {
         setTimeout(function(){
           // This type is immutable, change it back!
-          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE, 
+          Blockly.Variables.Local.changeType(name, Blockly.Variables.TYPE_INSTANCE,
             Blockly.mainWorkspace);
         },1);
       }
