@@ -103,7 +103,6 @@ goog.addDependency("../../../" + dir + "/core/extension_to_google/json.js", ['Bl
 goog.addDependency("../../../" + dir + "/core/extension_to_google/mutator.js", [], ['Blockly.Bubble', 'Blockly.Icon', 'Blockly.WorkspaceSvg', 'goog.Timer', 'goog.dom']);
 goog.addDependency("../../../" + dir + "/core/extension_to_google/names.js", [], []);
 goog.addDependency("../../../" + dir + "/core/extension_to_google/procedures.js", [], ['Blockly.Field', 'Blockly.Names', 'Blockly.Workspace']);
-goog.addDependency("../../../" + dir + "/core/extension_to_google/realtime.js", ['Blockly.Realtime'], ['goog.array', 'goog.dom', 'goog.style', 'rtclient']);
 goog.addDependency("../../../" + dir + "/core/extension_to_google/toolbox.js", [], ['Blockly.Flyout', 'goog.dom', 'goog.events', 'goog.events.BrowserFeature', 'goog.html.SafeHtml', 'goog.math.Rect', 'goog.style', 'goog.ui.tree.TreeControl', 'goog.ui.tree.TreeNode']);
 goog.addDependency("../../../" + dir + "/core/extension_to_google/trashcan.js", [], ['goog.Timer', 'goog.dom', 'goog.math', 'goog.math.Rect']);
 goog.addDependency("../../../" + dir + "/core/extension_to_google/utils.js", [], ['goog.dom', 'goog.events.BrowserFeature', 'goog.math.Coordinate', 'goog.userAgent']);
@@ -1712,7 +1711,6 @@ goog.require('Blockly.Mutator');
 goog.require('Blockly.Names');
 goog.require('Blockly.Options');
 goog.require('Blockly.Procedures');
-goog.require('Blockly.Realtime');
 goog.require('Blockly.RenderedConnection');
 goog.require('Blockly.Scrollbar');
 goog.require('Blockly.ScrollbarPair');
