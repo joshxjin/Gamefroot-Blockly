@@ -139,7 +139,6 @@ Blockly.Toolbox.prototype.init = function() {
   this.populate_(workspace.options.languageTree);
   tree.render(this.HtmlDiv);
 
-  this.hasColours_ = true;
   if (this.hasColours_) {
     this.addColour_(tree);
   }
@@ -170,7 +169,6 @@ Blockly.Toolbox.prototype.position = function() {
   var svg = this.workspace_.options.svg;
   var svgPosition = goog.style.getPageOffset(svg);
   var svgSize = Blockly.svgSize(svg);
-  treeDiv.style.left = '0px';
   if (this.workspace_.RTL) {
     //treeDiv.style.left = (svgPosition.x + svgSize.width - treeDiv.offsetWidth) + 'px';
   } else {
@@ -208,10 +206,6 @@ Blockly.Toolbox.prototype.populate_ = function(newTree) {
           childOut.blocks = [];
           treeOut.add(childOut);
           var custom = childIn.getAttribute('custom');
-
-          //HACK: To support adding blocks to custom categories
-          syncTrees(childIn, childOut);
-
           if (custom) {
             // Variables and procedures are special dynamic categories.
             childOut.blocks.push( custom );
