@@ -103,37 +103,6 @@ Blockly.FieldVariable.prototype.init = function(block) {
   Blockly.FieldVariable.superClass_.init.call(this, block);
 };
 
-Blockly.FieldVariable.prototype.allVariablesFromScope_ = function() {
-  var variableFunc = Blockly.Variables.allVariables;
-
-  if( this.scope_ === Blockly.FieldVariable.SCOPE.LOCAL ) {
-    variableFunc = Blockly.Variables.Local.allVariables;
-  } else if( this.scope_ === Blockly.FieldVariable.SCOPE.GLOBAL ) {
-    variableFunc = Blockly.Variables.Global.allVariables;
-  } 
-  return variableFunc;
-};
-
-Blockly.FieldVariable.prototype.renameVariablesFromScope_ = function() {
-  var variableFunc = Blockly.Variables.renameVariable;
-
-  if( this.scope_ === Blockly.FieldVariable.SCOPE.LOCAL ) {
-    variableFunc = Blockly.Variables.Local.renameVariable;
-  } else if( this.scope_ === Blockly.FieldVariable.SCOPE.GLOBAL ) {
-    variableFunc = Blockly.Variables.Global.renameVariable;
-  } 
-  return variableFunc;
-};
-
-/**
- * Clone this FieldVariable.
- * @return {!Blockly.FieldVariable} The result of calling the constructor again
- *   with the current values of the arguments used during construction.
- */
-Blockly.FieldVariable.prototype.clone = function() {
-  return new Blockly.FieldVariable(this.getValue(), this.changeHandler_, this.scope_ );
-};
-
 /**
  * Get the variable's name (use a variableDB to convert into a real name).
  * Unline a regular dropdown, variables are literal and have no neutral value.
@@ -230,36 +199,5 @@ Blockly.FieldVariable.dropdownChange = function(text) {
     }
     return null;
   }
-
-  if( this.scope_ === Blockly.FieldVariable.SCOPE.LOCAL ) {
-
-    //Is our block immutable?
-    if( this.sourceBlock_.localIsImmutable && this.sourceBlock_.localIsImmutable() ) {
-
-      //Check to see if the new value is already immutable
-      if( Blockly.Variables.Local.isImmutable( text, workspace ) ) {
-
-          var oldValue = this.getValue();
-          setTimeout(function() {
-            //If it is then switch back to the old value
-            this.setValue( oldValue );
-            //Message the user about the change
-            alert("Variable '" + text + "' cannot be used because its type is immutable. Reverting back to '" + oldValue + "'." );
-          }.bind(this), 1);
-        
-        return null;
-      } else {
-
-        //Otherwise change the type of all variables to the new one!
-        var type = this.sourceBlock_.localTypeOf( this.sourceBlock_.getFieldValue('VAR') );
-        if( type ) Blockly.Variables.Local.changeType(text, type, workspace );
-
-      }
-
-    }
-
-  }
-
-
   return undefined;
 };
